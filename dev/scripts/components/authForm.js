@@ -1,6 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
 
+// landing page authenication form
 class AuthForm extends React.Component {
     signUp(e) {
         e.preventDefault();
@@ -19,6 +20,7 @@ class AuthForm extends React.Component {
         let formAction = () => null;
         let confirmPassword;
 
+        // choose form to display form according to these conditions
         if (this.props.formToDisplay === 'signUp') {
             title = 'Sign Up';
             buttonText = 'Sign Up';
@@ -32,8 +34,6 @@ class AuthForm extends React.Component {
             formAction = this.signIn;
             confirmPassword = false;
         }
-
-        console.log(formAction);
 
         return (
             <div>

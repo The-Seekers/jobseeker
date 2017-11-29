@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// main app header
+// global app header
 export default class MainHeader extends React.Component {
     render() {
         return (

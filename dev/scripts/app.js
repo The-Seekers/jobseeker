@@ -6,16 +6,15 @@ import {
   Route, Link
 } from 'react-router-dom';
 
-// component imports
+// components
 import MainHeader from './components/header.js'
 import MainFooter from './components/footer.js'
 import Dashboard from './components/dashboard.js'
 import ApplicationList from './components/jobApplication'
 import Home from './components/home';
-
 import NewApplication from './components/newApplication.js'
 
-// initialize firebase
+// firebase config
 var config = {
   apiKey: "AIzaSyA1qK4MCT9BNUPRKbz6Wy1OeKEFLYswWW8",
   authDomain: "job-seekers-16fc9.firebaseapp.com",
@@ -26,16 +25,19 @@ var config = {
 };
 firebase.initializeApp(config);
 
-// main app flow
+// global flow
 class App extends React.Component {
   render() {
     return (
       <div>
+        {/* <MainHeader /> */}
         <NewApplication />
-        <MainHeader />
-        <Home />
-        <Dashboard />
-        <MainFooter />
+        
+        {/* <Home /> */}
+        {/* <Dashboard /> */}
+        {/* <NewApplication /> */}
+        
+        {/* <MainFooter /> */}
       </div>
     )
   }
