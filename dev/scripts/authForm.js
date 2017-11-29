@@ -17,17 +17,20 @@ class AuthForm extends React.Component {
         let buttonText = '';
         let passwordText = '';
         let formAction = () => null;
+        let confirmPassword;
 
         if (this.props.formToDisplay === 'signUp') {
             title = 'Sign Up';
             buttonText = 'Sign Up';
             passwordText = 'Choose a Password';
             formAction = this.signUp;
+            confirmPassword = true;
         } else if (this.props.formToDisplay === 'signIn') {
             title = 'Sign In';
             buttonText = 'Sign In';
             passwordText = 'Password';
             formAction = this.signIn;
+            confirmPassword = false;
         }
 
         console.log(formAction);
@@ -44,10 +47,12 @@ class AuthForm extends React.Component {
                         <label htmlFor="auth-password">{passwordText}</label>
                         <input id="auth-password" type="password" required/>
                     </div>
-                    <div>
-                        <label htmlFor="auth-password">Confirm Password</label>
-                        <input id="auth-password-confirm" type="password" required/>
-                    </div>
+                    {confirmPassword &&
+                        <div>
+                            <label htmlFor="auth-password">Confirm Password</label>
+                            <input id="auth-password-confirm" type="password" required/>
+                        </div>
+                    }
                     <button type="submit">{buttonText}</button>
                 </form>
             </div>
