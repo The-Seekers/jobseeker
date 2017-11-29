@@ -15,7 +15,7 @@ export default class ApplicationList extends React.Component {
 
     componentDidMount(){
         // applicationRef will eventually be users/${uid}/applications
-        const applicationsRef = firebase.database().ref();
+        const applicationsRef = firebase.database().ref(`users/John Smith`);
         applicationsRef.on('value', (snapshot)=> {
             const applicationsArray = [];
             const applicationItems = snapshot.val();
