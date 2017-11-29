@@ -10,10 +10,8 @@ import {
 import MainHeader from './components/header.js'
 import MainFooter from './components/footer.js'
 import Dashboard from './components/dashboard.js'
-
-// to merge later ***
-import ApplicationList from './jobApplication'
-import Home from './Home';
+import ApplicationList from './components/jobApplication'
+import Home from './components/home';
 
 // initialize firebase
 var config = {
@@ -32,10 +30,9 @@ class App extends React.Component {
     return (
       <div>
         <MainHeader />
+        <Home />
         <Dashboard />
         <MainFooter />
-        <Home />
-        <ApplicationList />
       </div>
     )
   }

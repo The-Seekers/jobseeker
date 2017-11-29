@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ApplicationList from './applicationList'
 
 // main app dashboard (high level state!)
 export default class Dashboard extends React.Component {
@@ -10,7 +11,7 @@ export default class Dashboard extends React.Component {
         return (
             <main>
                 <DashStats />
-                <JobsList />
+                <ApplicationList />
             </main>
         )
     }
@@ -26,17 +27,6 @@ class DashStats extends React.Component {
                     <li>temp statcard</li>
                     <li>temp statcard</li>
                 </ul>                
-            </section>
-        )
-    }
-}
-
-// main list for job cards
-class JobsList extends React.Component {
-    render() {
-        return (
-            <section>
-                <JobsListNav />
             </section>
         )
     }
