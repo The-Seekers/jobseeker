@@ -5,9 +5,9 @@ import {
   BrowserRouter as Router,
   Route, Link
 } from 'react-router-dom';
+import ApplicationList from './jobApplication'
 import Home from './Home';
 
-// Initialize Firebase
 var config = {
   apiKey: "AIzaSyA1qK4MCT9BNUPRKbz6Wy1OeKEFLYswWW8",
   authDomain: "job-seekers-16fc9.firebaseapp.com",
@@ -21,9 +21,10 @@ firebase.initializeApp(config);
 class App extends React.Component {
     render() {
       return (
-        <div>
-          JOBSEEKERS
+          <div>
+            SEEKERS
           <Home />
+          <ApplicationList />
         </div>
       )
     }
