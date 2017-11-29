@@ -28,15 +28,30 @@ firebase.initializeApp(config);
 
 // main app flow
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isLoggedIn: true
+    }
+  }
   render() {
     return (
-      <div>
-        <NewApplication />
-        <MainHeader />
-        <Home />
-        <Dashboard />
-        <MainFooter />
-      </div>
+      <Router>
+        <div>
+          <MainHeader />
+            {this.state.isLoggedIn
+              ? <div>
+                  <Route exact path='/' component={Dashboard} />
+                  <Route exact path='/new' component={NewApplication} />
+                </div>
+              : <div>
+                  <Route exact path='/' component={Home} />
+                  <Route render={() => <p>Oops - This is an error. Will replace this with a better error message component!</p>} />
+                </div>
+            }
+          <MainFooter />
+        </div>
+      </Router>
     )
   }
 }
