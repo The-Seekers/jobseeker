@@ -48,27 +48,23 @@ class App extends React.Component {
                       return <SingleApplication {...routeProps} />
                   }} />
                   {/* If no paths match, display an error message */}
-                  <Route render={() => {
-                    return (
-                      <div>
-                        <h2>404 Not Found</h2>
-                        <p>Oops, that page doesn't exist!</p>
-                      </div>
-                    )
-                  }} />
+                  <Route render={() => (
+                    <div>
+                      <h2>404 Not Found</h2>
+                      <p>Oops, that page doesn't exist!</p>
+                    </div>
+                  )} />
                 </Switch>
                 // Routes if the user is logged out
               : <Switch>
                   <Route exact path='/' component={Home} />
                   {/* If no paths match, display an error message */}
-                  <Route render={() => {
-                    return (
-                      <div>
-                        <h2>404 Not Found</h2>
-                        <p>Oops, that page doesn't exist!</p>
-                      </div>
-                    )
-                  }} />
+                  <Route render={() => (
+                    <div>
+                      <h2>404 Not Found</h2>
+                      <p>Oops, that page doesn't exist!</p>
+                    </div>
+                  )} />
                 </Switch>
             }
           <MainFooter />
