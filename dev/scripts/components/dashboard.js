@@ -21,7 +21,11 @@ class DashStats extends React.Component {
     render() {
         return (
             <section>
-                <p>stats section goes here</p>
+                <ul>
+                    <li>temp statcard</li>
+                    <li>temp statcard</li>
+                    <li>temp statcard</li>
+                </ul>                
             </section>
         )
     }
@@ -33,7 +37,6 @@ class JobsList extends React.Component {
         return (
             <section>
                 <JobsListNav />
-                <p>jobs list goes here</p>
             </section>
         )
     }
