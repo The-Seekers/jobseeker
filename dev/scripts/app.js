@@ -6,6 +6,7 @@ import {
   Route, Link
 } from 'react-router-dom';
 import ApplicationList from './jobApplication'
+import Home from './Home';
 
 var config = {
   apiKey: "AIzaSyA1qK4MCT9BNUPRKbz6Wy1OeKEFLYswWW8",
@@ -22,9 +23,9 @@ class App extends React.Component {
       return (
           <div>
             SEEKERS
-            <ApplicationList />
-            
-          </div>
+          <Home />
+          <ApplicationList />
+        </div>
       )
     }
 }
