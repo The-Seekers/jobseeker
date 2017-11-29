@@ -2,27 +2,50 @@ import React from 'react';
 import {
     BrowserRouter as Router, Route, Link, NavLink, Switch
 } from 'react-router-dom';
+import firebase from 'firebase';
 import SingleApplication from './jobApplication';
 
 export default class ApplicationList extends React.Component {
     constructor() {
         super();
         this.state = {
-            application: {
-                key: 12345,
-                company: 'HackerYou',
-                title: 'Web Developer',
-
-            }
+            applications: []
         }
     }
+
+    componentDidMount(){
+        // applicationRef will eventually be users/${uid}/applications
+        const applicationsRef = firebase.database().ref();
+        applicationsRef.on('value', (snapshot)=> {
+            const applicationsArray = [];
+            const applicationItems = snapshot.val();
+            for (let applicationKey in applicationItems){
+                applicationItems[applicationKey].key = applicationKey;
+                applicationsArray.push(applicationItems[applicationKey]);
+            }
+            this.setState({
+                applications: applicationsArray
+            });
+        });
+    }
+
     render() {
         return (
             <Router>
                 <div>
-                    <Link to={`/application/${this.state.application.key}`}>Application 1</Link>
-                    <Route exact path="/application/:application_key" render={(routeProps) => {
-                        return <SingleApplication {...routeProps} application={this.state.application} />
+                    <ul>
+                        {this.state.applications.map((item) => {
+                            return (
+                                <Link to={`/application/${item.key}`} key={item.key}>
+                                    <h3>{item.company}</h3>
+                                    <h4>{item.title}</h4>
+                                    <p>Last changed...</p>
+                                </Link>
+                            )
+                        })}
+                    </ul>
+                    <Route exact path="/application/:application_id" render={(routeProps) => {
+                        return <SingleApplication {...routeProps}/>
                     }} />
                 </div>
             </Router>
