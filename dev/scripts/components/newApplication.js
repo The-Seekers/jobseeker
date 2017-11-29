@@ -2,12 +2,14 @@ import React from 'react';
 import {
     BrowserRouter as Router, Route, Link, NavLink, Switch
 } from 'react-router-dom';
+import firebase from 'firebase';
 
 // application form (* /addnew *)
 export default class NewApplication extends React.Component{
     constructor() {
         super();
         this.state = {
+            userId: 'John Smith',
             title: '',
             company: '',
             name: '',
@@ -16,10 +18,12 @@ export default class NewApplication extends React.Component{
             dateApplied: ''
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleSubmit(e) {
         e.preventDefault();
-        console.log('submitted the form');
+        const dbRef = firebase.database().ref(`users/${this.state.userId}`);
+        dbRef.push(this.state)
     }
     handleChange(e, id){
         this.setState({
@@ -31,7 +35,6 @@ export default class NewApplication extends React.Component{
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <h2>New job application</h2>
-                    
                     <div>
                         <label htmlFor='titleInput'>Title of Job</label>
                         <input onChange={(e) => {this.handleChange(e, 'title')}} value={this.state.title} id='titleInput' type='text' placeholder='title' required />
