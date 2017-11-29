@@ -1,7 +1,8 @@
 import React from 'react';
 import AuthForm from './authForm';
 
-class Home extends React.Component {
+// homepage for unauthenticated users
+export default class Home extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -9,7 +10,7 @@ class Home extends React.Component {
         }
         this.chooseForm = this.chooseForm.bind(this);
     }
-
+    // sign up -> form A, log in -> form B
     chooseForm(e, form) {
         e.preventDefault();
         this.setState({
@@ -20,9 +21,9 @@ class Home extends React.Component {
     render() {
         return(
             <div>
-                <h2>Land your next job</h2>
+                {/* <h2>Land your next job</h2>
                 <p>Job hunting is <em>hard</em>. We're here to help.</p>
-                <p>Get started with <strong>jobseeker</strong> today.</p>
+                <p>Get started with <strong>jobseeker</strong> today.</p> */}
                 <p>
                     <a href="#" onClick={(e) => {this.chooseForm(e, 'signIn')}}>Sign In</a>
                 </p>
@@ -37,5 +38,3 @@ class Home extends React.Component {
         )
     }
 }
-
-export default Home;

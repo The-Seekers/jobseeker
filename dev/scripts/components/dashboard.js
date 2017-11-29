@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ApplicationList from './applicationList'
 
-// main app dashboard (high level state!)
+// dashboard
 export default class Dashboard extends React.Component {
     constructor() {
         super();
@@ -10,6 +9,7 @@ export default class Dashboard extends React.Component {
     render() {
         return (
             <main>
+                <DashWelcome />
                 <DashStats />
                 <ApplicationList />
             </main>
@@ -17,7 +17,7 @@ export default class Dashboard extends React.Component {
     }
 }
 
-// stats at a glance
+// at-a-glance section
 class DashStats extends React.Component {
     render() {
         return (
@@ -32,7 +32,7 @@ class DashStats extends React.Component {
     }
 }
 
-// jobs list navigation ui
+// search, sort, navigation for applicationList
 class JobsListNav extends React.Component {
     render() {
         return (
@@ -45,8 +45,24 @@ class JobsListNav extends React.Component {
                     </select>
                     <input type='search' placeholder='search'/>
                 </form>
-                
             </nav>
+        )
+    }
+}
+
+// feedback for user upon signup
+class DashWelcome extends React.Component {
+    render() {
+        return(
+            <section>
+                <h2>Welcome.</h2>
+                <ol>
+                    <li>Add your job applications to Jobseeker</li>
+                    <li>Track connections, follow-ups and connections</li>
+                    <li>Never miss an opportunity</li>
+                </ol>
+                <button>get started</button>
+            </section>
         )
     }
 }

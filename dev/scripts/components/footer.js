@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// main app footer
+// global app footer
 export default class MainFooter extends React.Component {
     render() {
         return (

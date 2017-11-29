@@ -4,12 +4,12 @@ import {
 } from 'react-router-dom';
 import firebase from 'firebase';
 
-// application form (* /addnew *)
+// new job application
 export default class NewApplication extends React.Component{
     constructor() {
         super();
         this.state = {
-            userId: 'John Smith',
+            userId: '',
             title: '',
             company: '',
             name: '',
@@ -20,11 +20,13 @@ export default class NewApplication extends React.Component{
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    // handle submit of the form
     handleSubmit(e) {
         e.preventDefault();
         const dbRef = firebase.database().ref(`users/${this.state.userId}`);
         dbRef.push(this.state)
     }
+    // add each keystroke to component state
     handleChange(e, id){
         this.setState({
             [id]: e.target.value
@@ -32,15 +34,14 @@ export default class NewApplication extends React.Component{
     }
     render() {
         return(
-            <div>
+            <section>
                 <form onSubmit={this.handleSubmit}>
                     <h2>New job application</h2>
                     <div>
                         <label htmlFor='titleInput'>Title of Job</label>
-                        <input onChange={(e) => {this.handleChange(e, 'title')}} value={this.state.title} id='titleInput' type='text' placeholder='title' required />
+                        <input onChange={(e) => { this.handleChange(e, 'title') }} value={this.state.title} id='titleInput' type='text' placeholder='title' required />
                     </div>
                     <div>
-                        <label htmlFor='companyInput'>Company</label>                    
                         <input onChange={(e) => { this.handleChange(e, 'company') }} id='companyInput' type='text' placeholder='company' required />
                     </div>
                     <div>
@@ -59,9 +60,28 @@ export default class NewApplication extends React.Component{
                         <label htmlFor='dateAppliedInput'>Date Applied</label>                     
                         <input onChange={(e) => { this.handleChange(e, 'dateApplied') }} id='dateAppliedInput' type='date' required />
                     </div>
-                    <button type='submit'>Create</button>
+                    <button type='submit'>add application</button>
                 </form>
-            </div>
+                <ApplicationFeedback feedback={this.state} />
+            </section>
         )
     }
 } 
+
+// application congratulation and summary
+class ApplicationFeedback extends React.Component{
+    render(feedback){
+        return(
+            <section>
+                <h2>Job application added!</h2>
+                <h2>{this.props.feedback.company} would be lucky to have you!</h2>
+                <ul>
+                    <h3>Check back on this application to:</h3>
+                    <li>yo</li>
+                    <li>yo</li>
+                    <li>yo</li>
+                </ul>
+            </section>
+        )
+    }
+}
