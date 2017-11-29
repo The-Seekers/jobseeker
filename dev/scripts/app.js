@@ -10,10 +10,8 @@ import {
 import MainHeader from './components/header.js'
 import MainFooter from './components/footer.js'
 import Dashboard from './components/dashboard.js'
-
-// to merge later ***
-import ApplicationList from './jobApplication'
-import Home from './Home';
+import ApplicationList from './components/jobApplication'
+import Home from './components/home';
 
 import NewApplication from './components/newApplication.js'
 
@@ -35,10 +33,9 @@ class App extends React.Component {
       <div>
         <NewApplication />
         <MainHeader />
+        <Home />
         <Dashboard />
         <MainFooter />
-        <Home />
-        <ApplicationList />
       </div>
     )
   }
