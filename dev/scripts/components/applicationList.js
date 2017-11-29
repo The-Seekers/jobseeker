@@ -3,19 +3,18 @@ import {
     BrowserRouter as Router, Route, Link, NavLink, Switch
 } from 'react-router-dom';
 import firebase from 'firebase';
-import SingleApplication from './jobApplication';
 
 export default class ApplicationList extends React.Component {
     constructor() {
         super();
         this.state = {
-            applications: []
+            applications: [],
+            userId: 'John Smith'
         }
     }
 
     componentDidMount(){
-        // applicationRef will eventually be users/${uid}/applications
-        const applicationsRef = firebase.database().ref(`users/John Smith`);
+        const applicationsRef = firebase.database().ref(`users/${this.state.userId}`);
         applicationsRef.on('value', (snapshot)=> {
             const applicationsArray = [];
             const applicationItems = snapshot.val();
@@ -31,24 +30,19 @@ export default class ApplicationList extends React.Component {
 
     render() {
         return (
-            <Router>
-                <div>
-                    <ul>
-                        {this.state.applications.map((item) => {
-                            return (
-                                <Link to={`/application/${item.key}`} key={item.key}>
-                                    <h3>{item.company}</h3>
-                                    <h4>{item.title}</h4>
-                                    <p>Last changed...</p>
-                                </Link>
-                            )
-                        })}
-                    </ul>
-                    <Route exact path="/application/:application_id" render={(routeProps) => {
-                        return <SingleApplication {...routeProps}/>
-                    }} />
-                </div>
-            </Router>
+            <div>
+                <ul>
+                    {this.state.applications.map((item) => {
+                        return (
+                            <Link to={`/application/${item.key}`} key={item.key}>
+                                <h3>{item.company}</h3>
+                                <h4>{item.title}</h4>
+                                <p>Last changed...</p>
+                            </Link>
+                        )
+                    })}
+                </ul>
+            </div>
         )
     }
 
