@@ -26,7 +26,10 @@ class Home extends React.Component {
                 <p>
                     <a href="#" onClick={(e) => {this.chooseForm(e, 'signUp')}}>Sign Up</a>
                 </p>
-                <AuthForm />
+                
+                {this.state.showForm.length > 0 &&
+                    <AuthForm formToDisplay={this.state.showForm}/>
+                }
             </div>
         )
     }

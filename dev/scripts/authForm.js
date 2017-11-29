@@ -3,9 +3,20 @@ import firebase from 'firebase';
 
 class AuthForm extends React.Component {
     render() {
-        const title = 'Sign Up';
-        const buttonText = 'Sign Up';
-        const passwordText = 'Choose a Password';
+        let title = '';
+        let buttonText = '';
+        let passwordText = '';
+
+        if (this.props.formToDisplay === 'signUp') {
+            title = 'Sign Up';
+            buttonText = 'Sign Up';
+            passwordText = 'Choose a Password';
+        } else if (this.props.formToDisplay === 'signIn') {
+            title = 'Sign In';
+            buttonText = 'Sign In';
+            passwordText = 'Password';
+        }
+
         return (
             <div>
                 <h2>{title}</h2>
