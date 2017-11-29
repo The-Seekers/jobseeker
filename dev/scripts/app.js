@@ -5,9 +5,17 @@ import {
   BrowserRouter as Router,
   Route, Link
 } from 'react-router-dom';
+
+// component imports
+import MainHeader from './components/header.js'
+import MainFooter from './components/footer.js'
+import Dashboard from './components/dashboard.js'
+
+// to merge later ***
 import ApplicationList from './jobApplication'
 import Home from './Home';
 
+// initialize firebase
 var config = {
   apiKey: "AIzaSyA1qK4MCT9BNUPRKbz6Wy1OeKEFLYswWW8",
   authDomain: "job-seekers-16fc9.firebaseapp.com",
@@ -18,16 +26,19 @@ var config = {
 };
 firebase.initializeApp(config);
 
+// main app flow
 class App extends React.Component {
-    render() {
-      return (
-          <div>
-            SEEKERS
-          <Home />
-          <ApplicationList />
-        </div>
-      )
-    }
+  render() {
+    return (
+      <div>
+        <MainHeader />
+        <Dashboard />
+        <MainFooter />
+        <Home />
+        <ApplicationList />
+      </div>
+    )
+  }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
