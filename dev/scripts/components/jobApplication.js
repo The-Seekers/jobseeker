@@ -2,15 +2,18 @@ import React from 'react';
 import {
     BrowserRouter as Router,Route, Link, NavLink, Switch
 } from 'react-router-dom';
+import firebase from 'firebase';
 
 export default class SingleApplication extends React.Component {
     constructor(){
         super();
         this.state = {
-            edit: false
+            edit: false,
+            pullState: {}
         }
         this.enableEdit = this.enableEdit.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
+        this.handleChecked = this.handleChecked.bind(this);
     }
 
     enableEdit(e){
@@ -26,15 +29,27 @@ export default class SingleApplication extends React.Component {
         });
     }
 
+    handleChecked(e){
+        this.setState({
+            [e.target.name]: e.target.checked
+        });
+    }
+
+    // pull entire entry from firebase based on application id
+    // store application details in state
+    // make the default values of form based on state from firebase
+    // controlled input to store new values in another part of state
+    // when save changes is clicked, pushes only the items that were changed to update firebase
+
     render(){
         let display = '';
         if (this.state.edit === false) {
             display = (
                 <form action="">
                     <label htmlFor="company">Company</label>
-                    <input name="company" type="text" defaultValue={this.props.application.company} disabled/>
+                    <input name="company" type="text"  disabled/>
                     <label htmlFor="title">Title</label>
-                    <input name="title" type="text" defaultValue={this.props.application.title} disabled/>
+                    <input name="title" type="text"  disabled/>
                     <label htmlFor="posted">Date Posted</label>
                     <input name="posted" type="date" disabled/>
                     <label htmlFor="applied">Date Applied</label>
@@ -51,19 +66,19 @@ export default class SingleApplication extends React.Component {
             display = (
                 <form action="">
                     <label htmlFor="company">Company</label>
-                    <input name="company" type="text" defaultValue={this.props.application.company} onChange={this.handleEdit}/>
+                    <input name="company" type="text"  onChange={this.handleEdit}/>
                     <label htmlFor="title">Title</label>
-                    <input name="title" type="text" defaultValue={this.props.application.title} onChange={this.handleEdit}/>
+                    <input name="title" type="text"  onChange={this.handleEdit}/>
                     <label htmlFor="posted">Date Posted</label>
                     <input name="posted" type="date" onChange={this.handleEdit}/>
                     <label htmlFor="applied">Date Applied</label>
                     <input name="applied" type="date" onChange={this.handleEdit}/>
                     <label htmlFor="followUp1">Follow Up #1</label>
-                    <input name="application" name="followUp1" type="checkbox" onChange={this.handleEdit}/>
+                    <input name="application" name="followUp1" type="checkbox" onChange={this.handleChecked}/>
                     <label htmlFor="followUp2">Follow Up #2</label>
-                    <input name="followUp2" type="checkbox" onChange={this.handleEdit}/>
+                    <input name="followUp2" type="checkbox" onChange={this.handleChecked}/>
                     <label htmlFor="followUp3">Follow Up #3</label>
-                    <input name="followUp3" type="checkbox" onChange={this.handleEdit}/>
+                    <input name="followUp3" type="checkbox" onChange={this.handleChecked}/>
                 </form>
             )
         }
