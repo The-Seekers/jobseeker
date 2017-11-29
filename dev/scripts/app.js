@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Route, Link
 } from 'react-router-dom';
-import AuthForm from './authForm';
+import Home from './Home';
 
 // Initialize Firebase
 var config = {
@@ -23,7 +23,7 @@ class App extends React.Component {
       return (
         <div>
           JOBSEEKERS
-          <AuthForm />
+          <Home />
         </div>
       )
     }
