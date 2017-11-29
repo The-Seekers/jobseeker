@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import firebase from 'firebase';
 import {
   BrowserRouter as Router,
-  Route, Link
+  Route, Link, Switch
 } from 'react-router-dom';
 
 // component imports
 import MainHeader from './components/header.js'
 import MainFooter from './components/footer.js'
 import Dashboard from './components/dashboard.js'
-import ApplicationList from './components/jobApplication'
+import SingleApplication from './components/jobApplication';
 import Home from './components/home';
 
 import NewApplication from './components/newApplication.js'
@@ -40,14 +40,36 @@ class App extends React.Component {
         <div>
           <MainHeader />
             {this.state.isLoggedIn
-              ? <div>
+              // Routes if the user is logged in
+              ? <Switch>
                   <Route exact path='/' component={Dashboard} />
                   <Route exact path='/new' component={NewApplication} />
-                </div>
-              : <div>
+                  <Route exact path='/application/:application_id' render={(routeProps) => {
+                      return <SingleApplication {...routeProps} />
+                  }} />
+                  {/* If no paths match, display an error message */}
+                  <Route render={() => {
+                    return (
+                      <div>
+                        <h2>404 Not Found</h2>
+                        <p>Oops, that page doesn't exist!</p>
+                      </div>
+                    )
+                  }} />
+                </Switch>
+                // Routes if the user is logged out
+              : <Switch>
                   <Route exact path='/' component={Home} />
-                  <Route render={() => <p>Oops - This is an error. Will replace this with a better error message component!</p>} />
-                </div>
+                  {/* If no paths match, display an error message */}
+                  <Route render={() => {
+                    return (
+                      <div>
+                        <h2>404 Not Found</h2>
+                        <p>Oops, that page doesn't exist!</p>
+                      </div>
+                    )
+                  }} />
+                </Switch>
             }
           <MainFooter />
         </div>
