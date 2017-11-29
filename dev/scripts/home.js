@@ -20,13 +20,16 @@ class Home extends React.Component {
     render() {
         return(
             <div>
+                <h2>Land your next job</h2>
+                <p>Job hunting is <em>hard</em>. We're here to help.</p>
+                <p>Get started with <strong>jobseeker</strong> today.</p>
                 <p>
                     <a href="#" onClick={(e) => {this.chooseForm(e, 'signIn')}}>Sign In</a>
                 </p>
                 <p>
                     <a href="#" onClick={(e) => {this.chooseForm(e, 'signUp')}}>Sign Up</a>
                 </p>
-                
+
                 {this.state.showForm.length > 0 &&
                     <AuthForm formToDisplay={this.state.showForm}/>
                 }
