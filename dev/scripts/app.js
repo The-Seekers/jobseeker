@@ -13,6 +13,8 @@ import Dashboard from './components/dashboard.js'
 import ApplicationList from './components/jobApplication'
 import Home from './components/home';
 
+import NewApplication from './components/newApplication.js'
+
 // initialize firebase
 var config = {
   apiKey: "AIzaSyA1qK4MCT9BNUPRKbz6Wy1OeKEFLYswWW8",
@@ -29,6 +31,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <NewApplication />
         <MainHeader />
         <Home />
         <Dashboard />
