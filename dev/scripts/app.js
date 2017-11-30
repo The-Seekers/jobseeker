@@ -32,30 +32,46 @@ class App extends React.Component {
     this.state = {
       isLoggedIn: true,
       userId: 'John Smith',
-      shareApplications: false
+      shareApplications: false,
+      shareKey: ''
     }
     this.toggleSharing = this.toggleSharing.bind(this);
   }
 
-  // componentDidMount() {
-  //   const sharingRef = firebase.database().ref(`users/${this.state.userId}/sharing`);
-    
-  // }
+  componentDidMount() {
+    const sharingRef = firebase.database().ref(`users/${this.state.userId}/sharing`);
+
+    sharingRef.on('value', (snapshot) => {
+      const sharingObject = snapshot.val();
+
+      if (sharingObject != null) {
+        // Unwrap the object containing the key, save the key to state
+        // Turns on the sharing toggle
+        for (let key in sharingObject) {
+          console.log(key);
+          this.setState({
+            shareApplications: true,
+            shareKey: key
+          });
+        }
+      }
+      else {
+        // Turn off the sharing toggle, clear out old keys
+        this.setState({
+          shareApplications: false,
+          shareKey: ''
+        });
+      }
+    });
+  }
 
   toggleSharing() {
-    let newValue;
     const sharingRef = firebase.database().ref(`users/${this.state.userId}/sharing`)
-
     if (this.state.shareApplications) {
-      newValue = false;
       sharingRef.remove();
     } else {
-      newValue = true;
       sharingRef.push('sharing enabled');
     }
-    this.setState({
-      shareApplications: newValue
-    });
   }
 
   render() {
