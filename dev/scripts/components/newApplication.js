@@ -9,7 +9,7 @@ export default class NewApplication extends React.Component{
     constructor() {
         super();
         this.state = {
-            userId: '',
+            userId: 'John Smith',
             company: '',
             title: '',
             link: '',
@@ -31,7 +31,7 @@ export default class NewApplication extends React.Component{
     // handle submit of the form
     handleSubmit(e) {
         e.preventDefault();
-        const dbRef = firebase.database().ref(`users/${this.state.userId}`);
+        const dbRef = firebase.database().ref(`users/${this.state.userId}/applications`);
         dbRef.push(this.state)
     }
     // add each keystroke to component state
