@@ -30,6 +30,25 @@ export default class NewApplication extends React.Component{
     // handle submit of the form
     handleSubmit(e) {
         e.preventDefault();
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = today.getMonth() + 1;
+        const yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        today = `${yyyy}-${mm}-${dd}`
+
+        this.setState({
+            lastEdited: today
+        });
+
         const dbRef = firebase.database().ref(`users/${this.props.userId}/applications`);
         dbRef.push(this.state)
         this.setState({

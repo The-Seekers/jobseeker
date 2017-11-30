@@ -38,17 +38,14 @@ export default class Dashboard extends React.Component {
 
     render() {
         return (
-            <Router>
-                <main>
-                    {/* <DashWelcome /> */}
-                    <DashStats />
-                    <Route path='/new' component={NewApplication} /> 
-                    <ApplicationList applications={this.state.applications} />
-                    <Link to='/new'>
-                        <button type='button'>New Application</button>
-                    </Link>
-                </main>
-            </Router>
+            <main>
+                {/* <DashWelcome /> */}
+                <DashStats />
+                <ApplicationList applications={this.state.applications} />
+                <Link to='/new'>
+                    <button type='button'>New Application</button>
+                </Link>
+            </main>
         )
     }
 }
