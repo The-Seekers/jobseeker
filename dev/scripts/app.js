@@ -53,7 +53,7 @@ class App extends React.Component {
                   <Route render={() => (
                     <div>
                       <h2>404 Not Found</h2>
-                      <p>Oops, that page doesn't exist!</p>
+                      <p>Oops, that page doesn&apos;t exist!</p>
                     </div>
                   )} />
                 </Switch>
@@ -64,7 +64,7 @@ class App extends React.Component {
                   <Route render={() => (
                     <div>
                       <h2>404 Not Found</h2>
-                      <p>Oops, that page doesn't exist!</p>
+                      <p>Oops, that page doesn&apos;t exist!</p>
                     </div>
                   )} />
                 </Switch>
