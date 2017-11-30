@@ -37,6 +37,11 @@ class App extends React.Component {
     this.toggleSharing = this.toggleSharing.bind(this);
   }
 
+  componentDidMount() {
+    const sharingRef = firebase.database().ref(`users/${this.state.userId}/sharing`);
+    sharingRef.push();
+  }
+
   toggleSharing() {
     let newValue;
     if (this.state.shareApplications) {
@@ -53,7 +58,7 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <MainHeader />
+          <MainHeader shareApplications={this.state.shareApplications} toggleSharing={this.toggleSharing} />
 
           {this.state.isLoggedIn
             // Routes for logged in users
