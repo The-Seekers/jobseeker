@@ -9,13 +9,21 @@ export default class NewApplication extends React.Component{
     constructor() {
         super();
         this.state = {
-            userId: 'John Smith',
-            title: '',
+            userId: '',
             company: '',
-            name: '',
+            title: '',
             link: '',
             datePosted: '',
             dateApplied: '',
+            name: '',
+            followUp1: '',
+            followUp2: '',
+            followUp3: '',
+            response: '',
+            interview: '',
+            thanks: '',
+            interviewFollowUp1: '',
+            interviewFollowUp2: '',
             submitted: false
         }
         this.handleChange = this.handleChange.bind(this);
