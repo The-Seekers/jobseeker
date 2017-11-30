@@ -9,7 +9,6 @@ export default class NewApplication extends React.Component{
     constructor() {
         super();
         this.state = {
-            userId: 'John Smith',
             company: '',
             title: '',
             link: '',
@@ -31,7 +30,7 @@ export default class NewApplication extends React.Component{
     // handle submit of the form
     handleSubmit(e) {
         e.preventDefault();
-        const dbRef = firebase.database().ref(`users/${this.state.userId}/applications`);
+        const dbRef = firebase.database().ref(`users/${this.props.userId}/applications`);
         dbRef.push(this.state)
         this.setState({
             submitted: true
