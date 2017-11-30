@@ -52,7 +52,6 @@ export default class SingleApplication extends React.Component {
         e.preventDefault();
         const applicationRef = firebase.database().ref(`users/${this.props.userId}/applications/${this.props.match.params.application_id}`);
         applicationRef.update(this.state.details);
-
     }
 
     // pull entire entry from firebase based on application id
