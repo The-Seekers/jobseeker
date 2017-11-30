@@ -1,6 +1,10 @@
 import React from 'react';
 import ApplicationList from './applicationList';
+import {
+    BrowserRouter as Router, Route, Link, NavLink, Switch
+} from 'react-router-dom';
 import firebase from 'firebase';
+import NewApplication from './newApplication';
 
 // dashboard
 export default class Dashboard extends React.Component {
@@ -27,13 +31,24 @@ export default class Dashboard extends React.Component {
         });
     }
 
+    // handle clicking the new application button
+    handleClick(e) {
+        console.log('hello')
+    }
+
     render() {
         return (
-            <main>
-                <DashWelcome />
-                <DashStats />
-                <ApplicationList applications={this.state.applications} />
-            </main>
+            <Router>
+                <main>
+                    {/* <DashWelcome /> */}
+                    <DashStats />
+                    <Route path='/new' component={NewApplication} /> 
+                    <ApplicationList applications={this.state.applications} />
+                    <Link to='/new'>
+                        <button type='button'>New Application</button>
+                    </Link>
+                </main>
+            </Router>
         )
     }
 }

@@ -53,37 +53,38 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <MainHeader shareApplications={this.state.shareApplications} toggleSharing={this.toggleSharing}/>
-            {this.state.isLoggedIn
-              // Routes if the user is logged in
-              ? <Switch>
-                  <Route exact path='/' render={(routeProps) => {
-                    return <Dashboard {...routeProps} userId={this.state.userId} />
-                  }} />
-                  <Route exact path='/new' component={NewApplication} />
-                  <Route exact path='/application/:application_id' render={(routeProps) => {
-                      return <SingleApplication {...routeProps} userId={this.state.userId} />
-                  }} />
-                  {/* If no paths match, display an error message */}
-                  <Route render={() => (
-                    <div>
-                      <h2>404 Not Found</h2>
-                      <p>Oops, that page doesn&apos;t exist!</p>
-                    </div>
-                  )} />
-                </Switch>
-                // Routes if the user is logged out
-              : <Switch>
-                  <Route exact path='/' component={Home} />
-                  {/* If no paths match, display an error message */}
-                  <Route render={() => (
-                    <div>
-                      <h2>404 Not Found</h2>
-                      <p>Oops, that page doesn&apos;t exist!</p>
-                    </div>
-                  )} />
-                </Switch>
-            }
+          <MainHeader />
+
+          {this.state.isLoggedIn
+            // Routes for logged in users
+            ? <Switch>
+                <Route exact path='/' render={(routeProps) => {
+                  return <Dashboard {...routeProps} userId={this.state.userId} />
+                }} />
+                <Route exact path='/new' component={NewApplication} />
+                <Route exact path='/application/:application_id' render={(routeProps) => {
+                    return <SingleApplication {...routeProps} userId={this.state.userId} />
+                }} />
+                {/* If no paths match, display an error message */}
+                <Route render={() => (
+                  <div>
+                    <h2>404 Not Found</h2>
+                    <p>Oops, that page doesn&apos;t exist!</p>
+                  </div>
+                )} />
+              </Switch>
+              // Routes if the user is logged out
+            : <Switch>
+                {/* If no paths match, display an error message */}
+                <Route render={() => (
+                  <div>
+                    <h2>404 Not Found</h2>
+                    <p>Oops, that page doesn&apos;t exist!</p>
+                  </div>
+                )} />
+              </Switch>
+          }
+          
           <MainFooter />
         </div>
       </Router>
