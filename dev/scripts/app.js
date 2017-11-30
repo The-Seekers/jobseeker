@@ -31,14 +31,29 @@ class App extends React.Component {
     super();
     this.state = {
       isLoggedIn: true,
-      userId: 'John Smith'
+      userId: 'John Smith',
+      shareApplications: false
     }
+    this.toggleSharing = this.toggleSharing.bind(this);
   }
+
+  toggleSharing() {
+    let newValue;
+    if (this.state.shareApplications) {
+      newValue = false;
+    } else {
+      newValue = true;
+    }
+    this.setState({
+      shareApplications: newValue
+    });
+  }
+
   render() {
     return (
       <Router>
         <div>
-          <MainHeader />
+          <MainHeader shareApplications={this.state.shareApplications} toggleSharing={this.toggleSharing}/>
             {this.state.isLoggedIn
               // Routes if the user is logged in
               ? <Switch>
