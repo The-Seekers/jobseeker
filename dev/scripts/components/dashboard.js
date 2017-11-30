@@ -7,14 +7,13 @@ export default class Dashboard extends React.Component {
     constructor() {
         super();
         this.state = {
-            applications: [],
-            userId: 'John Smith'
+            applications: []
         }
     }
 
     // Pull the applications from Firebase, store in state
     componentDidMount() {
-        const applicationsRef = firebase.database().ref(`users/${this.state.userId}`);
+        const applicationsRef = firebase.database().ref(`users/${this.props.userId}`);
         applicationsRef.on('value', (snapshot) => {
             const applicationsArray = [];
             const applicationItems = snapshot.val();

@@ -42,7 +42,9 @@ class App extends React.Component {
             {this.state.isLoggedIn
               // Routes if the user is logged in
               ? <Switch>
-                  <Route exact path='/' component={Dashboard} />
+                  <Route exact path='/' render={(routeProps) => {
+                    return <Dashboard {...routeProps} userId={this.state.userId} />
+                  }} />
                   <Route exact path='/new' component={NewApplication} />
                   <Route exact path='/application/:application_id' render={(routeProps) => {
                       return <SingleApplication {...routeProps} userId={this.state.userId} />
