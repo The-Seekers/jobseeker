@@ -50,7 +50,7 @@ export default class SingleApplication extends React.Component {
     // when save changes is clicked, pushes only the items that were changed to update firebase
     handleSubmit(e){
         e.preventDefault();
-        const applicationRef = firebase.database().ref(`users/${this.props.userId}/${this.props.match.params.application_id}`);
+        const applicationRef = firebase.database().ref(`users/${this.props.userId}/applications/${this.props.match.params.application_id}`);
         applicationRef.update(this.state.details);
     }
 
@@ -59,7 +59,7 @@ export default class SingleApplication extends React.Component {
     // make the default values of form based on state from firebase
 
     componentDidMount(){
-        const singleRef = firebase.database().ref(`users/${this.props.userId}/${this.props.match.params.application_id}`);
+        const singleRef = firebase.database().ref(`users/${this.props.userId}/applications/${this.props.match.params.application_id}`);
         singleRef.on('value', (snapshot) => {
             const detailsObject = snapshot.val();
             this.setState({
