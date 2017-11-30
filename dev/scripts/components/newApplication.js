@@ -10,12 +10,20 @@ export default class NewApplication extends React.Component{
         super();
         this.state = {
             userId: '',
-            title: '',
             company: '',
-            name: '',
+            title: '',
             link: '',
             datePosted: '',
-            dateApplied: ''
+            dateApplied: '',
+            name: '',
+            followUp1: '',
+            followUp2: '',
+            followUp3: '',
+            response: '',
+            interview: '',
+            thanks: '',
+            interviewFollowUp1: '',
+            interviewFollowUp2: ''
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
