@@ -30,7 +30,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      isLoggedIn: true
+      isLoggedIn: true,
+      userId: 'John Smith'
     }
   }
   render() {
@@ -44,7 +45,7 @@ class App extends React.Component {
                   <Route exact path='/' component={Dashboard} />
                   <Route exact path='/new' component={NewApplication} />
                   <Route exact path='/application/:application_id' render={(routeProps) => {
-                      return <SingleApplication {...routeProps} />
+                      return <SingleApplication {...routeProps} userId={this.state.userId} />
                   }} />
                   {/* If no paths match, display an error message */}
                   <Route render={() => (

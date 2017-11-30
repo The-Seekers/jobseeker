@@ -56,7 +56,7 @@ export default class SingleApplication extends React.Component {
     // when save changes is clicked, pushes only the items that were changed to update firebase
 
     componentDidMount(){
-        const singleRef = firebase.database().ref(`users/John Smith/${this.props.match.params.application_id}`);
+        const singleRef = firebase.database().ref(`users/${this.props.userId}/${this.props.match.params.application_id}`);
         singleRef.on('value', (snapshot) => {
             const detailsObject = snapshot.val();
             this.setState({
