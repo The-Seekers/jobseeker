@@ -31,24 +31,17 @@ export default class Dashboard extends React.Component {
         });
     }
 
-    // handle clicking the new application button
-    handleClick(e) {
-        console.log('hello')
-    }
-
     render() {
         return (
-            <Router>
-                <main>
+            <main>
                     {/* <DashWelcome /> */}
                     <DashStats />
-                    <Route path='/new' component={NewApplication} /> 
+
                     <ApplicationList applications={this.state.applications} />
                     <Link to='/new'>
                         <button type='button'>New Application</button>
                     </Link>
-                </main>
-            </Router>
+            </main>
         )
     }
 }
