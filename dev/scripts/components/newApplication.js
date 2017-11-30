@@ -9,22 +9,25 @@ export default class NewApplication extends React.Component{
     constructor() {
         super();
         this.state = {
-            userId: '',
+            userId: 'John Smith',
             title: '',
             company: '',
             name: '',
             link: '',
             datePosted: '',
-            dateApplied: ''
+            dateApplied: '',
+            submitted: false
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
     // handle submit of the form
     handleSubmit(e) {
         e.preventDefault();
         const dbRef = firebase.database().ref(`users/${this.state.userId}`);
         dbRef.push(this.state)
+        this.setState({
+            submitted: true
+        })
     }
     // add each keystroke to component state
     handleChange(e, id){
@@ -35,7 +38,7 @@ export default class NewApplication extends React.Component{
     render() {
         return(
             <section>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit.bind(this)}>
                     <h2>New job application</h2>
                     <div>
                         <label htmlFor='titleInput'>Title of Job</label>
@@ -62,7 +65,10 @@ export default class NewApplication extends React.Component{
                     </div>
                     <button type='submit'>add application</button>
                 </form>
-                <ApplicationFeedback feedback={this.state} />
+                {this.state.submitted 
+                    ? <ApplicationFeedback feedback={this.state} /> 
+                    : null
+                }
             </section>
         )
     }
@@ -77,10 +83,13 @@ class ApplicationFeedback extends React.Component{
                 <h2>{this.props.feedback.company} would be lucky to have you!</h2>
                 <ul>
                     <h3>Check back on this application to:</h3>
-                    <li>yo</li>
-                    <li>yo</li>
-                    <li>yo</li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
                 </ul>
+                <Link to='/'>
+                    <button type='button'>back to dashboard</button>
+                </Link>
             </section>
         )
     }
