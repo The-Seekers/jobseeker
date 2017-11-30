@@ -16,8 +16,7 @@ export default class SingleApplication extends React.Component {
                 datePosted: '',
                 dateApplied: '',
                 name: ''
-            },
-            changed: {}
+            }
         }
         this.enableEdit = this.enableEdit.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
@@ -33,13 +32,13 @@ export default class SingleApplication extends React.Component {
 
     // working on the pushing the changed to the 'changed' part of state
 
-    handleEdit(e){
-        let property = e.target.name;
-        let value = e.target.value
-        
-        this.setState({
 
-            [e.target.name]: e.target.value
+
+    handleEdit(e){
+        let currentDetails = Object.assign({},this.state.details);
+        currentDetails[e.target.name] = e.target.value;
+        this.setState({
+            details: currentDetails
         });
     }
 
@@ -76,12 +75,12 @@ export default class SingleApplication extends React.Component {
                     <input name="title" type="text" value={this.state.details.title} disabled/>
                     <label htmlFor="link">Link to Posting</label>
                     <input name="link" type="text" value={this.state.details.link} disabled />
-                    <label htmlFor="posted" >Date Posted</label>
-                    <input name="posted" type="date" value={this.state.details.datePosted} disabled/>
-                    <label htmlFor="applied">Date Applied</label>
-                    <input name="applied" type="date" value={this.state.details.dateApplied} disabled/>
-                    <label htmlFor="contact">Contact Name</label>
-                    <input name="contact" type="text" value={this.state.details.name} disabled />
+                    <label htmlFor="datePosted" >Date Posted</label>
+                    <input name="datePosted" type="date" value={this.state.details.datePosted} disabled/>
+                    <label htmlFor="dateApplied">Date Applied</label>
+                    <input name="dateApplied" type="date" value={this.state.details.dateApplied} disabled/>
+                    <label htmlFor="name">Contact Name</label>
+                    <input name="name" type="text" value={this.state.details.name} disabled />
                     <label htmlFor="followUp1">Follow Up #1</label>
                     <input name="followUp1" type="checkbox" disabled/>
                     <label htmlFor="followUp2">Follow Up #2</label>
