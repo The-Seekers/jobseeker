@@ -1,17 +1,38 @@
 import React from 'react';
-import ApplicationList from './applicationList'
+import ApplicationList from './applicationList';
+import firebase from 'firebase';
 
 // dashboard
 export default class Dashboard extends React.Component {
     constructor() {
         super();
+        this.state = {
+            applications: []
+        }
     }
+
+    // Pull the applications from Firebase, store in state
+    componentDidMount() {
+        const applicationsRef = firebase.database().ref(`users/${this.props.userId}`);
+        applicationsRef.on('value', (snapshot) => {
+            const applicationsArray = [];
+            const applicationItems = snapshot.val();
+            for (let applicationKey in applicationItems) {
+                applicationItems[applicationKey].key = applicationKey;
+                applicationsArray.push(applicationItems[applicationKey]);
+            }
+            this.setState({
+                applications: applicationsArray
+            });
+        });
+    }
+
     render() {
         return (
             <main>
                 <DashWelcome />
                 <DashStats />
-                <ApplicationList />
+                <ApplicationList applications={this.state.applications} />
             </main>
         )
     }
