@@ -31,7 +31,8 @@ class App extends React.Component {
     super();
     this.state = {
       isLoggedIn: true,
-      userId: 'John Smith'
+      userId: 'John Smith',
+      shareApplications: false
     }
   }
   render() {
