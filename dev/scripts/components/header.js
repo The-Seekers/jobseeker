@@ -8,7 +8,7 @@ export default class MainHeader extends React.Component {
         return (
             <header>
                 <h1>jobseekers anon.</h1>
-                <SharingToggle />
+                <SharingToggle shareApplications={this.props.shareApplications} toggleSharing={this.props.toggleSharing} />
             </header>
         )
     }

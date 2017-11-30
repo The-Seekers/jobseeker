@@ -5,7 +5,7 @@ export default class SharingToggle extends React.Component {
         return (
             <div>
                 <label htmlFor="sharing-toggle">Share applications</label>
-                <input id="sharing-toggle" type="checkbox"/>
+                <input id="sharing-toggle" type="checkbox" onChange={this.props.toggleSharing} checked={this.props.shareApplications} />
             </div>
         )
     }
