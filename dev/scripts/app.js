@@ -61,7 +61,9 @@ class App extends React.Component {
                 <Route exact path='/' render={(routeProps) => {
                   return <Dashboard {...routeProps} userId={this.state.userId} />
                 }} />
-                <Route exact path='/new' component={NewApplication} />
+                <Route exact path='/new' render={(routeProps) => {
+                  return <NewApplication {...routeProps} userId={this.state.userId} />
+                }} />
                 <Route exact path='/application/:application_id' render={(routeProps) => {
                     return <SingleApplication {...routeProps} userId={this.state.userId} />
                 }} />
