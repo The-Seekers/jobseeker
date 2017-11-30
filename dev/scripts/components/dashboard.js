@@ -33,15 +33,14 @@ export default class Dashboard extends React.Component {
 
     render() {
         return (
-            <main>
+                <main>
                     {/* <DashWelcome /> */}
                     <DashStats />
-
                     <ApplicationList applications={this.state.applications} />
                     <Link to='/new'>
                         <button type='button'>New Application</button>
                     </Link>
-            </main>
+                </main>
         )
     }
 }
