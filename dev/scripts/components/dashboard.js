@@ -31,8 +31,6 @@ export default class Dashboard extends React.Component {
         });
     }
 
-<<<<<<< HEAD
-=======
     componentWillUnmount() {
         const applicationsRef = firebase.database().ref(`users/${this.props.userId}/applications`);
         applicationsRef.off('value');
@@ -43,7 +41,6 @@ export default class Dashboard extends React.Component {
         console.log('hello')
     }
 
->>>>>>> b4f7c3b8c4a4f21c1541642d9e5a1bb541f056eb
     render() {
         return (
                 <main>
