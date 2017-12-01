@@ -32,7 +32,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      isLoggedIn: false,
+      isLoggedIn: true,
       userId: 'John Smith',
       shareApplications: false,
       shareKey: ''
@@ -82,7 +82,7 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <MainHeader shareApplications={this.state.shareApplications} toggleSharing={this.toggleSharing} isLoggedIn={this.state.isLoggedIn} />
+          <MainHeader shareApplications={this.state.shareApplications} toggleSharing={this.toggleSharing} isLoggedIn={this.state.isLoggedIn} userId={this.state.userId} shareKey={this.state.shareKey} />
 
           {this.state.isLoggedIn
             // Routes for logged in users
