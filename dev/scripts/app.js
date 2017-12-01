@@ -105,6 +105,7 @@ class App extends React.Component {
               // Routes if the user is logged out
             : <Switch>
                 {/* If no paths match, display an error message */}
+                <Route exact path='/' component={Home} />
                 <Route render={() => (
                   <div>
                     <h2>404 Not Found</h2>
