@@ -23,8 +23,11 @@ export default class Dashboard extends React.Component {
             const applicationItems = snapshot.val();
             for (let applicationKey in applicationItems) {
                 applicationItems[applicationKey].key = applicationKey;
+                
+
                 applicationsArray.push(applicationItems[applicationKey]);
             }
+
             applicationsArray = applicationsArray.sort((a, b) => {
                 let dateA = a.lastEdited;
                 let dateB = b.lastEdited;
