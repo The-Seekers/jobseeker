@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import firebase from 'firebase';
 import NewApplication from './newApplication';
+import moment from 'moment';
 
 // dashboard
 export default class Dashboard extends React.Component {
@@ -19,12 +20,51 @@ export default class Dashboard extends React.Component {
     componentDidMount() {
         const applicationsRef = firebase.database().ref(`users/${this.props.userId}/applications`);
         applicationsRef.on('value', (snapshot) => {
-            const applicationsArray = [];
+            let applicationsArray = [];
             const applicationItems = snapshot.val();
             for (let applicationKey in applicationItems) {
                 applicationItems[applicationKey].key = applicationKey;
+                
+                let datesArray = [
+                    applicationItems[applicationKey].dateApplied,
+                    applicationItems[applicationKey].followUp1,
+                    applicationItems[applicationKey].followUp2,
+                    applicationItems[applicationKey].followUp3,
+                    applicationItems[applicationKey].interview,
+                    applicationItems[applicationKey].interviewFollowUp1,
+                    applicationItems[applicationKey].interviewFollowUp2
+                ];
+                datesArray = datesArray.map((item) => {
+                    let theDate = {};
+                    if (item != '') {
+                        theDate = moment(item, "YYYY-MM-DD");
+                        return theDate;
+                    }
+                }); 
+                
+                datesArray = datesArray.filter((item) => {
+                    return item
+                })
+                console.log(datesArray);       
+                
+                // let latestDate = new Date(Math.max.apply(null, datesArray))
+                let latestDate = moment.max(datesArray) 
+                console.log(latestDate)
+                
                 applicationsArray.push(applicationItems[applicationKey]);
             }
+
+            applicationsArray = applicationsArray.sort((a, b) => {
+                let dateA = a.lastEdited;
+                let dateB = b.lastEdited;
+                if (dateA < dateB) {
+                    return -1;
+                } else if (dateA > dateB) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
             this.setState({
                 applications: applicationsArray
             });
@@ -43,14 +83,14 @@ export default class Dashboard extends React.Component {
 
     render() {
         return (
-                <main>
-                    {/* <DashWelcome /> */}
-                    <DashStats applications={this.state.applications} />
-                    <ApplicationList applications={this.state.applications} />
-                    <Link to='/new'>
-                        <button type='button'>New Application</button>
-                    </Link>
-                </main>
+            <main>
+                {/* <DashWelcome /> */}
+                <DashStats applications={this.state.applications} />
+                <ApplicationList applications={this.state.applications} />
+                <Link to='/new'>
+                    <button type='button'>New Application</button>
+                </Link>
+            </main>
         )
     }
 }
@@ -58,10 +98,6 @@ export default class Dashboard extends React.Component {
 // at-a-glance section
 class DashStats extends React.Component {
     render() {
-        const dates = this.props.applications;
-        const getDates = dates.map((application) => {
-            console.log(Object.keys(application));
-        });
         return (
             <section>
                 <ul>
