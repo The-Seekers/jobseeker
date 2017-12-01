@@ -33,7 +33,7 @@ class App extends React.Component {
     super();
     this.state = {
       isLoggedIn: false,
-      userId: 'John Smith',
+      userId: '',
       shareApplications: false,
       shareKey: ''
     }
@@ -44,7 +44,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.watchAuthentication();
-    this.watchSharing();
   }
 
   watchAuthentication() {
@@ -56,6 +55,8 @@ class App extends React.Component {
           isLoggedIn: true,
           userId: user.uid
         });
+        // Grab sharing settings now that we have the userId
+        this.watchSharing();
       } else {
         // No user is signed in.
         console.log('not authenticated');
