@@ -82,7 +82,7 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <MainHeader shareApplications={this.state.shareApplications} toggleSharing={this.toggleSharing} />
+          <MainHeader shareApplications={this.state.shareApplications} toggleSharing={this.toggleSharing} isLoggedIn={this.state.isLoggedIn} />
 
           {this.state.isLoggedIn
             // Routes for logged in users

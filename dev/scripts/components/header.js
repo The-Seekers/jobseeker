@@ -8,7 +8,10 @@ export default class MainHeader extends React.Component {
         return (
             <header>
                 <h1>jobseekers anon.</h1>
-                <SharingToggle shareApplications={this.props.shareApplications} toggleSharing={this.props.toggleSharing} />
+                {this.props.isLoggedIn &&
+                    // Only display sharing toggle if user is logged in
+                    <SharingToggle shareApplications={this.props.shareApplications} toggleSharing={this.props.toggleSharing} />
+                }
             </header>
         )
     }
