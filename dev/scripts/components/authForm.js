@@ -11,6 +11,8 @@ class AuthForm extends React.Component {
             authConfirmPassword: ''
         }
         this.handleChange = this.handleChange.bind(this);
+        this.signIn = this.signIn.bind(this);
+        this.signUp = this.signUp.bind(this);
         this.validatePassword = this.validatePassword.bind(this);
     }
 
@@ -48,6 +50,10 @@ class AuthForm extends React.Component {
     signIn(e) {
         e.preventDefault();
         console.log('signing in');
+        firebase.auth().signInWithEmailAndPassword(this.state.authEmail, this.state.authPassword)
+        .catch(() => {
+            alert(error.code, error.message);
+        })
     }
 
     render() {
