@@ -21,9 +21,9 @@ export default class Home extends React.Component {
     render() {
         return(
             <div>
-                {/* <h2>Land your next job</h2>
-                <p>Job hunting is <em>hard</em>. We're here to help.</p>
-                <p>Get started with <strong>jobseeker</strong> today.</p> */}
+                <h2>Land your next job</h2>
+                <p>Job hunting is <em>hard</em>. We&apos;re here to help.</p>
+                <p>Get started with <strong>jobseeker</strong> today.</p>
                 <p>
                     <a href="#" onClick={(e) => {this.chooseForm(e, 'signIn')}}>Sign In</a>
                 </p>
