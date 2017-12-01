@@ -19,12 +19,23 @@ export default class Dashboard extends React.Component {
     componentDidMount() {
         const applicationsRef = firebase.database().ref(`users/${this.props.userId}/applications`);
         applicationsRef.on('value', (snapshot) => {
-            const applicationsArray = [];
+            let applicationsArray = [];
             const applicationItems = snapshot.val();
             for (let applicationKey in applicationItems) {
                 applicationItems[applicationKey].key = applicationKey;
                 applicationsArray.push(applicationItems[applicationKey]);
             }
+            applicationsArray = applicationsArray.sort((a, b) => {
+                let dateA = a.lastEdited;
+                let dateB = b.lastEdited;
+                if (dateA < dateB) {
+                    return -1;
+                } else if (dateA > dateB) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
             this.setState({
                 applications: applicationsArray
             });
