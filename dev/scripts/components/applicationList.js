@@ -2,6 +2,7 @@ import React from 'react';
 import {
     BrowserRouter as Router, Route, Link, NavLink, Switch
 } from 'react-router-dom';
+import moment from 'moment'; 
 
 export default class ApplicationList extends React.Component {
     constructor() {
@@ -17,11 +18,22 @@ export default class ApplicationList extends React.Component {
 
     filterApplications(days) {
         const applications = this.props.applications;
-        console.log(applications);
+        const presentDate = moment();
+        // console.log(presentDate);
 
+        const compareDate = moment().subtract(days, 'days');
+        // console.log(compareDate);
+        
         const filteredApplications = applications.filter((application) => {
-            
+            const appliedMoment = moment(application.dateApplied, "YYYY-MM-DD");
+            const betweenBoolean = appliedMoment.isBetween(compareDate, presentDate);
+            console.log(betweenBoolean);
+            if(betweenBoolean){
+                return application;                
+            }
         });
+        console.log(filteredApplications)
+        // moment('2010-10-20').isBetween('2010-10-19', '2010-10-25');
     }   
 
     render() {
