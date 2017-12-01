@@ -31,7 +31,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      isLoggedIn: true,
+      isLoggedIn: false,
       userId: 'John Smith',
       shareApplications: false,
       shareKey: ''
@@ -107,6 +107,7 @@ class App extends React.Component {
             : <Switch>
                 {/* If no paths match, display an error message */}
                 <Route exact path='/' component={Home} />
+                <Route exact path='/shared/:userId/:shareKey' component={SharedDashboard} />
                 <Route render={() => (
                   <div>
                     <h2>404 Not Found</h2>
