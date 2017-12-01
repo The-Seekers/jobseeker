@@ -14,6 +14,7 @@ import SingleApplication from './components/jobApplication';
 import Home from './components/home';
 import NewApplication from './components/newApplication.js'
 import SharedDashboard from './components/sharedDashboard';
+import SharedSingleApplication from './components/sharedJobApplication';
 
 // firebase config
 var config = {
@@ -95,6 +96,10 @@ class App extends React.Component {
                 <Route exact path='/application/:application_id' render={(routeProps) => {
                     return <SingleApplication {...routeProps} userId={this.state.userId} />
                 }} />
+                <Route exact path='/shared/:userId/:shareKey' render={(routeProps) => {
+                  return <SharedDashboard {...routeProps} isLoggedIn={this.state.isLoggedIn} />
+                }} />
+                <Route exact path='/shared/:userId/:shareKey/:application_id' component={SharedSingleApplication} />
                 {/* If no paths match, display an error message */}
                 <Route render={() => (
                   <div>
@@ -105,9 +110,12 @@ class App extends React.Component {
               </Switch>
               // Routes if the user is logged out
             : <Switch>
-                {/* If no paths match, display an error message */}
                 <Route exact path='/' component={Home} />
-                <Route exact path='/shared/:userId/:shareKey' component={SharedDashboard} />
+                <Route exact path='/shared/:userId/:shareKey' render={(routeProps) => {
+                  return <SharedDashboard {...routeProps} isLoggedIn={this.state.isLoggedIn} />
+                }} />
+                <Route exact path='/shared/:userId/:shareKey/:application_id' component={SharedSingleApplication} />
+                {/* If no paths match, display an error message */}
                 <Route render={() => (
                   <div>
                     <h2>404 Not Found</h2>
