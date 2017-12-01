@@ -11,22 +11,38 @@ class AuthForm extends React.Component {
             authConfirmPassword: ''
         }
         this.handleChange = this.handleChange.bind(this);
+        this.validatePassword = this.validatePassword.bind(this);
     }
 
-    // add each keystroke to component state
     handleChange(e){
         this.setState({
             [e.target.id]: e.target.value
         })
     }
 
-    signUp(e) {
+    validatePassword(e) {
         e.preventDefault();
+        console.log('validating pwd');
+        const passOne = this.state.authPassword;
+        const passTwo = this.state.authConfirmPassword;
+        if (passOne.length >= 6) {
+            if (passOne === passTwo) {
+                const validPassword = passOne;
+                this.signUp(validPassword);
+            } else {
+                alert('Passwords do not match. Please try again!');
+            }
+        } else {
+            alert('Passwords must be at least 6 characters long. Please try again!');
+        }
+    }
+
+    signUp(newPassword) {
         console.log('signing up');
-        // firebase.auth().createUserWithEmailAndPassword(email, password)
-        // .catch((error) => {
-        //     console.log(error.code, error.message);
-        // })
+        firebase.auth().createUserWithEmailAndPassword(this.state.authEmail, newPassword)
+        .catch((error) => {
+            alert(error.code, error.message);
+        })
     }
 
     signIn(e) {
@@ -46,7 +62,7 @@ class AuthForm extends React.Component {
             title = 'Sign Up';
             buttonText = 'Sign Up';
             passwordText = 'Choose a Password';
-            formAction = this.signUp;
+            formAction = this.validatePassword;
             confirmPassword = true;
         } else if (this.props.formToDisplay === 'signIn') {
             title = 'Sign In';
