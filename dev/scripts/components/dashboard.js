@@ -19,12 +19,23 @@ export default class Dashboard extends React.Component {
     componentDidMount() {
         const applicationsRef = firebase.database().ref(`users/${this.props.userId}/applications`);
         applicationsRef.on('value', (snapshot) => {
-            const applicationsArray = [];
+            let applicationsArray = [];
             const applicationItems = snapshot.val();
             for (let applicationKey in applicationItems) {
                 applicationItems[applicationKey].key = applicationKey;
                 applicationsArray.push(applicationItems[applicationKey]);
             }
+            applicationsArray = applicationsArray.sort((a, b) => {
+                let dateA = a.lastEdited;
+                let dateB = b.lastEdited;
+                if (dateA < dateB) {
+                    return -1;
+                } else if (dateA > dateB) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
             this.setState({
                 applications: applicationsArray
             });
@@ -43,14 +54,14 @@ export default class Dashboard extends React.Component {
 
     render() {
         return (
-                <main>
-                    {/* <DashWelcome /> */}
-                    <DashStats />
-                    <ApplicationList applications={this.state.applications} />
-                    <Link to='/new'>
-                        <button type='button'>New Application</button>
-                    </Link>
-                </main>
+            <main>
+                {/* <DashWelcome /> */}
+                <DashStats />
+                <ApplicationList applications={this.state.applications} />
+                <Link to='/new'>
+                    <button type='button'>New Application</button>
+                </Link>
+            </main>
         )
     }
 }
@@ -66,24 +77,6 @@ class DashStats extends React.Component {
                     <li>temp statcard</li>
                 </ul>                
             </section>
-        )
-    }
-}
-
-// search, sort, navigation for applicationList
-class JobsListNav extends React.Component {
-    render() {
-        return (
-            <nav>
-                <form>
-                    <select name='sortBy'>
-                        <option value='sortOption'>sort by...</option>
-                        <option value='sortOption'>sort by...</option>
-                        <option value='sortOption'>sort by...</option>
-                    </select>
-                    <input type='search' placeholder='search'/>
-                </form>
-            </nav>
         )
     }
 }
