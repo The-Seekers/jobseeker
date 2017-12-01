@@ -32,17 +32,40 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      isLoggedIn: true,
-      userId: 'John Smith',
+      isLoggedIn: false,
+      userId: '',
       shareApplications: false,
       shareKey: ''
     }
+    this.watchAuthentication = this.watchAuthentication.bind(this);
     this.watchSharing = this.watchSharing.bind(this);
     this.toggleSharing = this.toggleSharing.bind(this);
   }
 
   componentDidMount() {
-    this.watchSharing();  
+    this.watchAuthentication();
+  }
+
+  watchAuthentication() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        // User is signed in.
+        console.log(user);
+        this.setState({
+          isLoggedIn: true,
+          userId: user.uid
+        });
+        // Grab sharing settings now that we have the userId
+        this.watchSharing();
+      } else {
+        // No user is signed in.
+        console.log('not authenticated');
+        this.setState({
+          isLoggedIn: false,
+          userId: ''
+        });
+      }
+    });
   }
 
   watchSharing() {
