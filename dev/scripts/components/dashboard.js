@@ -43,14 +43,14 @@ export default class Dashboard extends React.Component {
 
     render() {
         return (
-                <main>
-                    {/* <DashWelcome /> */}
-                    <DashStats />
-                    <ApplicationList applications={this.state.applications} />
-                    <Link to='/new'>
-                        <button type='button'>New Application</button>
-                    </Link>
-                </main>
+            <main>
+                {/* <DashWelcome /> */}
+                <DashStats />
+                <ApplicationList applications={this.state.applications} />
+                <Link to='/new'>
+                    <button type='button'>New Application</button>
+                </Link>
+            </main>
         )
     }
 }
@@ -66,24 +66,6 @@ class DashStats extends React.Component {
                     <li>temp statcard</li>
                 </ul>                
             </section>
-        )
-    }
-}
-
-// search, sort, navigation for applicationList
-class JobsListNav extends React.Component {
-    render() {
-        return (
-            <nav>
-                <form>
-                    <select name='sortBy'>
-                        <option value='sortOption'>sort by...</option>
-                        <option value='sortOption'>sort by...</option>
-                        <option value='sortOption'>sort by...</option>
-                    </select>
-                    <input type='search' placeholder='search'/>
-                </form>
-            </nav>
         )
     }
 }
