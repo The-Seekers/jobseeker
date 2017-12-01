@@ -13,6 +13,7 @@ import Dashboard from './components/dashboard.js'
 import SingleApplication from './components/jobApplication';
 import Home from './components/home';
 import NewApplication from './components/newApplication.js'
+import SharedDashboard from './components/sharedDashboard';
 
 // firebase config
 var config = {
