@@ -31,6 +31,11 @@ export default class Dashboard extends React.Component {
         });
     }
 
+    componentWillUnmount() {
+        const applicationsRef = firebase.database().ref(`users/${this.props.userId}/applications`);
+        applicationsRef.off('value');
+    }    
+
     // handle clicking the new application button
     handleClick(e) {
         console.log('hello')
@@ -38,14 +43,14 @@ export default class Dashboard extends React.Component {
 
     render() {
         return (
-            <main>
-                {/* <DashWelcome /> */}
-                <DashStats />
-                <ApplicationList applications={this.state.applications} />
-                <Link to='/new'>
-                    <button type='button'>New Application</button>
-                </Link>
-            </main>
+                <main>
+                    {/* <DashWelcome /> */}
+                    <DashStats />
+                    <ApplicationList applications={this.state.applications} />
+                    <Link to='/new'>
+                        <button type='button'>New Application</button>
+                    </Link>
+                </main>
         )
     }
 }

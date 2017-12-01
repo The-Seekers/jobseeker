@@ -23,6 +23,7 @@ export default class NewApplication extends React.Component{
             thanks: '',
             interviewFollowUp1: '',
             interviewFollowUp2: '',
+            lastEdited: '',
             submitted: false
         }
         this.handleChange = this.handleChange.bind(this);
@@ -30,24 +31,24 @@ export default class NewApplication extends React.Component{
     // handle submit of the form
     handleSubmit(e) {
         e.preventDefault();
-        let today = new Date();
-        let dd = today.getDate();
-        let mm = today.getMonth() + 1;
-        const yyyy = today.getFullYear();
+        // let today = new Date();
+        // let dd = today.getDate();
+        // let mm = today.getMonth() + 1;
+        // const yyyy = today.getFullYear();
 
-        if (dd < 10) {
-            dd = '0' + dd
-        }
+        // if (dd < 10) {
+        //     dd = '0' + dd
+        // }
 
-        if (mm < 10) {
-            mm = '0' + mm
-        }
+        // if (mm < 10) {
+        //     mm = '0' + mm
+        // }
 
-        today = `${yyyy}-${mm}-${dd}`
+        // today = `${yyyy}-${mm}-${dd}`
 
-        this.setState({
-            lastEdited: today
-        });
+        // this.setState({
+        //     lastEdited: today
+        // });
 
         const dbRef = firebase.database().ref(`users/${this.props.userId}/applications`);
         dbRef.push(this.state)

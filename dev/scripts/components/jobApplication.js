@@ -23,7 +23,8 @@ export default class SingleApplication extends React.Component {
                 interview: '',
                 thanks: '',
                 interviewFollowUp1: '',
-                interviewFollowUp2: ''
+                interviewFollowUp2: '',
+                lastEdited: ''
             }
         }
         this.enableEdit = this.enableEdit.bind(this);
@@ -40,8 +41,25 @@ export default class SingleApplication extends React.Component {
 
     // controlled input to store new values in another part of state
     handleEdit(e){
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = today.getMonth() + 1;
+        const yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        today = `${yyyy}-${mm}-${dd}`
+
         let currentDetails = Object.assign({},this.state.details);
+        currentDetails.lastEdited = today;
         currentDetails[e.target.name] = e.target.value;
+
         this.setState({
             details: currentDetails
         });
@@ -52,7 +70,6 @@ export default class SingleApplication extends React.Component {
         e.preventDefault();
         const applicationRef = firebase.database().ref(`users/${this.props.userId}/applications/${this.props.match.params.application_id}`);
         applicationRef.update(this.state.details);
-
     }
 
     // pull entire entry from firebase based on application id
