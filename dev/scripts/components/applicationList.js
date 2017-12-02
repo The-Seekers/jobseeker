@@ -25,7 +25,16 @@ export default class ApplicationList extends React.Component {
     filterApplications(days) {
         let filteredApplications = this.props.applications;
 
-        if(days != 'allApplications'){
+        if(days === 'allApplications') {
+
+        }else if (days === 'action'){
+            const applications = this.props.applications;
+            filteredApplications = applications.filter((application) => {
+                if (application.needsAction) {
+                    return application
+                }
+            });
+        }else{
             const applications = this.props.applications;
             const presentDate = moment();
 
@@ -39,19 +48,23 @@ export default class ApplicationList extends React.Component {
                 }
             });
         }
+
         this.setState({
             filtered: true,
             filteredApplications
         })
-    }   
-
-    componentDidMount() {
-        const newState = Array.from(this.props.applications)
-        this.setState({
-            filteredApplications: newState
-        })
     }
+
     render() {
+        // On first load, pull applications from props
+        // When filtering, pull applications from state
+        let applicationsArray = [];
+        if (this.state.filteredApplications.length > 0) {
+            applicationsArray = Array.from(this.state.filteredApplications);
+        } else {
+            applicationsArray = Array.from(this.props.applications);
+        }
+
         return (
             <div>
                 <DashStats applications={this.props} sorted={this.state} />
@@ -59,31 +72,24 @@ export default class ApplicationList extends React.Component {
                 <nav>
                     <select name='sortApplications' onChange={this.handleChange} >
                         <option value='allApplications'>all applications</option>
-                        <option value='7'>last 7 days</option>
-                        <option value='14'>last 2 weeks</option>
-                        <option value='30'>last month</option>
+                        <optgroup label="Application Date">
+                            <option value='7'>last 7 days</option>
+                            <option value='14'>last 14 days</option>
+                            <option value='30'>last 30 days</option>
+                        </optgroup>
+                        <option value='action'>needs action</option>
                     </select>
                 </nav>
                 <ul>
-                    {this.state.filtered
-                    ? this.state.filteredApplications.map((item) => {
-                        return (
-                            <Link to={`/application/${item.key}`} key={item.key}>
-                                <h3>{item.company}</h3>
-                                <h4>{item.title}</h4>
-                                <p>Last changed {item.lastEdited}</p>
-                            </Link>
-                        )
-                    }) : this.props.applications.map((item) => {
-                            return (
-                                <Link to={`/application/${item.key}`} key={item.key}>
-                                    <h3>{item.company}</h3>
-                                    <h4>{item.title}</h4>
-                                    <p>Last changed {item.lastEdited}</p>
-                                </Link>
-                            )
-                        })
-                    } 
+                {applicationsArray.map((item) => {
+                    return (
+                        <Link to={`/application/${item.key}`} key={item.key}>
+                            <h3>{item.company}</h3>
+                            <h4>{item.title}</h4>
+                            <p>Last changed {item.lastEdited}</p>
+                        </Link>
+                    )
+                })}
                 </ul>
             </div>
         )

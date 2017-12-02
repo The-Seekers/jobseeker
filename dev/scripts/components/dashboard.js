@@ -44,9 +44,21 @@ export default class Dashboard extends React.Component {
                 
                 datesArray = datesArray.filter((item) => {
                     return item
-                })  
+                })     
+                
+                // let latestDate = new Date(Math.max.apply(null, datesArray))
+                let latestDate = moment.max(datesArray);
+                latestDate.add(5,'days');
+                const now = moment();
+                let needsAction;
 
-                let latestDate = moment.max(datesArray) 
+                if(now.isSameOrAfter(latestDate)) {
+                    needsAction = true;
+                } else {
+                    needsAction = false;
+                }
+
+                applicationItems[applicationKey].needsAction = needsAction;
                 
                 applicationsArray.push(applicationItems[applicationKey]);
             }
