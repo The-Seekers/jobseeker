@@ -89,86 +89,47 @@ export default class SingleApplication extends React.Component {
         });
     }
 
-    render(){
-        let display = '';
-        if (this.state.edit === false) {
-            display = (
-                <form action="">
-                    <label htmlFor="company">Company</label>
-                    <input name="company" type="text" value={this.state.details.company} disabled/>
-                    <label htmlFor="title">Title</label>
-                    <input name="title" type="text" value={this.state.details.title} disabled/>
-                    <label htmlFor="link">Link to Posting</label>
-                    <input name="link" type="text" value={this.state.details.link} disabled />
-                    <label htmlFor="datePosted" >Date Posted</label>
-                    <input name="datePosted" type="date" value={this.state.details.datePosted} disabled/>
-                    <label htmlFor="dateApplied">Date Applied</label>
-                    <input name="dateApplied" type="date" value={this.state.details.dateApplied} disabled/>
-                    <label htmlFor="name">Contact Name</label>
-                    <input name="name" type="text" value={this.state.details.name} disabled />
-                    <label htmlFor="followUp1">Follow Up #1</label>
-                    <input name="followUp1" type="date" value={this.state.details.followUp1} disabled/>
-                    <label htmlFor="followUp2">Follow Up #2</label>
-                    <input name="followUp2" type="date" value={this.state.details.followUp2} disabled/>
-                    <label htmlFor="followUp3">Follow Up #3</label>
-                    <input name="followUp3" type="date" value={this.state.details.followUp3} disabled/>
-                    <label htmlFor="response">Response</label>
-                    <input name="response" type="text" value={this.state.details.response} disabled />
-                    <label htmlFor="interview">Interview Date</label>
-                    <input name="interview" type="date" value={this.state.details.interview} disabled />
-                    <label htmlFor="thanks">Thank You Note</label>
-                    <input name="thanks" type="date" value={this.state.details.thanks} disabled />
-                    <label htmlFor="interviewFollowUp1">Interview Follow Up #1</label>
-                    <input name="interviewFollowUp1" type="date" value={this.state.details.interviewFollowUp1} disabled />
-                    <label htmlFor="interviewFollowUp2">Interview Follow Up #2</label>
-                    <input name="interviewFollowUp2" type="date" value={this.state.details.interviewFollowUp2} disabled />
-                </form>
-            )
-        } else {
-            display = (
-                <form action="" onSubmit={this.handleSubmit}>
-                    <label htmlFor="company">Company</label>
-                    <input name="company" type="text" onChange={this.handleEdit} value={this.state.details.company} />
-                    <label htmlFor="title">Title</label>
-                    <input name="title" type="text" onChange={this.handleEdit} value={this.state.details.title} />
-                    <label htmlFor="link">Link to Posting</label>
-                    <input name="link" type="text" onChange={this.handleEdit} value={this.state.details.link} />
-                    <label htmlFor="datePosted" >Date Posted</label>
-                    <input name="datePosted" type="date" onChange={this.handleEdit} value={this.state.details.datePosted} />
-                    <label htmlFor="dateApplied">Date Applied</label>
-                    <input name="dateApplied" type="date" onChange={this.handleEdit} value={this.state.details.dateApplied} />
-                    <label htmlFor="name">Contact Name</label>
-                    <input name="name" type="text" onChange={this.handleEdit} value={this.state.details.name} />
-                    <label htmlFor="followUp1">Follow Up #1</label>
-                    <input name="followUp1" type="date" onChange={this.handleEdit} value={this.state.details.followUp1} />
-                    <label htmlFor="followUp2">Follow Up #2</label>
-                    <input name="followUp2" type="date" onChange={this.handleEdit} value={this.state.details.followUp2}/>
-                    <label htmlFor="followUp3">Follow Up #3</label>
-                    <input name="followUp3" type="date" onChange={this.handleEdit} value={this.state.details.followUp3}/>
-                    <label htmlFor="response">Response</label>
-                    <input name="response" type="text" onChange={this.handleEdit} value={this.state.details.response} />
-                    <label htmlFor="interview">Interview Date</label>
-                    <input name="interview" type="date" onChange={this.handleEdit} value={this.state.details.interview} />
-                    <label htmlFor="thanks">Thank You Note</label>
-                    <input name="thanks" type="date" onChange={this.handleEdit} value={this.state.details.thanks} />
-                    <label htmlFor="interviewFollowUp1">Interview Follow Up #1</label>
-                    <input name="interviewFollowUp1" type="date" onChange={this.handleEdit} value={this.state.details.interviewFollowUp1} />
-                    <label htmlFor="interviewFollowUp2">Interview Follow Up #2</label>
-                    <input name="interviewFollowUp2" type="date" onChange={this.handleEdit} value={this.state.details.interviewFollowUp2} />
-                    <button>Save Changes</button>
-                </form>
-            )
-        }
-        return(
-            <div>
+    render() {
+        return (
+            <main>
                 <nav>
                     <Link to='/'>Back to Dash</Link>
                     <button onClick={this.enableEdit}>Edit</button>
                 </nav>
-                {display}
-                
-
-            </div>
+                <form action="" onSubmit={this.handleSubmit}>
+                    <label htmlFor="company">Company</label>
+                    <input name="company" type="text" onChange={this.handleEdit} value={this.state.details.company} disabled={!this.state.edit} />
+                    <label htmlFor="title">Title</label>
+                    <input name="title" type="text" onChange={this.handleEdit} value={this.state.details.title} disabled={!this.state.edit} />
+                    <label htmlFor="link">Link to Posting</label>
+                    <input name="link" type="text" onChange={this.handleEdit} value={this.state.details.link} disabled={!this.state.edit} />
+                    <label htmlFor="datePosted" >Date Posted</label>
+                    <input name="datePosted" type="date" onChange={this.handleEdit} value={this.state.details.datePosted} disabled={!this.state.edit} />
+                    <label htmlFor="dateApplied">Date Applied</label>
+                    <input name="dateApplied" type="date" onChange={this.handleEdit} value={this.state.details.dateApplied} disabled={!this.state.edit} />
+                    <label htmlFor="name">Contact Name</label>
+                    <input name="name" type="text" onChange={this.handleEdit} value={this.state.details.name} disabled={!this.state.edit} />
+                    <label htmlFor="followUp1">Follow Up #1</label>
+                    <input name="followUp1" type="date" onChange={this.handleEdit} value={this.state.details.followUp1} disabled={!this.state.edit} />
+                    <label htmlFor="followUp2">Follow Up #2</label>
+                    <input name="followUp2" type="date" onChange={this.handleEdit} value={this.state.details.followUp2} disabled={!this.state.edit} />
+                    <label htmlFor="followUp3">Follow Up #3</label>
+                    <input name="followUp3" type="date" onChange={this.handleEdit} value={this.state.details.followUp3} disabled={!this.state.edit} />
+                    <label htmlFor="response">Response</label>
+                    <input name="response" type="text" onChange={this.handleEdit} value={this.state.details.response} disabled={!this.state.edit} />
+                    <label htmlFor="interview">Interview Date</label>
+                    <input name="interview" type="date" onChange={this.handleEdit} value={this.state.details.interview} disabled={!this.state.edit} />
+                    <label htmlFor="thanks">Thank You Note</label>
+                    <input name="thanks" type="date" onChange={this.handleEdit} value={this.state.details.thanks} disabled={!this.state.edit} />
+                    <label htmlFor="interviewFollowUp1">Interview Follow Up #1</label>
+                    <input name="interviewFollowUp1" type="date" onChange={this.handleEdit} value={this.state.details.interviewFollowUp1} disabled={!this.state.edit} />
+                    <label htmlFor="interviewFollowUp2">Interview Follow Up #2</label>
+                    <input name="interviewFollowUp2" type="date" onChange={this.handleEdit} value={this.state.details.interviewFollowUp2} disabled={!this.state.edit} />
+                    {this.state.edit &&
+                        <button>Save Changes</button>
+                    }
+                </form>
+            </main>
         )
     }
 }
