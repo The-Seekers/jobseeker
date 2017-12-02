@@ -5,13 +5,13 @@ import {
 import moment from 'moment'; 
 import DashStats from './dashStats'
 
-
 export default class ApplicationList extends React.Component {
     constructor() {
         super();
         this.state = {
             filteredApplications: [],
-            filtered: false
+            filtered: false,
+            filteredDays: ''
         }
         this.filterApplications = this.filterApplications.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -24,9 +24,14 @@ export default class ApplicationList extends React.Component {
     filterApplications(days) {
         let filteredApplications = this.props.applications;
 
-        if (days === 'allApplications') {
-
-        } else if (days === 'action'){
+        if(days === 'allApplications') {
+            this.setState({
+                filteredDays: ''
+            });
+        }else if (days === 'action'){
+            this.setState({
+                filteredDays: ''
+            });
             const applications = this.props.applications;
             filteredApplications = applications.filter((application) => {
                 if (application.needsAction) {
@@ -40,6 +45,9 @@ export default class ApplicationList extends React.Component {
                 return application.interview && moment(application.interview, 'YYYY-MM-DD').isSameOrAfter(moment(), 'day');
             });
         } else {
+            this.setState({
+                filteredDays: days
+            });
             const applications = this.props.applications;
             const presentDate = moment();
 
@@ -70,6 +78,7 @@ export default class ApplicationList extends React.Component {
             applicationsArray = Array.from(this.props.applications);
         }
 
+        
         return (
             <div>
                 <DashStats applications={this.props} sorted={this.state} />
