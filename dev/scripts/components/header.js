@@ -27,7 +27,7 @@ export default class MainHeader extends React.Component {
 
                 {this.props.isLoggedIn && this.props.shareApplications &&
                     // Only display sharing link if user is logged in & sharing is enabled
-                    <p>Your sharing link: <a href={shareUrl}>{shareUrl}</a></p>
+                    <p>Your public sharing link (anyone with the link can view): <a href={shareUrl}>{shareUrl}</a></p>
                 }
 
                 {this.props.isLoggedIn &&
