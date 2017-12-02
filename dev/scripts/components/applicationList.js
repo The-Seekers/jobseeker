@@ -22,8 +22,16 @@ export default class ApplicationList extends React.Component {
     filterApplications(days) {
         let filteredApplications = this.props.applications;
 
-        // Filter the applications array if we're not filtering for 'all'
-        if (days != 'allApplications') {
+        if(days === 'allApplications') {
+
+        }else if (days === 'action'){
+            const applications = this.props.applications;
+            filteredApplications = applications.filter((application) => {
+                if (application.needsAction) {
+                    return application
+                }
+            });
+        }else{
             const applications = this.props.applications;
             const presentDate = moment();
 
@@ -59,9 +67,12 @@ export default class ApplicationList extends React.Component {
                 <nav>
                     <select name='sortApplications' onChange={this.handleChange} >
                         <option value='allApplications'>all applications</option>
-                        <option value='7'>last 7 days</option>
-                        <option value='14'>last 2 weeks</option>
-                        <option value='30'>last month</option>
+                        <optgroup label="Application Date">
+                            <option value='7'>last 7 days</option>
+                            <option value='14'>last 14 days</option>
+                            <option value='30'>last 30 days</option>
+                        </optgroup>
+                        <option value='action'>needs action</option>
                     </select>
                 </nav>
                 <ul>
