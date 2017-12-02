@@ -16,7 +16,7 @@ export default class MainHeader extends React.Component {
     }
 
     render() {
-        const shareUrl = `http://localhost:3000/shared/${this.props.userId}/${this.props.shareKey}`;
+        const shareUrl = `${window.location.origin}/shared/${this.props.userId}/${this.props.shareKey}`;
         return (
             <header>
                 <h1>jobseekers anon.</h1>
