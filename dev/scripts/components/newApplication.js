@@ -62,7 +62,7 @@ export default class NewApplication extends React.Component{
     }
     render() {
         return(
-            <section>
+            <main>
                 <form onSubmit={this.handleSubmit.bind(this)}>
                     <h2>New job application</h2>
                     <div>
@@ -94,7 +94,7 @@ export default class NewApplication extends React.Component{
                     ? <ApplicationFeedback feedback={this.state} /> 
                     : null
                 }
-            </section>
+            </main>
         )
     }
 } 
