@@ -24,16 +24,22 @@ export default class ApplicationList extends React.Component {
     filterApplications(days) {
         let filteredApplications = this.props.applications;
 
-        if(days === 'allApplications') {
+        if (days === 'allApplications') {
 
-        }else if (days === 'action'){
+        } else if (days === 'action'){
             const applications = this.props.applications;
             filteredApplications = applications.filter((application) => {
                 if (application.needsAction) {
                     return application
                 }
             });
-        }else{
+        } else if (days === 'interviews') {
+            const applications = this.props.applications;
+            filteredApplications = applications.filter((application) => {
+                // Return applications with an interview date of today or in the future
+                return application.interview && moment(application.interview, 'YYYY-MM-DD').isSameOrAfter(moment(), 'day');
+            });
+        } else {
             const applications = this.props.applications;
             const presentDate = moment();
 
@@ -64,6 +70,13 @@ export default class ApplicationList extends React.Component {
             applicationsArray = Array.from(this.props.applications);
         }
 
+        // const applications = this.props.applications;
+        // const hasUpcomingInterview = applications.filter((application) => {
+        //     // Return applications with an interview date of today or in the future
+        //     return application.interview && moment(application.interview, 'YYYY-MM-DD').isSameOrAfter(moment(), 'day');
+        // });
+        // console.log(hasUpcomingInterview);
+
         return (
             <div>
                 <DashStats applications={this.props} sorted={this.state} />
@@ -77,6 +90,7 @@ export default class ApplicationList extends React.Component {
                             <option value='30'>last 30 days</option>
                         </optgroup>
                         <option value='action'>needs action</option>
+                        <option value='interviews'>upcoming interviews</option>
                     </select>
                 </nav>
                 <ul>
