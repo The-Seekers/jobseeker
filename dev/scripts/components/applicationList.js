@@ -38,7 +38,13 @@ export default class ApplicationList extends React.Component {
                     return application
                 }
             });
-        }else{
+        } else if (days === 'interviews') {
+            const applications = this.props.applications;
+            filteredApplications = applications.filter((application) => {
+                // Return applications with an interview date of today or in the future
+                return application.interview && moment(application.interview, 'YYYY-MM-DD').isSameOrAfter(moment(), 'day');
+            });
+        } else {
             this.setState({
                 filteredDays: days
             });
@@ -86,6 +92,7 @@ export default class ApplicationList extends React.Component {
                             <option value='30'>last 30 days</option>
                         </optgroup>
                         <option value='action'>needs action</option>
+                        <option value='interviews'>upcoming interviews</option>
                     </select>
                 </nav>
                 <ul>
