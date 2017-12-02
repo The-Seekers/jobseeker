@@ -10,7 +10,8 @@ export default class ApplicationList extends React.Component {
         super();
         this.state = {
             filteredApplications: [],
-            filtered: false
+            filtered: false,
+            filteredDays: ''
         }
         this.filterApplications = this.filterApplications.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -24,15 +25,23 @@ export default class ApplicationList extends React.Component {
         let filteredApplications = this.props.applications;
 
         if(days === 'allApplications') {
-
-        } else if (days === 'action'){
+            this.setState({
+                filteredDays: ''
+            });
+        }else if (days === 'action'){
+            this.setState({
+                filteredDays: ''
+            });
             const applications = this.props.applications;
             filteredApplications = applications.filter((application) => {
                 if (application.needsAction) {
                     return application
                 }
             });
-        } else{
+        }else{
+            this.setState({
+                filteredDays: days
+            });
             const applications = this.props.applications;
             const presentDate = moment();
 

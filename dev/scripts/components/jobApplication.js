@@ -89,6 +89,8 @@ export default class SingleApplication extends React.Component {
         });
     }
 
+    // need to add progress bar at top of application, based on existence of dates
+
     render() {
         return (
             <main>
