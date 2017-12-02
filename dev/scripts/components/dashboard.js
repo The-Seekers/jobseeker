@@ -76,11 +76,6 @@ export default class Dashboard extends React.Component {
         applicationsRef.off('value');
     }    
 
-    // handle clicking the new application button
-    handleClick(e) {
-        console.log('hello')
-    }
-
     render() {
         return (
             <main>

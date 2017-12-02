@@ -20,7 +20,7 @@ export default class Home extends React.Component {
 
     render() {
         return(
-            <div>
+            <main>
                 <h2>Land your next job</h2>
                 <p>Job hunting is <em>hard</em>. We&apos;re here to help.</p>
                 <p>Get started with <strong>jobseeker</strong> today.</p>
@@ -34,7 +34,7 @@ export default class Home extends React.Component {
                 {this.state.showForm.length > 0 &&
                     <AuthForm formToDisplay={this.state.showForm}/>
                 }
-            </div>
+            </main>
         )
     }
 }
