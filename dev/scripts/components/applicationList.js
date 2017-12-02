@@ -5,7 +5,6 @@ import {
 import moment from 'moment'; 
 import DashStats from './dashStats'
 
-
 export default class ApplicationList extends React.Component {
     constructor() {
         super();
@@ -26,14 +25,14 @@ export default class ApplicationList extends React.Component {
 
         if(days === 'allApplications') {
 
-        }else if (days === 'action'){
+        } else if (days === 'action'){
             const applications = this.props.applications;
             filteredApplications = applications.filter((application) => {
                 if (application.needsAction) {
                     return application
                 }
             });
-        }else{
+        } else{
             const applications = this.props.applications;
             const presentDate = moment();
 
@@ -64,6 +63,7 @@ export default class ApplicationList extends React.Component {
             applicationsArray = Array.from(this.props.applications);
         }
 
+        
         return (
             <div>
                 <DashStats applications={this.props} sorted={this.state} />
