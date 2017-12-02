@@ -4,6 +4,9 @@ import {
 } from 'react-router-dom';
 import moment from 'moment'; 
 
+import DashStats from './components/dashStats.js'
+
+
 export default class ApplicationList extends React.Component {
     constructor() {
         super();
@@ -51,6 +54,8 @@ export default class ApplicationList extends React.Component {
     render() {
         return (
             <div>
+                <DashStats applications={this.props} sorted={this.state} />
+
                 <nav>
                     <select name='sortApplications' onChange={this.handleChange} >
                         <option value='allApplications'>all applications</option>
@@ -83,5 +88,4 @@ export default class ApplicationList extends React.Component {
             </div>
         )
     }
-
 }

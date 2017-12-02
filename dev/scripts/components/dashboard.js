@@ -77,27 +77,11 @@ export default class Dashboard extends React.Component {
         return (
             <main>
                 {/* <DashWelcome /> */}
-                <DashStats applications={this.state.applications} />
                 <ApplicationList applications={this.state.applications} />
                 <Link to='/new'>
                     <button type='button'>New Application</button>
                 </Link>
             </main>
-        )
-    }
-}
-
-// at-a-glance section
-class DashStats extends React.Component {
-    render() {
-        return (
-            <section>
-                <ul>
-                    <li>{this.props.applications.length} total applications</li>
-                    <li></li>
-                    <li>temp statcard</li>
-                </ul>                
-            </section>
         )
     }
 }

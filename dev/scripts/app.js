@@ -50,7 +50,6 @@ class App extends React.Component {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         // User is signed in.
-        console.log(user);
         this.setState({
           isLoggedIn: true,
           userId: user.uid
