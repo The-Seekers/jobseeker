@@ -14,6 +14,8 @@ export default class DashStats extends React.Component {
             totalText = `${totalJobs} job applications in the last ${this.props.sorted.filteredDays} days`;
         }
 
+        console.log(this.props.applications.applications);
+
         return (
             <section>
                 <ul>

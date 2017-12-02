@@ -106,8 +106,8 @@ class DashWelcome extends React.Component {
                 <h2>Welcome.</h2>
                 <ol>
                     <li>Add your job applications to Jobseeker</li>
-                    <li>Track connections, follow-ups and connections</li>
-                    <li>Never miss an opportunity</li>
+                    <li>Track progress and follow-ups</li>
+                    <li>Share progress with mentors</li>
                 </ol>
                 <button>get started</button>
             </section>
