@@ -59,7 +59,7 @@ export default class SharedSingleApplication extends React.Component {
     render(){
 
         return(
-            <div>
+            <main>
                 {this.state.sharingEnabled ? (
                     <div>
                         <nav>
@@ -102,9 +102,7 @@ export default class SharedSingleApplication extends React.Component {
                         <p>This user has not enabled sharing for their applications. Ask them to turn sharing on!</p>
                     </div>
                 )}
-                
-
-            </div>
+            </main>
         )
     }
 }

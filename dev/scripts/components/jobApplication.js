@@ -160,7 +160,7 @@ export default class SingleApplication extends React.Component {
             )
         }
         return(
-            <div>
+            <main>
                 <nav>
                     <Link to='/'>Back to Dash</Link>
                     <button onClick={this.enableEdit}>Edit</button>
@@ -168,7 +168,7 @@ export default class SingleApplication extends React.Component {
                 {display}
                 
 
-            </div>
+            </main>
         )
     }
 }
