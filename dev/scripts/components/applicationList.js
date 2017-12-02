@@ -72,7 +72,7 @@ export default class ApplicationList extends React.Component {
         // On first load, pull applications from props
         // When filtering, pull applications from state
         let applicationsArray = [];
-        if (this.state.filteredApplications.length > 0) {
+        if (this.state.filtered) {
             applicationsArray = Array.from(this.state.filteredApplications);
         } else {
             applicationsArray = Array.from(this.props.applications);
