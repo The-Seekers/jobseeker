@@ -5,7 +5,6 @@ import {
 import moment from 'moment'; 
 import DashStats from './dashStats'
 
-
 export default class ApplicationList extends React.Component {
     constructor() {
         super();
@@ -73,6 +72,7 @@ export default class ApplicationList extends React.Component {
             applicationsArray = Array.from(this.props.applications);
         }
 
+        
         return (
             <div>
                 <DashStats applications={this.props} sorted={this.state} />

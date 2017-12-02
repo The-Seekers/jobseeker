@@ -3,6 +3,7 @@ import React from 'react';
 // at-a-glance section
 export default class DashStats extends React.Component {
     render() {
+        // dynamically update # of totalJobs for dashstats
         let totalJobs;
         let totalText = '';
         let isFiltered = this.props.sorted.filteredDays;
@@ -14,13 +15,20 @@ export default class DashStats extends React.Component {
             totalText = `${totalJobs} job applications in the last ${this.props.sorted.filteredDays} days`;
         }
 
-        console.log(this.props.applications.applications);
+        // dynamically update # of jobs flagged as needing action
+        const allJobs = this.props.applications.applications;
+        const flaggedJobs = allJobs.filter((flagged) => {
+            if (flagged.needsAction === true) {
+                return flagged
+            }
+        });
+        let flaggedTotal = flaggedJobs.length
 
         return (
             <section>
                 <ul>
                     <li>{totalText}</li>
-                    <li></li>
+                    <li>{flaggedTotal} applications need action.</li>
                     <li>temp statcard</li>
                 </ul>
             </section>
