@@ -1,18 +1,23 @@
-// at-a-glance section
 import React from 'react';
+
+// at-a-glance section
 export default class DashStats extends React.Component {
     render() {
         let totalJobs;
-        let isFiltered = this.props.sorted.filtered;
-        if (isFiltered === false) {
-            totalJobs = this.props.applications.length;
-        } else if (isFiltered === true) {
+        let totalText = '';
+        let isFiltered = this.props.sorted.filteredDays;
+        if (isFiltered === '') {
+            totalJobs = this.props.applications.applications.length;
+            totalText = `${totalJobs} total job applications`;
+        } else {
             totalJobs = this.props.sorted.filteredApplications.length;
+            totalText = `${totalJobs} job applications in the last ${this.props.sorted.filteredDays} days`;
         }
+
         return (
             <section>
                 <ul>
-                    <li>viewing {totalJobs} applications.</li>
+                    <li>{totalText}</li>
                     <li></li>
                     <li>temp statcard</li>
                 </ul>

@@ -3,8 +3,7 @@ import {
     BrowserRouter as Router, Route, Link, NavLink, Switch
 } from 'react-router-dom';
 import moment from 'moment'; 
-
-import DashStats from './dashStats.js'
+import DashStats from './dashStats'
 
 
 export default class ApplicationList extends React.Component {
@@ -12,7 +11,8 @@ export default class ApplicationList extends React.Component {
         super();
         this.state = {
             filteredApplications: [],
-            filtered: false
+            filtered: false,
+            filteredDays: ''
         }
         this.filterApplications = this.filterApplications.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -26,8 +26,13 @@ export default class ApplicationList extends React.Component {
         let filteredApplications = this.props.applications;
 
         if(days === 'allApplications') {
-
+            this.setState({
+                filteredDays: ''
+            });
         }else if (days === 'action'){
+            this.setState({
+                filteredDays: ''
+            });
             const applications = this.props.applications;
             filteredApplications = applications.filter((application) => {
                 if (application.needsAction) {
@@ -35,6 +40,9 @@ export default class ApplicationList extends React.Component {
                 }
             });
         }else{
+            this.setState({
+                filteredDays: days
+            });
             const applications = this.props.applications;
             const presentDate = moment();
 
@@ -67,7 +75,7 @@ export default class ApplicationList extends React.Component {
 
         return (
             <div>
-                <DashStats applications={this.props.applications} sorted={this.state} />
+                <DashStats applications={this.props} sorted={this.state} />
 
                 <nav>
                     <select name='sortApplications' onChange={this.handleChange} >
