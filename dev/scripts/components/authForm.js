@@ -51,7 +51,7 @@ class AuthForm extends React.Component {
         e.preventDefault();
         console.log('signing in');
         firebase.auth().signInWithEmailAndPassword(this.state.authEmail, this.state.authPassword)
-        .catch(() => {
+        .catch((error) => {
             alert(error.code, error.message);
         })
     }
