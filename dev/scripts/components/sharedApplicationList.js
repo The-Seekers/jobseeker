@@ -22,7 +22,8 @@ export default class SharedApplicationList extends React.Component {
     filterApplications(days) {
         let filteredApplications = this.props.applications;
 
-        if(days != 'allApplications'){
+        // Filter the applications array if we're not filtering for 'all'
+        if (days != 'allApplications') {
             const applications = this.props.applications;
             const presentDate = moment();
 
@@ -36,20 +37,23 @@ export default class SharedApplicationList extends React.Component {
                 }
             });
         }
+
         this.setState({
             filtered: true,
             filteredApplications
         })
-    }   
-
-    componentDidMount() {
-        const newState = Array.from(this.props.applications)
-        this.setState({
-            filteredApplications: newState
-        })
     }
-    
+
     render() {
+        // On first load, pull applications from props
+        // When filtering, pull applications from state
+        let applicationsArray = [];
+        if (this.state.filteredApplications.length > 0) {
+            applicationsArray = Array.from(this.state.filteredApplications);
+        } else {
+            applicationsArray = Array.from(this.props.applications);
+        }
+
         return (
             <div>
                 <nav>
@@ -61,28 +65,17 @@ export default class SharedApplicationList extends React.Component {
                     </select>
                 </nav>
                 <ul>
-                    {this.state.filtered
-                    ? this.state.filteredApplications.map((item) => {
-                        return (
-                            <Link to={`/shared/${this.props.userId}/${this.props.shareKey}/${item.key}`} key={item.key}>
-                                <h3>{item.company}</h3>
-                                <h4>{item.title}</h4>
-                                <p>Last changed {item.lastEdited}</p>
-                            </Link>
-                        )
-                    }) : this.props.applications.map((item) => {
-                            return (
-                                <Link to={`/shared/${this.props.userId}/${this.props.shareKey}/${item.key}`} key={item.key}>
-                                    <h3>{item.company}</h3>
-                                    <h4>{item.title}</h4>
-                                    <p>Last changed {item.lastEdited}</p>
-                                </Link>
-                            )
-                        })
-                    } 
+                {applicationsArray.map((item) => {
+                    return (
+                        <Link to={`/shared/${this.props.userId}/${this.props.shareKey}/${item.key}`} key={item.key}>
+                            <h3>{item.company}</h3>
+                            <h4>{item.title}</h4>
+                            <p>Last changed {item.lastEdited}</p>
+                        </Link>
+                    )
+                })}
                 </ul>
             </div>
         )
     }
-
 }

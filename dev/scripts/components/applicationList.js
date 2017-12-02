@@ -45,13 +45,23 @@ export default class ApplicationList extends React.Component {
                 }
             });
         }
+
         this.setState({
             filtered: true,
             filteredApplications
         })
-    }   
+    }
 
     render() {
+        // On first load, pull applications from props
+        // When filtering, pull applications from state
+        let applicationsArray = [];
+        if (this.state.filteredApplications.length > 0) {
+            applicationsArray = Array.from(this.state.filteredApplications);
+        } else {
+            applicationsArray = Array.from(this.props.applications);
+        }
+
         return (
             <div>
                 <nav>
@@ -66,28 +76,17 @@ export default class ApplicationList extends React.Component {
                     </select>
                 </nav>
                 <ul>
-                    {this.state.filtered
-                    ? this.state.filteredApplications.map((item) => {
-                        return (
-                            <Link to={`/application/${item.key}`} key={item.key}>
-                                <h3>{item.company}</h3>
-                                <h4>{item.title}</h4>
-                                <p>Last changed {item.lastEdited}</p>
-                            </Link>
-                        )
-                    }) : this.props.applications.map((item) => {
-                            return (
-                                <Link to={`/application/${item.key}`} key={item.key}>
-                                    <h3>{item.company}</h3>
-                                    <h4>{item.title}</h4>
-                                    <p>Last changed {item.lastEdited}</p>
-                                </Link>
-                            )
-                        })
-                    } 
+                {applicationsArray.map((item) => {
+                    return (
+                        <Link to={`/application/${item.key}`} key={item.key}>
+                            <h3>{item.company}</h3>
+                            <h4>{item.title}</h4>
+                            <p>Last changed {item.lastEdited}</p>
+                        </Link>
+                    )
+                })}
                 </ul>
             </div>
         )
     }
-
 }
