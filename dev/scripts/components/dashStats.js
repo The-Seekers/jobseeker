@@ -1,3 +1,5 @@
+import React from 'react';
+
 // at-a-glance section
 export default class DashStats extends React.Component {
     render() {

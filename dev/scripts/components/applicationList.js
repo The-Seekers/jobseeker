@@ -3,8 +3,7 @@ import {
     BrowserRouter as Router, Route, Link, NavLink, Switch
 } from 'react-router-dom';
 import moment from 'moment'; 
-
-import DashStats from './components/dashStats.js'
+import DashStats from './dashStats'
 
 
 export default class ApplicationList extends React.Component {
