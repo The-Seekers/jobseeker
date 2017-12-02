@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import moment from 'moment'; 
 
-import DashStats from './components/dashStats.js'
+import DashStats from './dashStats.js'
 
 
 export default class ApplicationList extends React.Component {
@@ -67,7 +67,7 @@ export default class ApplicationList extends React.Component {
 
         return (
             <div>
-                <DashStats applications={this.props} sorted={this.state} />
+                <DashStats applications={this.props.applications} sorted={this.state} />
 
                 <nav>
                     <select name='sortApplications' onChange={this.handleChange} >
