@@ -33,6 +33,7 @@ export default class Dashboard extends React.Component {
                     applicationItems[applicationKey].followUp2,
                     applicationItems[applicationKey].followUp3,
                     applicationItems[applicationKey].interview,
+                    applicationItems[applicationKey].thanks,
                     applicationItems[applicationKey].interviewFollowUp1
                     // applicationItems[applicationKey].interviewFollowUp2 is the final date in the application
                     // We don't need to prompt user for action when they have completed the final followup
@@ -59,14 +60,16 @@ export default class Dashboard extends React.Component {
                 const now = moment();
                 // Store the value of the final task in the form
                 const interviewFollowUp2 = applicationItems[applicationKey].interviewFollowUp2;
+                // Store boolean of whether or not user has archived application
+                const archived = applicationItems[applicationKey].archive
                 // Initialize a variable
                 let needsAction;
 
-                if (now.isSameOrAfter(latestDate) && interviewFollowUp2.length === 0) {
-                    // If 5 days have passed since the latest action date AND the final followup has not been completed
+                if (now.isSameOrAfter(latestDate) && interviewFollowUp2.length === 0 && archived === false) {
+                    // If 5 days have passed since the latest action date AND the final followup has not been completed AND user has not archived application
                     needsAction = true;
                 } else {
-                    // If 5 days have not passed since the latest action date OR if the user has followed up for the last time
+                    // If 5 days have not passed since the latest action date OR if the user has followed up for the last time OR user has archived application
                     needsAction = false;
                 }
 

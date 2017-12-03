@@ -24,6 +24,7 @@ export default class NewApplication extends React.Component{
             interviewFollowUp1: '',
             interviewFollowUp2: '',
             lastEdited: '',
+            archive: false,
             submitted: false
         }
         this.handleChange = this.handleChange.bind(this);

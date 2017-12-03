@@ -24,12 +24,14 @@ export default class SingleApplication extends React.Component {
                 thanks: '',
                 interviewFollowUp1: '',
                 interviewFollowUp2: '',
-                lastEdited: ''
+                lastEdited: '',
+                archive: ''
             }
         }
         this.enableEdit = this.enableEdit.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChecked = this.handleChecked.bind(this);
     }
 
     enableEdit(e){
@@ -59,6 +61,32 @@ export default class SingleApplication extends React.Component {
         let currentDetails = Object.assign({},this.state.details);
         currentDetails.lastEdited = today;
         currentDetails[e.target.name] = e.target.value;
+
+        this.setState({
+            details: currentDetails
+        });
+    }
+
+    // controlled input to store new values in another part of state
+    handleChecked(e) {
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = today.getMonth() + 1;
+        const yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        today = `${yyyy}-${mm}-${dd}`
+
+        let currentDetails = Object.assign({}, this.state.details);
+        currentDetails.lastEdited = today;
+        currentDetails[e.target.name] = e.target.checked;
 
         this.setState({
             details: currentDetails
@@ -98,6 +126,10 @@ export default class SingleApplication extends React.Component {
                     <Link to='/'>Back to Dash</Link>
                     <button onClick={this.enableEdit}>Edit</button>
                 </nav>
+                {this.state.details.archive === true 
+                ? <h3>This Application Has Been Archived</h3>
+                : null 
+                }
                 <form action="" onSubmit={this.handleSubmit}>
                     <label htmlFor="company">Company</label>
                     <input name="company" type="text" onChange={this.handleEdit} value={this.state.details.company} disabled={!this.state.edit} />
@@ -127,6 +159,8 @@ export default class SingleApplication extends React.Component {
                     <input name="interviewFollowUp1" type="date" onChange={this.handleEdit} value={this.state.details.interviewFollowUp1} disabled={!this.state.edit} />
                     <label htmlFor="interviewFollowUp2">Interview Follow Up #2</label>
                     <input name="interviewFollowUp2" type="date" onChange={this.handleEdit} value={this.state.details.interviewFollowUp2} disabled={!this.state.edit} />
+                    <label htmlFor="archive">Archive This Application</label>
+                    <input id="archive" name="archive" type="checkbox" onChange={this.handleChecked} checked={this.state.details.archive} disabled={!this.state.edit} />
                     {this.state.edit &&
                         <button>Save Changes</button>
                     }

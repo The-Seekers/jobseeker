@@ -44,6 +44,11 @@ export default class ApplicationList extends React.Component {
                 // Return applications with an interview date of today or in the future
                 return application.interview && moment(application.interview, 'YYYY-MM-DD').isSameOrAfter(moment(), 'day');
             });
+        } else if (days === 'archived') {
+            const applications = this.props.applications;
+            filteredApplications = applications.filter((application) => {
+                return application.archive
+            });
         } else {
             this.setState({
                 filteredDays: days
@@ -93,6 +98,7 @@ export default class ApplicationList extends React.Component {
                         </optgroup>
                         <option value='action'>needs action</option>
                         <option value='interviews'>upcoming interviews</option>
+                        <option value='archived'>archived applications</option>
                     </select>
                 </nav>
                 <ul>
