@@ -104,11 +104,13 @@ export default class ApplicationList extends React.Component {
                 <ul>
                 {applicationsArray.map((item) => {
                     return (
-                        <Link to={`/application/${item.key}`} key={item.key}>
-                            <h3>{item.company}</h3>
-                            <h4>{item.title}</h4>
-                            <p>Last changed {item.lastEdited}</p>
-                        </Link>
+                        <li>
+                            <Link to={`/application/${item.key}`} key={item.key}>
+                                <h3>{item.company}</h3>
+                                <h4>{item.title}</h4>
+                                <p>Last changed {item.lastEdited}</p>
+                            </Link>
+                        </li>
                     )
                 })}
                 </ul>
