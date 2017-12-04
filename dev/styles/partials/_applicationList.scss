@@ -1,5 +1,28 @@
 /* APPLICATION LIST */
 
+.application-list-filter {
+    background: $primary;
+    color: #ffffff;
+    position: relative;
+    padding: 8px 16px;
+
+    select {
+        text-transform: lowercase;
+    }
+}
+
+.filter-label {
+    float: left;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+}
+
+.filter-select {
+    float: right;
+}
+
 .application-list {
     margin: 0;
     padding: 0;

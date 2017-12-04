@@ -88,17 +88,18 @@ export default class ApplicationList extends React.Component {
             <div>
                 <DashStats applications={this.props} sorted={this.state} />
 
-                <nav>
-                    <select name='sortApplications' onChange={this.handleChange} >
-                        <option value='allApplications'>all applications</option>
+                <nav className='application-list-filter clearfix'>
+                    <p className='filter-label'><i className="fa fa-filter"></i> Filter by:</p>
+                    <select className='filter-select' name='sortApplications' onChange={this.handleChange} >
+                        <option value='allApplications'>All Applications</option>
                         <optgroup label="Application Date">
-                            <option value='7'>last 7 days</option>
-                            <option value='14'>last 14 days</option>
-                            <option value='30'>last 30 days</option>
+                            <option value='7'>Last 7 Days</option>
+                            <option value='14'>Last 14 Days</option>
+                            <option value='30'>Last 30 Days</option>
                         </optgroup>
-                        <option value='action'>needs action</option>
-                        <option value='interviews'>upcoming interviews</option>
-                        <option value='archived'>archived applications</option>
+                        <option value='action'>Needs Action</option>
+                        <option value='interviews'>Upcoming Interviews</option>
+                        <option value='archived'>Archived Applications</option>
                     </select>
                 </nav>
                 <ul className='application-list'>
