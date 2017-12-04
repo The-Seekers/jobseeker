@@ -1,0 +1,19 @@
+/* GLOBALS */
+
+html {
+    font-size: 10px / 16px * 100%
+}
+
+body {
+    background: $body-bg;
+    color: #000000;
+    font: {
+        family: 'Open Sans', sans-serif;
+        size: 1.6rem;
+        weight: 400
+    }
+}
+
+a {
+    color: $highlight-three;
+}
