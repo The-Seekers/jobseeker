@@ -3,7 +3,6 @@
 .application-list-filter {
     background: $primary;
     color: #ffffff;
-    position: relative;
     padding: 8px 16px;
 
     select {
@@ -15,10 +14,7 @@
 
 .filter-label {
     float: left;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    margin: 0;
+    margin: 2px 0 0 0;
 }
 
 .filter-select {
