@@ -101,14 +101,14 @@ export default class ApplicationList extends React.Component {
                         <option value='archived'>archived applications</option>
                     </select>
                 </nav>
-                <ul>
+                <ul className='application-list'>
                 {applicationsArray.map((item) => {
                     return (
-                        <li>
-                            <Link to={`/application/${item.key}`} key={item.key}>
-                                <h3>{item.company}</h3>
-                                <h4>{item.title}</h4>
-                                <p>Last changed {item.lastEdited}</p>
+                        <li key={item.key}>
+                            <Link to={`/application/${item.key}`}>
+                                <h2>{item.title}</h2>
+                                <p className='list-company-name'>{item.company}</p>
+                                <p className='list-last-changed'>Last changed: <span className='last-changed-date'>{moment(item.lastEdited).fromNow()}</span></p>
                             </Link>
                         </li>
                     )
