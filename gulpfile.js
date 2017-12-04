@@ -11,6 +11,11 @@ const plumber = require('gulp-plumber');
 const concat = require('gulp-concat');
 const historyApiFallback = require('connect-history-api-fallback');
 
+gulp.task('assets', () => {
+	return gulp.src('./dev/assets/*')
+	.pipe(gulp.dest('./public/assets'))
+});
+
 gulp.task('styles', () => {
 	return gulp.src('./dev/styles/**/*.scss')
 		.pipe(sass().on('error', sass.logError))
@@ -44,7 +49,7 @@ gulp.task('bs', () => {
 	});
 });
 
-gulp.task('default', ['js','styles','bs'], () => {
+gulp.task('default', ['js','styles','assets','bs'], () => {
 	gulp.watch('dev/**/*.js',['js']);
 	gulp.watch('dev/**/*.scss',['styles']);
 	gulp.watch('./public/styles/style.css',reload);
