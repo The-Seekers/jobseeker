@@ -1,7 +1,15 @@
 /* GLOBALS */
 
+// mixins 
+
+@mixin media($width) {
+    @media (max-width: #{$width}) {
+        @content;
+    }
+}
+
 html {
-    font-size: 10px / 16px * 100%
+    font-size: 10px / 16px * 100%;
 }
 
 body {
