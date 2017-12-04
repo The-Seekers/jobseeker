@@ -18,7 +18,7 @@ export default class MainHeader extends React.Component {
     navToggle(){
         let links = document.querySelector('.narrowControls');
         if (links.style.top === '70px') {
-            links.style.top = '-200px';
+            links.style.top = '-300px';
         } else {
             links.style.top = '70px';
         }
@@ -45,7 +45,7 @@ export default class MainHeader extends React.Component {
                         }
 
                         {this.props.isLoggedIn &&
-                            <p><a href="#" onClick={this.signOut}>sign out</a></p>
+                            <button onClick={this.signOut}>sign out</button>
                         }
                     </nav>
                 </div>
@@ -63,7 +63,7 @@ export default class MainHeader extends React.Component {
                         }
 
                         {this.props.isLoggedIn &&
-                            <p><a href="#" onClick={this.signOut}>sign out</a></p>
+                            <button onClick={this.signOut}>sign out</button>
                         }
                     </nav>
 
