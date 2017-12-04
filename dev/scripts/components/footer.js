@@ -6,7 +6,7 @@ export default class MainFooter extends React.Component {
     render() {
         return (
             <footer>
-                <p>footer stuff!</p>
+                <p>With you until you're <span>hired</span></p>
             </footer>
         )
     }
