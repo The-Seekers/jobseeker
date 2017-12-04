@@ -3,6 +3,7 @@ import {
     BrowserRouter as Router,Route, Link, NavLink, Switch
 } from 'react-router-dom';
 import firebase from 'firebase';
+import Progress from './progressBar'
 
 export default class SingleApplication extends React.Component {
     constructor(){
@@ -117,8 +118,6 @@ export default class SingleApplication extends React.Component {
         });
     }
 
-    // need to add progress bar at top of application, based on existence of dates
-
     render() {
         return (
             <main>
@@ -126,6 +125,7 @@ export default class SingleApplication extends React.Component {
                     <Link to='/'>Back to Dash</Link>
                     <button onClick={this.enableEdit}>Edit</button>
                 </nav>
+                <Progress />
                 {this.state.details.archive === true 
                 ? <h3>This Application Has Been Archived</h3>
                 : null 
