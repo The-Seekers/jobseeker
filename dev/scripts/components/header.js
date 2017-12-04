@@ -17,10 +17,10 @@ export default class MainHeader extends React.Component {
 
     navToggle(){
         let links = document.querySelector('.narrowControls');
-        if (links.style.top === '60px') {
+        if (links.style.top === '70px') {
             links.style.top = '-200px';
         } else {
-            links.style.top = '60px';
+            links.style.top = '70px';
         }
     }
 
@@ -28,7 +28,7 @@ export default class MainHeader extends React.Component {
         const shareUrl = `${window.location.origin}/shared/${this.props.userId}/${this.props.shareKey}`;
         return (
             <header className="clearfix">
-                <div className="mainHeading clearfix">
+                <div className="logo clearfix">
                     <img src="./public/assets/logo.svg" alt="job seekers logo" />
                     <h1>job<span>seeker</span></h1> 
                 </div>
@@ -49,8 +49,8 @@ export default class MainHeader extends React.Component {
                         }
                     </nav>
                 </div>
-                <div className="navNarrow">
-                    <i class="fa fa-bars" onClick={this.navToggle}></i>
+                <div className="navNarrow clearfix">
+                    <i className="fa fa-bars" onClick={this.navToggle}></i>
                     <nav className="narrowControls">
                         {this.props.isLoggedIn &&
                             // Only display sharing toggle if user is logged in

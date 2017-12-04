@@ -45,16 +45,16 @@
         }
     }
     .statsTotal{
-        background: linear-gradient(-45deg, $highlight-one, darken($highlight-one, 10%));
-        text-shadow: 2px 2px darken($highlight-one, 50%);             
+        background: linear-gradient(-45deg, $highlight-two, darken($highlight-two, 10%));
+        text-shadow: 2px 2px darken($highlight-two, 50%);             
     }
     .statsAction{
         background: linear-gradient(-45deg, $highlight-two, darken($highlight-two, 10%));  
         text-shadow: 2px 2px darken($highlight-two, 50%);                                 
     }
     .statsUpcoming{
-        background: linear-gradient(-45deg, $highlight-three, darken($highlight-three, 10%)); 
-        text-shadow: 2px 2px darken($highlight-three, 50%);                                          
+        background: linear-gradient(-45deg, $highlight-two, darken($highlight-two, 10%)); 
+        text-shadow: 2px 2px darken($highlight-two, 50%);                                          
     }
     h3{
         font-size: 1.25rem;

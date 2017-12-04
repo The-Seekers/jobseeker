@@ -16,12 +16,16 @@ body {
     background: $body-bg;
     color: #000000;
     font: {
-        family: 'Open Sans', sans-serif;
+        family: $bodyFont;
         size: 1.6rem;
         weight: 400
     }
 }
 
 a {
-    color: $highlight-three;
+    color: $highlight-two;
+}
+
+main {
+    padding-top: 70px;
 }
