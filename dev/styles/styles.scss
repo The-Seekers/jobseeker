@@ -9,12 +9,14 @@ $primary: #6e7a7f;
 $highlight-one: #d1c9eb;
 $highlight-two: #cab8bb;
 $highlight-three: #465757;
-$body-bg: #f1f1f1;
+$body-bg: #fafafa;
 $body-color: #000000;
 
 // Imports
 
 @import 'partials/normalize';
 @import 'partials/globals';
+
 @import 'partials/applicationList';
 @import 'partials/dashboard';
+@import 'partials/dashStats';
