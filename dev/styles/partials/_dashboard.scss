@@ -3,7 +3,7 @@
 .create-application {
     display: block;
     color: #ffffff;
-    background: $highlight-one;
+    background: linear-gradient(-45deg, $highlight-one, lighten($highlight-one, 10%));;
     width: 4.5em;
     height: 4.5em;
     border-radius: 50%;
@@ -12,13 +12,12 @@
     bottom: 24px;
     right: 24px;
     z-index: 10;
-
     .fa {
         font-size: 2em;
         position: relative;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -45%);
         text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
     }
 }

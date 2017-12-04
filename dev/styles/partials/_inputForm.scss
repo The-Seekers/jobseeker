@@ -1,0 +1,37 @@
+// form for new application
+.newApplicationForm{
+    padding: 2rem 2rem;
+    label, input{
+        display: inline-block;
+    }
+    .fa{
+        padding-right: .5rem;
+        width: 3rem;
+    }
+    div{
+        padding: .5rem 0; 
+    }
+    .appTitles{
+        input{
+            width: calc(100% - 3rem);
+            &:last-of-type{
+                margin-top: 1rem;
+                margin-left: 3rem;
+            }
+        }
+    }
+    .date{
+        display: inline-block;
+        width: calc(50% - .5rem);
+        &:first-of-type{
+            padding-left: 3rem;
+            margin-right: 1rem;
+        }
+        input{
+            width: 100%;
+        }
+        label{
+            text-align: right;
+        }
+    }
+}

@@ -38,7 +38,7 @@ export default class DashStats extends React.Component {
                 <ul className='clearfix'>
                     <li>
                         <h2 className='statsTotal'>{totalJobs}</h2>
-                        <h3>total job applications</h3>
+                        <h3>total filtered applications</h3>
                     </li>
                     <li>
                         <h2 className='statsAction'>{flaggedTotal}</h2>
