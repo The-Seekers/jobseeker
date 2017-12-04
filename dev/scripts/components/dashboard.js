@@ -110,8 +110,8 @@ export default class Dashboard extends React.Component {
             <main>
                 {/* <DashWelcome /> */}
                 <ApplicationList applications={this.state.applications} />
-                <Link to='/new'>
-                    <button type='button'>New Application</button>
+                <Link to='/new' className='create-application' aria-label="Create a new application">
+                        <i className='fa fa-plus' aria-hidden="true"></i>
                 </Link>
             </main>
         )
