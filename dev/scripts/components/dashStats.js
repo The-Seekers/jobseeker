@@ -10,10 +10,10 @@ export default class DashStats extends React.Component {
         let isFiltered = this.props.sorted.filteredDays;
         if (isFiltered === '') {
             totalJobs = this.props.applications.applications.length;
-            totalText = `${totalJobs} total job applications`;
+            totalText = {totalJobs};
         } else {
             totalJobs = this.props.sorted.filteredApplications.length;
-            totalText = `${totalJobs} job applications in the last ${this.props.sorted.filteredDays} days`;
+            totalText = {totalJobs};
         }
         
         // Count upcoming interviews
@@ -34,11 +34,20 @@ export default class DashStats extends React.Component {
         let flaggedTotal = flaggedJobs.length
 
         return (
-            <section>
-                <ul>
-                    <li>{totalText}</li>
-                    <li>{flaggedTotal} applications need action.</li>
-                    <li>{totalInterviews} upcoming interviews</li>
+            <section className='dashStats'>
+                <ul className='clearfix'>
+                    <li>
+                        <h2 className='statsTotal'>{totalJobs}</h2>
+                        <h3>total job applications</h3>
+                    </li>
+                    <li>
+                        <h2 className='statsAction'>{flaggedTotal}</h2>
+                        <h3>applications need action</h3>
+                    </li>
+                    <li>
+                        <h2 className='statsUpcoming'>{totalInterviews}</h2>
+                        <h3>upcoming interviews</h3>
+                    </li>
                 </ul>
             </section>
         )

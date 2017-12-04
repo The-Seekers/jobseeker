@@ -10,6 +10,7 @@ $highlight-one: #d1c9eb;
 $highlight-two: #cab8bb;
 $highlight-three: #465757;
 $body-bg: #fafafa;
+$body-color: #000000;
 $headerFont: 'Inconsolata', monospace;
 $bodyFont: 'Open Sans', sans-serif;
 
@@ -18,3 +19,6 @@ $bodyFont: 'Open Sans', sans-serif;
 @import 'partials/normalize';
 @import 'partials/globals';
 @import 'partials/header';
+@import 'partials/applicationList';
+@import 'partials/dashboard';
+@import 'partials/dashStats';

@@ -1,0 +1,69 @@
+/* APPLICATION LIST */
+
+.application-list-filter {
+    background: $primary;
+    color: #ffffff;
+    position: relative;
+    padding: 8px 16px;
+
+    select {
+        background: #ffffff;
+        text-transform: lowercase;
+    }
+    
+}
+
+.filter-label {
+    float: left;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+}
+
+.filter-select {
+    float: right;
+}
+
+.application-list {
+    margin: 0;
+    padding: 0;
+
+    li {
+        list-style: none;
+        background: #ffffff;
+        border-bottom: 1px solid $primary;
+    }
+    
+    a {
+        text-decoration: none;
+        display: block;
+        padding: 16px;
+    }
+
+    h2 {
+        font: {
+            size: 2.4rem;
+            weight: 700;
+        }
+        margin: 0;
+    }
+
+    p {
+        color: $body-color;
+        margin: 0.4rem 0 0 0;
+    }
+}
+
+.list-company-name {
+    font-weight: 700;
+}
+
+.list-last-changed {
+    font-weight: 300;
+
+    &-date {
+        color: $highlight-three;
+        font-weight: 700;
+    }
+}

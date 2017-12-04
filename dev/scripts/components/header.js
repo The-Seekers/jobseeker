@@ -17,11 +17,6 @@ export default class MainHeader extends React.Component {
 
     navToggle(){
         let links = document.querySelector('.narrowControls');
-        // if (links.style.display === 'block') {
-        //     links.style.display = 'none';
-        // } else {
-        //     links.style.display = 'block';
-        // }
         if (links.style.top === '60px') {
             links.style.top = '-200px';
         } else {
