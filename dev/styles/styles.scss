@@ -9,9 +9,12 @@ $primary: #6e7a7f;
 $highlight-one: #d1c9eb;
 $highlight-two: #cab8bb;
 $highlight-three: #465757;
-$body-bg: #f1f1f1;
+$body-bg: #fafafa;
+$headerFont: 'Inconsolata', monospace;
+$bodyFont: 'Open Sans', sans-serif;
 
 // Imports
 
 @import 'partials/normalize';
 @import 'partials/globals';
+@import 'partials/header';
