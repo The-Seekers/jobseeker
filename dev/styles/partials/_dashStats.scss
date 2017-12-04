@@ -1,8 +1,3 @@
-@mixin media($width) {
-    @media (min-width: #{$width}) {
-        @content;
-    }
-}
 
 // dashStats
 .dashStats{
@@ -30,31 +25,23 @@
             font-size: 5rem;
             color: white;
             margin: 0 auto;
+            background: linear-gradient(-45deg, $highlight-two, darken($highlight-two, 10%));
+            text-shadow: 2px 2px darken($highlight-two, 30%); 
             @include media(575px){
                 width: 15rem;
                 height: 15rem;
                 line-height: 15rem;
                 font-size: 7.5rem;
+                text-shadow: 4px 4px darken($highlight-two, 30%);                 
             }
             @include media(875px){
                 width: 20rem;
                 height: 20rem;
                 line-height: 20rem;
                 font-size: 10rem;
+                text-shadow: 5px 5px darken($highlight-two, 30%); 
             }
         }
-    }
-    .statsTotal{
-        background: linear-gradient(-45deg, $highlight-two, darken($highlight-two, 10%));
-        text-shadow: 2px 2px darken($highlight-two, 50%);             
-    }
-    .statsAction{
-        background: linear-gradient(-45deg, $highlight-two, darken($highlight-two, 10%));  
-        text-shadow: 2px 2px darken($highlight-two, 50%);                                 
-    }
-    .statsUpcoming{
-        background: linear-gradient(-45deg, $highlight-two, darken($highlight-two, 10%)); 
-        text-shadow: 2px 2px darken($highlight-two, 50%);                                          
     }
     h3{
         font-size: 1.25rem;

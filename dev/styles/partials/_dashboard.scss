@@ -3,7 +3,7 @@
 .create-application {
     display: block;
     color: #ffffff;
-    background: linear-gradient(-45deg, $highlight-one, darken($highlight-one, 10%));;
+    background: linear-gradient(-45deg, $highlight-one, lighten($highlight-one, 10%));;
     width: 4.5em;
     height: 4.5em;
     border-radius: 50%;
