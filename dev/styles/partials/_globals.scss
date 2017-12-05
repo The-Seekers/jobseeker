@@ -9,10 +9,11 @@
 
 /* to keep footer at bottom of page */
 .content {
-    min-height: calc(100vh - 56px);
+    min-height: calc(100vh - 5rem);
 }
+
 footer {
-    height: 56px;
+    height: 5rem;
 }
 
 html {
