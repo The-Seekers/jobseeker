@@ -98,19 +98,22 @@ export default class ApplicationList extends React.Component {
             <div>
                 <DashStats applications={this.props} sorted={this.state} />
 
-                <nav className='application-list-filter clearfix'>
-                    <p className='filter-label'><i className="fa fa-filter"></i> Filter by:</p>
-                    <select className='filter-select' name='sortApplications' onChange={this.handleChange} >
-                        <option value='allApplications'>All Applications</option>
-                        <optgroup label="Application Date">
-                            <option value='7'>Last 7 Days</option>
-                            <option value='14'>Last 14 Days</option>
-                            <option value='30'>Last 30 Days</option>
-                        </optgroup>
-                        <option value='action'>Needs Action</option>
-                        <option value='interviews'>Upcoming Interviews</option>
-                        <option value='archived'>Archived Applications</option>
-                    </select>
+                <nav className='application-list-filter'>
+                    <div className="wrapper clearfix">
+                
+                        <p className='filter-label'><i className="fa fa-filter"></i> Filter by:</p>
+                        <select className='filter-select' name='sortApplications' onChange={this.handleChange} >
+                            <option value='allApplications'>All Applications</option>
+                            <optgroup label="Application Date">
+                                <option value='7'>Last 7 Days</option>
+                                <option value='14'>Last 14 Days</option>
+                                <option value='30'>Last 30 Days</option>
+                            </optgroup>
+                            <option value='action'>Needs Action</option>
+                            <option value='interviews'>Upcoming Interviews</option>
+                            <option value='archived'>Archived Applications</option>
+                        </select>
+                    </div>
                 </nav>
                 <div className='wrapper'>
                     <ul className='application-list clearfix'>
