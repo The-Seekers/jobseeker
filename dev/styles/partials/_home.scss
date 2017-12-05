@@ -28,11 +28,18 @@
     button {
         display: block;
         margin: 10px auto;
-        background: $highlight-two;
         color: #ffffff;
         border: none;
         border-radius: 5px;
         padding: 10px;
     }
+}
+
+.signIn-button {
+    background: $highlight-one;
+}
+
+.signUp-button {
+    background: $primary;
 }
 
