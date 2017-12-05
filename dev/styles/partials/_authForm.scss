@@ -23,3 +23,13 @@
         margin-top: 0;
     }
 }
+
+.close-modal-control {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px 10px;
+    font-size: 2rem;
+    color: $body-color;
+}
