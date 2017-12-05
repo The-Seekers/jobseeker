@@ -64,30 +64,35 @@ export default class NewApplication extends React.Component{
     render() {
         return(
             <main>
-                <form onSubmit={this.handleSubmit.bind(this)}>
-                    <h2>New job application</h2>
-                    <div>
-                        <label htmlFor='titleInput'>Title of Job</label>
-                        <input onChange={(e) => { this.handleChange(e, 'title') }} value={this.state.title} id='titleInput' type='text' placeholder='title' required />
-                    </div>
-                    <div>
+                <form onSubmit={this.handleSubmit.bind(this)} className='newApplicationForm'>
+                    <div className='appTitles'>
+                        <label htmlFor='titleInput'>
+                            <i class="fa fa-briefcase fw" aria-hidden="true"></i>
+                        </label> 
+                        <input onChange={(e) => { this.handleChange(e, 'title') }} value={this.state.title} id='titleInput' type='text' placeholder='job title' required />
                         <input onChange={(e) => { this.handleChange(e, 'company') }} id='companyInput' type='text' placeholder='company' required />
                     </div>
-                    <div>
-                        <label htmlFor='nameInput'>Name of Contact</label> 
-                        <input onChange={(e) => { this.handleChange(e, 'name') }} id='nameInput' type='text' placeholder='name'/>
+                    <div className='contactName'>
+                        <label htmlFor='nameInput'>
+                            <i class="fa fa-id-card" aria-hidden="true"></i>
+                        </label> 
+                        <input onChange={(e) => { this.handleChange(e, 'name') }} id='nameInput' type='text' placeholder='contact name'/>
                     </div>
-                    <div>
-                        <label htmlFor='linkInput'>Url</label> 
-                        <input onChange={(e) => { this.handleChange(e, 'link') }} id='linkInput' type='url' />
+                    <div className='dates'>
+                        <div className='date'>
+                            <label htmlFor='datePostedInput'>Posted Date</label>
+                            <input onChange={(e) => { this.handleChange(e, 'datePosted') }} id='datePostedInput' type='date' />
+                        </div>
+                        <div className='date'>
+                            <label htmlFor='dateAppliedInput'>Date Applied</label>
+                            <input onChange={(e) => { this.handleChange(e, 'dateApplied') }} id='dateAppliedInput' type='date' required />
+                        </div>
                     </div>
-                    <div>
-                        <label htmlFor='datePostedInput'>Date Posted</label>                     
-                        <input onChange={(e) => { this.handleChange(e, 'datePosted') }} id='datePostedInput' type='date' />
-                    </div>
-                    <div>
-                        <label htmlFor='dateAppliedInput'>Date Applied</label>                     
-                        <input onChange={(e) => { this.handleChange(e, 'dateApplied') }} id='dateAppliedInput' type='date' required />
+                    <div className='url'>
+                        <label htmlFor='linkInput'>
+                            <i class="fa fa-link fw" aria-hidden="true"></i>    
+                        </label> 
+                        <input onChange={(e) => { this.handleChange(e, 'link') }} id='linkInput' type='url' placeholder='url' />
                     </div>
                     <button type='submit'>add application</button>
                 </form>
