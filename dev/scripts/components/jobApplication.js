@@ -165,15 +165,18 @@ export default class SingleApplication extends React.Component {
                         <p>This user has not enabled sharing for their applications. Ask them to turn sharing on!</p>
                     </div>
                 ) : (
-                    <div>
+                        <div className='editForm wrapper'>
                         <nav>
-                            <Link to={dashPath}>Back to Dash</Link>
+                            <Link className='backToDash' to={dashPath}>
+                                <i className="fa fa-long-arrow-left fw" aria-hidden="true"></i> back
+                            </Link>
+
                             {!this.props.isSharedView &&
                                 // Hide edit button in shared application view
-                                <button onClick={this.enableEdit}>Edit</button>
+                                    <button className='editButton' onClick={this.enableEdit}>edit <i className="fa fa-pencil" aria-hidden="true"></i></button>
                             }
                         </nav>
-                        <Progress />
+                        {/* <Progress /> */}
                         {this.state.details.archive === true 
                         ? <h3>This Application Has Been Archived</h3>
                         : null 

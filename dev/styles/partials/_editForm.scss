@@ -1,0 +1,39 @@
+// form for new application
+.editForm{
+    padding: 2rem;
+    position: relative;
+    .backToDash{
+        font-size: 1.5rem;
+        padding-bottom: 1rem;          
+        display: block;
+        width: 9rem;
+        color: darken($body_bg, 65%);
+        font-weight: bold;
+        text-decoration: none;
+        transition: .3s;  
+        .fa{
+            width: 2.5rem;
+            font-size: 1.7rem; 
+        }
+        &:hover{
+            padding-left: .5rem;
+        }
+    }
+    nav{
+        position: relative;
+        width: 100%;
+    }
+    .editButton{
+        position: absolute;
+        right: 0;
+        padding: 0;
+        border: 0;
+        background: $highlight_two;
+        color: white;
+        border-radius: 3px;
+        padding: .5rem 1rem;
+        .fa{
+            padding-left: .5rem;
+        }
+    }
+}

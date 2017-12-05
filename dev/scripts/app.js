@@ -103,7 +103,7 @@ class App extends React.Component {
       <Router>
         <div>
           <div className="content">
-        
+
             <MainHeader shareApplications={this.state.shareApplications} toggleSharing={this.toggleSharing} isLoggedIn={this.state.isLoggedIn} userId={this.state.userId} shareKey={this.state.shareKey} />
 
           {this.state.isLoggedIn
