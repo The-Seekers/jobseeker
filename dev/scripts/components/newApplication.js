@@ -81,7 +81,8 @@ export default class NewApplication extends React.Component{
                     <input onChange={(e) => { this.handleChange(e, 'title') }} value={this.state.title} id='titleInput' type='text' placeholder='add job title' required />                   
 
                     <div className='contactInfo'>
-                        <label htmlFor='nameInput'>
+
+                        <label htmlFor='companyInput'>
                             <i className="fa fa-briefcase fw" aria-hidden="true"></i>
                         </label>                      
                         <input onChange={(e) => { this.handleChange(e, 'company') }} id='companyInput' type='text' placeholder='organization' required />

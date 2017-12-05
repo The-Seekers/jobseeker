@@ -3,7 +3,6 @@ import {
     BrowserRouter as Router,Route, Link, NavLink, Switch
 } from 'react-router-dom';
 import firebase from 'firebase';
-import Progress from './progressBar'
 
 export default class SingleApplication extends React.Component {
     constructor(){
@@ -157,7 +156,7 @@ export default class SingleApplication extends React.Component {
         }
 
         return (
-            <main>
+            <main className="wrapper">
                 {/* If this is a shared application page, and sharing is not enabled, show an error */}
                 {this.props.isSharedView && !this.state.sharingEnabled ? (
                     <div>
@@ -167,53 +166,65 @@ export default class SingleApplication extends React.Component {
                 ) : (
                         <div className='editForm wrapper'>
                         <nav>
-                            <Link className='backToDash' to={dashPath}>
-                                <i className="fa fa-long-arrow-left fw" aria-hidden="true"></i> back
-                            </Link>
-
-                            {!this.props.isSharedView &&
+                            <Link to={dashPath}><i className="fa fa-long-arrow-left fw" aria-hidden="true"></i> back</Link>
+                            {!this.props.isSharedView && !this.state.edit &&
                                 // Hide edit button in shared application view
                                     <button className='editButton' onClick={this.enableEdit}>edit <i className="fa fa-pencil" aria-hidden="true"></i></button>
                             }
                         </nav>
-                        {/* <Progress /> */}
                         {this.state.details.archive === true 
                         ? <h3>This Application Has Been Archived</h3>
                         : null 
                         }
                         <form action="" onSubmit={this.handleSubmit}>
 
+
                             <input id='titleInput' name="title" type="text" onChange={this.handleEdit} value={this.state.details.title} disabled={!this.state.edit} />
                             
                             <div className='contactInfo'>
+                                <label htmlFor="company"><i className="fa fa-briefcase" aria-hidden="true"></i></label>
                                 <input name="company" type="text" onChange={this.handleEdit} value={this.state.details.company} disabled={!this.state.edit} />
                             </div>
 
+                            <label htmlFor="link"><i className="fa fa-link fw" aria-hidden="true"></i></label>
                             <input name="link" type="text" onChange={this.handleEdit} value={this.state.details.link} disabled={!this.state.edit} />
+
                             <label htmlFor="datePosted">Date Posted</label>
                             <input name="datePosted" type="date" onChange={this.handleEdit} value={this.state.details.datePosted} disabled={!this.state.edit} />
+
                             <label htmlFor="dateApplied">Date Applied</label>
                             <input name="dateApplied" type="date" onChange={this.handleEdit} value={this.state.details.dateApplied} disabled={!this.state.edit} />
-                            <label htmlFor="name">Contact Name</label>
+
+                            <label htmlFor="name"><i className="fa fa-id-card fw" aria-hidden="true"></i></label>
                             <input name="name" type="text" onChange={this.handleEdit} value={this.state.details.name} disabled={!this.state.edit} />
+
                             <label htmlFor="followUp1">Follow Up #1</label>
                             <input name="followUp1" type="date" onChange={this.handleEdit} value={this.state.details.followUp1} disabled={!this.state.edit} />
+
                             <label htmlFor="followUp2">Follow Up #2</label>
                             <input name="followUp2" type="date" onChange={this.handleEdit} value={this.state.details.followUp2} disabled={!this.state.edit} />
+
                             <label htmlFor="followUp3">Follow Up #3</label>
                             <input name="followUp3" type="date" onChange={this.handleEdit} value={this.state.details.followUp3} disabled={!this.state.edit} />
+
                             <label htmlFor="response">Response</label>
                             <input name="response" type="text" onChange={this.handleEdit} value={this.state.details.response} disabled={!this.state.edit} />
+
                             <label htmlFor="interview">Interview Date</label>
                             <input name="interview" type="date" onChange={this.handleEdit} value={this.state.details.interview} disabled={!this.state.edit} />
+
                             <label htmlFor="thanks">Thank You Note</label>
                             <input name="thanks" type="date" onChange={this.handleEdit} value={this.state.details.thanks} disabled={!this.state.edit} />
+
                             <label htmlFor="interviewFollowUp1">Interview Follow Up #1</label>
                             <input name="interviewFollowUp1" type="date" onChange={this.handleEdit} value={this.state.details.interviewFollowUp1} disabled={!this.state.edit} />
+
                             <label htmlFor="interviewFollowUp2">Interview Follow Up #2</label>
                             <input name="interviewFollowUp2" type="date" onChange={this.handleEdit} value={this.state.details.interviewFollowUp2} disabled={!this.state.edit} />
+
                             <label htmlFor="archive">Archive This Application</label>
                             <input id="archive" name="archive" type="checkbox" onChange={this.handleChecked} checked={this.state.details.archive} disabled={!this.state.edit} />
+
                             {this.state.edit &&
                                 <button>Save Changes</button>
                             }
