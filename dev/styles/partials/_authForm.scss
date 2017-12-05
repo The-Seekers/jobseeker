@@ -18,9 +18,51 @@
     z-index: 70;
     padding: 32px;
     background: $body-bg;
+    width: 100%;
+    max-width: 465px;
+    border-radius: 5px;
 
     h2 {
         margin-top: 0;
+        font: {
+            family: $headerFont;
+        }
+        text-align: center;
+    }
+    
+    label,
+    input {
+        display: block;
+        width: 65%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    label {
+        margin-bottom: 0.6rem;
+    }
+
+    input{
+        font-size: 1.5rem;
+        padding: 1rem; 
+        background: darken($body_bg, 5%);
+        border: none; 
+        border-radius: 3px;
+    }
+    
+    .input-group {
+        margin: 1.6rem 0;
+    }
+
+    button {
+        display: block;
+        margin: 24px auto 0;
+        background: $highlight-two;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
     }
 }
 

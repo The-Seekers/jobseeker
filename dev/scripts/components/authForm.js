@@ -92,16 +92,16 @@ class AuthForm extends React.Component {
                     </a>
                     <h2>{title}</h2>
                     <form action="" onSubmit={(e) => {formAction(e)}}>
-                        <div>
+                        <div className='input-group'>
                             <label htmlFor="auth-email">E-mail</label>
                             <input id="authEmail" type="email" required onChange={this.handleChange} value={this.state.email} />
                         </div>
-                        <div>
+                        <div className='input-group'>
                             <label htmlFor="auth-password">{passwordText}</label>
                             <input id="authPassword" type="password" required onChange={this.handleChange} value={this.state.password} />
                         </div>
                         {confirmPassword &&
-                            <div>
+                            <div className='input-group'>
                                 <label htmlFor="auth-password">Confirm Password</label>
                                 <input id="authConfirmPassword" type="password" required onChange={this.handleChange} value={this.state.confirmPassword} />
                             </div>
