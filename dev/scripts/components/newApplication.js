@@ -70,30 +70,28 @@ export default class NewApplication extends React.Component{
 
                     <div className='contactInfo'>
                         <label htmlFor='nameInput'>
-                            <i class="fa fa-briefcase" aria-hidden="true"></i>
+                            <i class="fa fa-briefcase fw" aria-hidden="true"></i>
                         </label> 
                         <input onChange={(e) => { this.handleChange(e, 'company') }} id='companyInput' type='text' placeholder='company' required />
                         
                         <label htmlFor='nameInput'>
-                            <i class="fa fa-id-card" aria-hidden="true"></i>
+                            <i class="fa fa-id-card fw" aria-hidden="true"></i>
                         </label> 
                         <input onChange={(e) => { this.handleChange(e, 'name') }} id='nameInput' type='text' placeholder='contact name'/>
-                    </div>
 
-                    <div className='url'>
-                        {/* <label htmlFor='linkInput'>
+                        <label htmlFor='linkInput'>
                             <i class="fa fa-link fw" aria-hidden="true"></i>
-                        </label> */}
+                        </label>
                         <input onChange={(e) => { this.handleChange(e, 'link') }} id='linkInput' type='url' placeholder='url' />
                     </div>
 
                     <div className='dates'>
                         <div className='date'>
-                            <label htmlFor='datePostedInput'>Posted Date</label>
+                            <label htmlFor='datePostedInput'>posted date</label>
                             <input onChange={(e) => { this.handleChange(e, 'datePosted') }} id='datePostedInput' type='date' />
                         </div>
                         <div className='date'>
-                            <label htmlFor='dateAppliedInput'>Date Applied</label>
+                            <label htmlFor='dateAppliedInput'>date applied</label>
                             <input onChange={(e) => { this.handleChange(e, 'dateApplied') }} id='dateAppliedInput' type='date' required />
                         </div>
                     </div>
