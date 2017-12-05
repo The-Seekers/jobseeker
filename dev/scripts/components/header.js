@@ -49,7 +49,7 @@ export default class MainHeader extends React.Component {
                         }
                     </nav>
                 </div>
-                <div className="navNarrow clearfix">
+                <div className="navNarrow">
                     <i className="fa fa-bars" onClick={this.navToggle}></i>
                     <nav className="narrowControls">
                         {this.props.isLoggedIn &&

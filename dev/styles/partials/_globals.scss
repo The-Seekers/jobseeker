@@ -7,6 +7,12 @@
     }
 }
 
+@mixin media-max($width) {
+    @media (max-width: #{$width}) {
+        @content;
+    }
+}
+
 html {
     font-size: 10px / 16px * 100%;
 }
@@ -27,4 +33,9 @@ a {
 
 main {
     padding-top: 70px;
+}
+
+.wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
 }
