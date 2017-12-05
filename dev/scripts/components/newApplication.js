@@ -15,6 +15,7 @@ export default class NewApplication extends React.Component{
             datePosted: '',
             dateApplied: '',
             name: '',
+            email: '',
             followUp1: '',
             followUp2: '',
             followUp3: '',
@@ -91,6 +92,11 @@ export default class NewApplication extends React.Component{
                             <i className="fa fa-id-card fw" aria-hidden="true"></i>
                         </label> 
                         <input onChange={(e) => { this.handleChange(e, 'name') }} id='nameInput' type='text' placeholder='name of contact' required />
+
+                        <label htmlFor='emailInput'>
+                            <i className="fa fa-envelope fw" aria-hidden="true"></i>
+                        </label> 
+                        <input onChange={(e) => { this.handleChange(e, 'email') }} id='emailInput' type='email' placeholder='email of contact' required />
 
                         <label htmlFor='linkInput'>
                             <i className="fa fa-link fw" aria-hidden="true"></i>

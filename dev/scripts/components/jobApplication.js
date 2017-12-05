@@ -16,6 +16,7 @@ export default class SingleApplication extends React.Component {
                 datePosted: '',
                 dateApplied: '',
                 name: '',
+                email: '',
                 followUp1: '',
                 followUp2: '',
                 followUp3: '',
@@ -197,6 +198,9 @@ export default class SingleApplication extends React.Component {
 
                             <label htmlFor="name"><i className="fa fa-id-card fw" aria-hidden="true"></i></label>
                             <input name="name" type="text" onChange={this.handleEdit} value={this.state.details.name} disabled={!this.state.edit} />
+
+                            <label htmlFor="email"><i className="fa fa-envelope fw" aria-hidden="true"></i></label>
+                            <input name="email" type="email" onChange={this.handleEdit} value={this.state.details.email} disabled={!this.state.edit} />
 
                             <label htmlFor="followUp1">Follow Up #1</label>
                             <input name="followUp1" type="date" onChange={this.handleEdit} value={this.state.details.followUp1} disabled={!this.state.edit} />
