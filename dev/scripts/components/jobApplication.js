@@ -164,12 +164,12 @@ export default class SingleApplication extends React.Component {
                         <p>This user has not enabled sharing for their applications. Ask them to turn sharing on!</p>
                     </div>
                 ) : (
-                    <div>
+                        <div className='editForm wrapper'>
                         <nav>
                             <Link to={dashPath}><i className="fa fa-long-arrow-left fw" aria-hidden="true"></i> back</Link>
                             {!this.props.isSharedView && !this.state.edit &&
                                 // Hide edit button in shared application view
-                                <button onClick={this.enableEdit}>Edit</button>
+                                    <button className='editButton' onClick={this.enableEdit}>edit <i className="fa fa-pencil" aria-hidden="true"></i></button>
                             }
                         </nav>
                         {this.state.details.archive === true 
@@ -177,11 +177,14 @@ export default class SingleApplication extends React.Component {
                         : null 
                         }
                         <form action="" onSubmit={this.handleSubmit}>
-                            <label htmlFor="company"><i className="fa fa-briefcase" aria-hidden="true"></i></label>
-                            <input name="company" type="text" onChange={this.handleEdit} value={this.state.details.company} disabled={!this.state.edit} />
 
-                            <label htmlFor="title">Title</label>
-                            <input name="title" type="text" onChange={this.handleEdit} value={this.state.details.title} disabled={!this.state.edit} />
+
+                            <input id='titleInput' name="title" type="text" onChange={this.handleEdit} value={this.state.details.title} disabled={!this.state.edit} />
+                            
+                            <div className='contactInfo'>
+                                <label htmlFor="company"><i className="fa fa-briefcase" aria-hidden="true"></i></label>
+                                <input name="company" type="text" onChange={this.handleEdit} value={this.state.details.company} disabled={!this.state.edit} />
+                            </div>
 
                             <label htmlFor="link"><i className="fa fa-link fw" aria-hidden="true"></i></label>
                             <input name="link" type="text" onChange={this.handleEdit} value={this.state.details.link} disabled={!this.state.edit} />

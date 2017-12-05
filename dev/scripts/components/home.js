@@ -25,8 +25,8 @@ export default class Home extends React.Component {
                     <h2 className='home-headline'>Land your next job</h2>
                     <p>Job hunting is <em>hard</em>. We&apos;re here to help.</p>
                     <p>Get started with <strong><span className="headline">jobseeker</span></strong> today.</p>
-                    <button href="#" onClick={(e) => {this.chooseForm(e, 'signIn')}}>Sign In</button>
-                    <button href="#" onClick={(e) => {this.chooseForm(e, 'signUp')}}>Sign Up</button>
+                    <button href="#" className='signIn-button' onClick={(e) => {this.chooseForm(e, 'signIn')}}>Sign In</button>
+                    <button href="#" className='signUp-button' onClick={(e) => {this.chooseForm(e, 'signUp')}}>Sign Up</button>
                 </div>
 
                 {this.state.showForm.length > 0 &&
