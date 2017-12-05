@@ -82,8 +82,7 @@ export default class ApplicationList extends React.Component {
         } else {
             applicationsArray = Array.from(this.props.applications);
         }
-
-        
+   
         return (
             <div>
                 <DashStats applications={this.props} sorted={this.state} />
@@ -105,9 +104,17 @@ export default class ApplicationList extends React.Component {
                 <div className='wrapper'>
                     <ul className='application-list clearfix'>
                     {applicationsArray.map((item) => {
+                        // Build paths differently for logged in users vs. guests viewing shared applications
+                        let applicationPath = '';
+                        if (this.props.isSharedView) {
+                            applicationPath = `/shared/${this.props.userId}/${this.props.shareKey}/${item.key}`;
+                        } else {
+                            applicationPath = `/application/${item.key}`;
+                        }
+
                         return (
                             <li key={item.key}>
-                                <Link to={`/application/${item.key}`}>
+                                <Link to={applicationPath}>
                                     <h2>{item.title}</h2>
                                     <p className='list-company-name'>{item.company}</p>
                                     <p className='list-last-changed'>Last changed: <span className='last-changed-date'>{moment(item.lastEdited).fromNow()}</span></p>

@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase from 'firebase';
-import SharedApplicationList from './sharedApplicationList';
+import ApplicationList from './applicationList';
 
 export default class SharedDashboard extends React.Component {
     constructor() {
@@ -52,10 +52,7 @@ export default class SharedDashboard extends React.Component {
         let display = '';
         if (this.state.sharingEnabled) {
             display = (
-                <div>
-                    <DashStats />
-                    <SharedApplicationList applications={this.state.applications} userId={this.props.match.params.userId} shareKey={this.props.match.params.shareKey} />
-                </div>
+                <ApplicationList applications={this.state.applications} userId={this.props.match.params.userId} shareKey={this.props.match.params.shareKey} isSharedView={this.props.isSharedView} />
             )
         } else {
             display = (

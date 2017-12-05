@@ -134,7 +134,7 @@ class App extends React.Component {
             : <Switch>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/shared/:userId/:shareKey' render={(routeProps) => {
-                  return <SharedDashboard {...routeProps} isLoggedIn={this.state.isLoggedIn} />
+                  return <SharedDashboard {...routeProps} isLoggedIn={this.state.isLoggedIn} isSharedView='true' />
                 }} />
                 <Route exact path='/shared/:userId/:shareKey/:application_id' component={SharedSingleApplication} />
                 {/* If no paths match, display an error message */}
