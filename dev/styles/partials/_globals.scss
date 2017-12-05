@@ -7,6 +7,14 @@
     }
 }
 
+/* to keep footer at bottom of page */
+.content {
+    min-height: calc(100vh - 56px);
+}
+footer {
+  height: 56px;
+}
+
 html {
     font-size: 10px / 16px * 100%;
 }
@@ -23,8 +31,4 @@ body {
 
 a {
     color: $highlight-two;
-}
-
-main {
-    padding-top: 70px;
 }
