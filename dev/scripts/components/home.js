@@ -20,19 +20,17 @@ export default class Home extends React.Component {
 
     render() {
         return(
-            <main>
-                <h2>Land your next job</h2>
-                <p>Job hunting is <em>hard</em>. We&apos;re here to help.</p>
-                <p>Get started with <strong>jobseeker</strong> today.</p>
-                <p>
-                    <a href="#" onClick={(e) => {this.chooseForm(e, 'signIn')}}>Sign In</a>
-                </p>
-                <p>
-                    <a href="#" onClick={(e) => {this.chooseForm(e, 'signUp')}}>Sign Up</a>
-                </p>
+            <main className="homeMain">
+                <div className ="homeText">
+                    <h2 className='home-headline'>Land your next job</h2>
+                    <p>Job hunting is <em>hard</em>. We&apos;re here to help.</p>
+                    <p>Get started with <strong><span className="headline">jobseeker</span></strong> today.</p>
+                    <button href="#" onClick={(e) => {this.chooseForm(e, 'signIn')}}>Sign In</button>
+                    <button href="#" onClick={(e) => {this.chooseForm(e, 'signUp')}}>Sign Up</button>
+                </div>
 
                 {this.state.showForm.length > 0 &&
-                    <AuthForm formToDisplay={this.state.showForm}/>
+                    <AuthForm formToDisplay={this.state.showForm} formFunction={this.chooseForm}/>
                 }
             </main>
         )
