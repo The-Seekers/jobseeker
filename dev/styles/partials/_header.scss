@@ -38,7 +38,7 @@ header {
         float: left;
     }
     @include media(780px){
-        width: 50%;
+        width: 30%;
     }
 }
 
@@ -64,15 +64,9 @@ header {
         z-index: 40;
         text-align: center;
         padding: 16px;
-        a {
-            color: $body-bg;
-        }
     }
     p {
         font-size: 2rem;
-        a {
-            overflow-wrap: break-word;
-        }
     }
     button {
         display: block;
@@ -90,22 +84,36 @@ header {
 .navWide {
     display: none;
     padding: 16px;
+    color: $body-bg;
+    float: right;
+    width: 70%;
+    p {
+        font-size: 2rem;
+    }
+    .sharingContainer {
+        float: left;
+        padding: 5px 0;
+        p {
+            float: left;
+            margin: 0 16px 0 0;
+        }
+        label {
+            float: left;
+            margin-right: 16px;
+        }
+    }
+    button {
+        display: inline-block;
+        background: $body-bg;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .signOut {
+        float: right;
+    }
     @include media(780px) {
         display: block;
-        float: right;
-        width: 50%;
-        .sharingContainer {
-            float: left;
-        }
-        button {
-            float: right;
-            display: block;
-            margin: 0 auto;
-            background: $body-bg;
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-        }
     }
 }
 
@@ -122,7 +130,11 @@ header {
         background: #f0f0f0;
 		border-radius: 2em;
 		padding: 2px;
-		transition: all .4s ease;
+        transition: all .4s ease;
+        margin: 0 auto;
+        @include media(780px){
+            margin-right: 16px;
+        }
 		&::after,
         &::before {
 			position: relative;
@@ -147,6 +159,51 @@ header {
     }
     &:checked + .sharingLabel {
 		background: #9FD6AE;
-	}
-    
+	} 
+}
+
+.shareOverlay {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 100;
+}
+
+.shareLink {
+    position: absolute;
+    top: 73px;
+    left: 16px;
+    width: calc(100% - 32px);
+    padding: 20px 10px;
+    background: $body-bg;
+    border: 1px solid $primary;
+    border-radius: 2px;
+    color: $body-color;
+    @include media(780px) {
+        top: 73px;
+    }
+    p {
+        text-align: left;
+        line-height: 1.5;
+        margin-top: 5px;
+    }
+    i {
+        font-size: 4rem;
+        position: absolute;
+        top: -5px;
+        right: 0;
+        cursor: pointer;
+    }
+    a {
+        color: $body-color;
+        overflow-wrap: break-word;
+        display: block;
+        text-align: center;
+        &:hover {
+            color: $highlight-one;
+        }
+    }
 }
