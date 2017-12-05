@@ -56,6 +56,11 @@ class AuthForm extends React.Component {
         })
     }
 
+    // Don't close the modal when user clicks on it
+    preventFormClose(e) {
+        e.stopPropagation();
+    }
+
     render() {
         let title = '';
         let buttonText = '';
@@ -79,25 +84,31 @@ class AuthForm extends React.Component {
         }
 
         return (
-            <div>
-                <h2>{title}</h2>
-                <form action="" onSubmit={(e) => {formAction(e)}}>
-                    <div>
-                        <label htmlFor="auth-email">E-mail</label>
-                        <input id="authEmail" type="email" required onChange={this.handleChange} value={this.state.email} />
-                    </div>
-                    <div>
-                        <label htmlFor="auth-password">{passwordText}</label>
-                        <input id="authPassword" type="password" required onChange={this.handleChange} value={this.state.password} />
-                    </div>
-                    {confirmPassword &&
-                        <div>
-                            <label htmlFor="auth-password">Confirm Password</label>
-                            <input id="authConfirmPassword" type="password" required onChange={this.handleChange} value={this.state.confirmPassword} />
+            // Modal closes when user clicks outside of it
+            <div className="fullscreen-shade" onClick={(e) => this.props.formFunction(e, '')}>
+                <div className='auth-modal' onClick={this.preventFormClose}>
+                    <a className='close-modal-control' onClick={(e) => this.props.formFunction(e, '')} href="#" aria-label='Close the modal'>
+                        <i className="fa fa-times" aria-hidden='true'></i>
+                    </a>
+                    <h2>{title}</h2>
+                    <form action="" onSubmit={(e) => {formAction(e)}}>
+                        <div className='input-group'>
+                            <label htmlFor="auth-email">E-mail</label>
+                            <input id="authEmail" type="email" required onChange={this.handleChange} value={this.state.email} />
                         </div>
-                    }
-                    <button type="submit">{buttonText}</button>
-                </form>
+                        <div className='input-group'>
+                            <label htmlFor="auth-password">{passwordText}</label>
+                            <input id="authPassword" type="password" required onChange={this.handleChange} value={this.state.password} />
+                        </div>
+                        {confirmPassword &&
+                            <div className='input-group'>
+                                <label htmlFor="auth-password">Confirm Password</label>
+                                <input id="authConfirmPassword" type="password" required onChange={this.handleChange} value={this.state.confirmPassword} />
+                            </div>
+                        }
+                        <button type="submit">{buttonText}</button>
+                    </form>
+                </div>
             </div>
         )
     }
