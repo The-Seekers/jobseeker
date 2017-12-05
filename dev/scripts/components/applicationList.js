@@ -13,8 +13,19 @@ export default class ApplicationList extends React.Component {
             filtered: false,
             filteredDays: ''
         }
-        this.filterApplications = this.filterApplications.bind(this);
+        this.buildApplicationPath = this.buildApplicationPath.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.filterApplications = this.filterApplications.bind(this);
+    }
+
+    buildApplicationPath(applicationObject) {
+        let path = '';
+        if (this.props.isSharedView) {
+            path = `/shared/${this.props.userId}/${this.props.shareKey}/${applicationObject.key}`;
+        } else {
+            path = `/application/${applicationObject.key}`;
+        }
+        return path;
     }
 
     handleChange(e) {
@@ -105,12 +116,7 @@ export default class ApplicationList extends React.Component {
                     <ul className='application-list clearfix'>
                     {applicationsArray.map((item) => {
                         // Build paths differently for logged in users vs. guests viewing shared applications
-                        let applicationPath = '';
-                        if (this.props.isSharedView) {
-                            applicationPath = `/shared/${this.props.userId}/${this.props.shareKey}/${item.key}`;
-                        } else {
-                            applicationPath = `/application/${item.key}`;
-                        }
+                        const applicationPath = this.buildApplicationPath(item);
 
                         return (
                             <li key={item.key}>
