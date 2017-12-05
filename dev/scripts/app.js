@@ -13,7 +13,6 @@ import Dashboard from './components/dashboard.js'
 import SingleApplication from './components/jobApplication';
 import Home from './components/home';
 import NewApplication from './components/newApplication.js'
-import SharedSingleApplication from './components/sharedJobApplication';
 
 // firebase config
 var config = {
@@ -121,7 +120,9 @@ class App extends React.Component {
                 <Route exact path='/shared/:userId/:shareKey' render={(routeProps) => {
                   return <Dashboard {...routeProps} isLoggedIn={this.state.isLoggedIn} isSharedView='true' />
                 }} />
-                <Route exact path='/shared/:userId/:shareKey/:application_id' component={SharedSingleApplication} />
+                <Route exact path='/shared/:userId/:shareKey/:application_id' render={(routeProps) => {
+                  return <SingleApplication {...routeProps} isSharedView='true' />
+                }} />
                 {/* If no paths match, display an error message */}
                 <Route render={() => (
                   <div>
@@ -137,7 +138,9 @@ class App extends React.Component {
                 <Route exact path='/shared/:userId/:shareKey' render={(routeProps) => {
                   return <Dashboard {...routeProps} isLoggedIn={this.state.isLoggedIn} isSharedView='true' />
                 }} />
-                <Route exact path='/shared/:userId/:shareKey/:application_id' component={SharedSingleApplication} />
+                <Route exact path='/shared/:userId/:shareKey/:application_id' render={(routeProps) => {
+                  return <SingleApplication {...routeProps} isSharedView='true' />
+                }} />
                 {/* If no paths match, display an error message */}
                 <Route render={() => (
                   <div>
