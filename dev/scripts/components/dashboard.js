@@ -151,10 +151,19 @@ export default class Dashboard extends React.Component {
                     <p>This user has not enabled sharing for their applications. Ask them to turn sharing on!</p>
                 </div>
             )
+        } else if (!this.props.isSharedView && this.state.applications.length === 0) {
+            // If the user is new and/or has 0 applications in the system...
+            display = (
+                <div>
+                    <DashWelcome />
+                    <Link to='/new' className='create-application' aria-label="Create a new application">
+                        <i className='fa fa-plus' aria-hidden="true"></i>
+                    </Link>
+                </div>
+            )
         } else {
             display = (
                 <div>
-                    {/* <DashWelcome /> */}
                     <ApplicationList {...listProps} />
                     {/* Only show the 'Create application' button if not viewing a shared application */}
                     {!this.props.isSharedView &&
@@ -178,14 +187,16 @@ export default class Dashboard extends React.Component {
 class DashWelcome extends React.Component {
     render() {
         return(
-            <section>
-                <h2>Welcome.</h2>
+            <section className='dashboard-welcome'>
+                <h2>Welcome</h2>
                 <ol>
                     <li>Add your job applications to Jobseeker</li>
                     <li>Track progress and follow-ups</li>
                     <li>Share progress with mentors</li>
                 </ol>
-                <button>get started</button>
+                <Link to='/new' aria-label="Get started">
+                    <button>get started</button>
+                </Link>
             </section>
         )
     }
