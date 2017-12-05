@@ -1,37 +1,29 @@
 // form for new application
 .newApplicationForm{
-    padding: 2rem 2rem;
-    label, input{
-        display: inline-block;
+    h2{
+        font-size: 2rem;
     }
-    .fa{
-        padding-right: .5rem;
-        width: 3rem;
+    #titleInput, #linkInput{
+        width: 100%;
     }
-    div{
-        padding: .5rem 0; 
-    }
-    .appTitles{
+
+    .contactInfo{
+        label{
+            display: inline-block;
+            width: 3rem;
+        }
         input{
             width: calc(100% - 3rem);
-            &:last-of-type{
-                margin-top: 1rem;
-                margin-left: 3rem;
-            }
         }
     }
-    .date{
-        display: inline-block;
-        width: calc(50% - .5rem);
-        &:first-of-type{
-            padding-left: 3rem;
-            margin-right: 1rem;
+    .dates{
+        .date{
+            width: 50%;
+            display: inline-block;
         }
         input{
             width: 100%;
-        }
-        label{
-            text-align: right;
+            font-family: $bodyFont;
         }
     }
 }

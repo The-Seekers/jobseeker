@@ -63,21 +63,30 @@ export default class NewApplication extends React.Component{
     }
     render() {
         return(
-            <main>
-                <form onSubmit={this.handleSubmit.bind(this)} className='newApplicationForm'>
-                    <div className='appTitles'>
-                        <label htmlFor='titleInput'>
-                            <i class="fa fa-briefcase fw" aria-hidden="true"></i>
+            <main className='newApplicationForm'>
+                <h2>New Application</h2>
+                <form onSubmit={this.handleSubmit.bind(this)}>
+                    <input onChange={(e) => { this.handleChange(e, 'title') }} value={this.state.title} id='titleInput' type='text' placeholder='job title' required />
+
+                    <div className='contactInfo'>
+                        <label htmlFor='nameInput'>
+                            <i class="fa fa-briefcase" aria-hidden="true"></i>
                         </label> 
-                        <input onChange={(e) => { this.handleChange(e, 'title') }} value={this.state.title} id='titleInput' type='text' placeholder='job title' required />
                         <input onChange={(e) => { this.handleChange(e, 'company') }} id='companyInput' type='text' placeholder='company' required />
-                    </div>
-                    <div className='contactName'>
+                        
                         <label htmlFor='nameInput'>
                             <i class="fa fa-id-card" aria-hidden="true"></i>
                         </label> 
                         <input onChange={(e) => { this.handleChange(e, 'name') }} id='nameInput' type='text' placeholder='contact name'/>
                     </div>
+
+                    <div className='url'>
+                        {/* <label htmlFor='linkInput'>
+                            <i class="fa fa-link fw" aria-hidden="true"></i>
+                        </label> */}
+                        <input onChange={(e) => { this.handleChange(e, 'link') }} id='linkInput' type='url' placeholder='url' />
+                    </div>
+
                     <div className='dates'>
                         <div className='date'>
                             <label htmlFor='datePostedInput'>Posted Date</label>
@@ -88,12 +97,7 @@ export default class NewApplication extends React.Component{
                             <input onChange={(e) => { this.handleChange(e, 'dateApplied') }} id='dateAppliedInput' type='date' required />
                         </div>
                     </div>
-                    <div className='url'>
-                        <label htmlFor='linkInput'>
-                            <i class="fa fa-link fw" aria-hidden="true"></i>    
-                        </label> 
-                        <input onChange={(e) => { this.handleChange(e, 'link') }} id='linkInput' type='url' placeholder='url' />
-                    </div>
+
                     <button type='submit'>add application</button>
                 </form>
                 {this.state.submitted 
