@@ -72,7 +72,9 @@ export default class MainHeader extends React.Component {
                     </nav>
                 </div>
                 <div className="navNarrow clearfix">
-                    <i className="fa fa-bars" onClick={this.navToggle}></i>
+                    {this.props.isLoggedIn &&
+                        <i className="fa fa-bars" onClick={this.navToggle}></i>
+                    }
                     <nav className="narrowControls">
                         {this.props.isLoggedIn &&
                             // Only display sharing toggle if user is logged in
