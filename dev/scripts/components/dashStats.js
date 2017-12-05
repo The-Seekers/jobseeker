@@ -35,20 +35,22 @@ export default class DashStats extends React.Component {
 
         return (
             <section className='dashStats'>
-                <ul className='clearfix'>
-                    <li>
-                        <h2 className='statsTotal'>{totalJobs}</h2>
-                        <h3>total filtered applications</h3>
-                    </li>
-                    <li>
-                        <h2 className='statsAction'>{flaggedTotal}</h2>
-                        <h3>applications need action</h3>
-                    </li>
-                    <li>
-                        <h2 className='statsUpcoming'>{totalInterviews}</h2>
-                        <h3>upcoming interviews</h3>
-                    </li>
-                </ul>
+            <div className="wrapper">
+                    <ul className='clearfix'>
+                        <li>
+                            <h2 className='statsTotal'>{totalJobs}</h2>
+                            <h3>total filtered applications</h3>
+                        </li>
+                        <li>
+                            <h2 className='statsAction'>{flaggedTotal}</h2>
+                            <h3>applications need action</h3>
+                        </li>
+                        <li>
+                            <h2 className='statsUpcoming'>{totalInterviews}</h2>
+                            <h3>upcoming interviews</h3>
+                        </li>
+                    </ul>
+            </div>
             </section>
         )
     }
