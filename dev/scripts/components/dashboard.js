@@ -12,20 +12,21 @@ export default class Dashboard extends React.Component {
     constructor() {
         super();
         this.state = {
-            applications: []
+            applications: [],
+            sharingEnabled: false
         }
+        this.getApplications = this.getApplications.bind(this);
     }
 
-    // Pull the applications from Firebase, store in state
-    componentDidMount() {
-        const applicationsRef = firebase.database().ref(`users/${this.props.userId}/applications`);
+    getApplications(ref) {
+        const applicationsRef = ref;
         applicationsRef.on('value', (snapshot) => {
             const applicationItems = snapshot.val();
             let applicationsArray = [];
             for (let applicationKey in applicationItems) {
                 // Store the application's unique key
                 applicationItems[applicationKey].key = applicationKey;
-                
+
                 // Collect all of the date strings in an array
                 let datesArray = [
                     applicationItems[applicationKey].dateApplied,
@@ -50,12 +51,12 @@ export default class Dashboard extends React.Component {
                 });
                 datesArray = datesArray.filter((item) => {
                     return item;
-                })     
-                
+                })
+
                 // Find the latest date out of the application's completed date fields
                 let latestDate = moment.max(datesArray);
                 // Add 5 days to the latest date
-                latestDate.add(5,'days');
+                latestDate.add(5, 'days');
                 // Get today's date
                 const now = moment();
                 // Store the value of the final task in the form
@@ -75,7 +76,7 @@ export default class Dashboard extends React.Component {
 
                 // Set the needsAction flag
                 applicationItems[applicationKey].needsAction = needsAction;
-                
+
                 // Store application in the array
                 applicationsArray.push(applicationItems[applicationKey]);
             }
@@ -100,19 +101,74 @@ export default class Dashboard extends React.Component {
         });
     }
 
+    componentDidMount() {
+        if (this.props.isSharedView) {
+            // Set a database reference to the supplied sharing key
+            const sharingRef = firebase.database().ref(`users/${this.props.match.params.userId}/sharing/${this.props.match.params.shareKey}`);
+            // Check if the target user has enabled sharing
+            sharingRef.once('value', (snapshot) => {
+                const shareKeyValue = snapshot.val();
+                if (shareKeyValue) {
+                    this.setState({
+                        sharingEnabled: true
+                    });
+                }
+            })
+            .then(() => {
+                if (this.state.sharingEnabled) {
+                    // Pull the applications from Firebase, store in state
+                    const applicationsRef = firebase.database().ref(`users/${this.props.match.params.userId}/applications`);
+                    this.getApplications(applicationsRef);
+                }
+            });
+        } else {
+            const applicationsRef = firebase.database().ref(`users/${this.props.userId}/applications`);
+            this.getApplications(applicationsRef);
+        }
+    }
+
     componentWillUnmount() {
         const applicationsRef = firebase.database().ref(`users/${this.props.userId}/applications`);
         applicationsRef.off('value');
     }    
 
     render() {
+        // Collect different props depending on context
+        let listProps = { applications: this.state.applications };
+        if (this.props.isSharedView) {
+            listProps.userId = this.props.match.params.userId;
+            listProps.shareKey = this.props.match.params.shareKey;
+            listProps.isSharedView = this.props.isSharedView;
+        }
+
+        // Build the markup
+        let display = '';
+        if (this.props.isSharedView && !this.state.sharingEnabled) {
+            // If a guest is accessing a sharing link that is not active, display an error
+            display = (
+                <div>
+                    <h2>Oops...</h2>
+                    <p>This user has not enabled sharing for their applications. Ask them to turn sharing on!</p>
+                </div>
+            )
+        } else {
+            display = (
+                <div>
+                    {/* <DashWelcome /> */}
+                    <ApplicationList {...listProps} />
+                    {/* Only show the 'Create application' button if not viewing a shared application */}
+                    {!this.props.isSharedView &&
+                        <Link to='/new' className='create-application' aria-label="Create a new application">
+                            <i className='fa fa-plus' aria-hidden="true"></i>
+                        </Link>
+                    }
+                </div>
+            )
+        }
+
         return (
             <main>
-                {/* <DashWelcome /> */}
-                <ApplicationList applications={this.state.applications} />
-                <Link to='/new' className='create-application' aria-label="Create a new application">
-                        <i className='fa fa-plus' aria-hidden="true"></i>
-                </Link>
+                {display}
             </main>
         )
     }

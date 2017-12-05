@@ -51,7 +51,7 @@ export default class MainHeader extends React.Component {
         return (
             <header className="clearfix">
                 <div className="logo clearfix">
-                    <img src="./public/assets/logo.svg" alt="job seekers logo" />
+                    <img src="/public/assets/logo.svg" alt="job seekers logo" />
                     <h1>job<span>seeker</span></h1> 
                 </div>
                 <div className="navWide">
