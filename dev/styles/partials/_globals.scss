@@ -7,10 +7,12 @@
     }
 }
 
-@mixin media-max($width) {
-    @media (max-width: #{$width}) {
-        @content;
-    }
+/* to keep footer at bottom of page */
+.content {
+    min-height: calc(100vh - 56px);
+}
+footer {
+  height: 56px;
 }
 
 html {
