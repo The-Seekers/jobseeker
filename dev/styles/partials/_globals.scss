@@ -41,3 +41,7 @@ a {
 input:required{
     box-shadow: none;
 }
+
+input::-moz-placeholder{
+    opacity: 1;
+}
