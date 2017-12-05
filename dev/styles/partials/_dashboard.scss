@@ -21,3 +21,74 @@
         text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
     }
 }
+
+.dashboard-welcome {
+    padding: 0 16px;
+    text-align: center;
+    padding-top: 32px;
+
+    h2 {
+        font: {
+            size: 3.2rem;
+            weight: 700;
+        }
+        margin-top: 0;
+    }
+
+    ol {
+        counter-reset: welcome-counter;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+        position: relative;
+        margin: 24px auto;
+        max-width: 400px;
+
+        &::before {
+            content: counter(welcome-counter);
+            counter-increment: welcome-counter;
+            display: block;
+            width: 2em;
+            padding: 10.5px 0;
+            border-radius: 50%;
+            background: $highlight-two;
+            color: #ffffff;
+            font: {
+                size: 3.2rem;
+                weight: 700;
+            }
+            margin: 0 auto 1.6rem auto;
+            
+            
+            @include media (481px) {
+                position: absolute;
+                left: -24px;
+                top: -17px
+            }
+        }
+
+        @include media (481px) {
+            margin: 56px auto;
+        }
+    }
+
+    button{
+        display: inline-block;
+        background: $highlight_one;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 1.5rem 2.5rem;
+        margin-top: 3.75rem;
+        box-shadow: 0 .5rem darken($highlight_one, 15%); 
+        transition: .3s;
+        &:hover{
+            transform: translateY(.5rem);
+            box-shadow: 0 0 darken($highlight_one, 15%);             
+        }
+    }
+}
