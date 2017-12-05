@@ -56,6 +56,11 @@ class AuthForm extends React.Component {
         })
     }
 
+    // Don't close the modal when user clicks on it
+    preventFormClose(e) {
+        e.stopPropagation();
+    }
+
     render() {
         let title = '';
         let buttonText = '';
@@ -79,8 +84,9 @@ class AuthForm extends React.Component {
         }
 
         return (
-            <div className="fullscreen-shade">
-                <div className='auth-modal'>
+            // Modal closes when user clicks outside of it
+            <div className="fullscreen-shade" onClick={(e) => this.props.formFunction(e, '')}>
+                <div className='auth-modal' onClick={this.preventFormClose}>
                     <h2>{title}</h2>
                     <form action="" onSubmit={(e) => {formAction(e)}}>
                         <div>

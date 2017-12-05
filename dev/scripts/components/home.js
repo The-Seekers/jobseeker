@@ -32,7 +32,7 @@ export default class Home extends React.Component {
                 </p>
 
                 {this.state.showForm.length > 0 &&
-                    <AuthForm formToDisplay={this.state.showForm}/>
+                    <AuthForm formToDisplay={this.state.showForm} formFunction={this.chooseForm}/>
                 }
             </main>
         )
