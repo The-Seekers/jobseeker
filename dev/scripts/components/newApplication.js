@@ -75,7 +75,7 @@ export default class NewApplication extends React.Component{
 
                     <div className='contactInfo'>
                         <div className='required'>   
-                            <label htmlFor='nameInput'>
+                            <label htmlFor='companyInput'>
                                 <i className="fa fa-briefcase fw" aria-hidden="true"></i>
                             </label>                      
                             <input onChange={(e) => { this.handleChange(e, 'company') }} id='companyInput' type='text' placeholder='organization' required />
