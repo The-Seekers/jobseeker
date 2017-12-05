@@ -21,7 +21,7 @@ export default class Home extends React.Component {
     render() {
         return(
             <main>
-                <h2>Land your next job</h2>
+                <h2 className='home-headline'>Land your next job</h2>
                 <p>Job hunting is <em>hard</em>. We&apos;re here to help.</p>
                 <p>Get started with <strong>jobseeker</strong> today.</p>
                 <p>

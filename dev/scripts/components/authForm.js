@@ -79,25 +79,27 @@ class AuthForm extends React.Component {
         }
 
         return (
-            <div>
-                <h2>{title}</h2>
-                <form action="" onSubmit={(e) => {formAction(e)}}>
-                    <div>
-                        <label htmlFor="auth-email">E-mail</label>
-                        <input id="authEmail" type="email" required onChange={this.handleChange} value={this.state.email} />
-                    </div>
-                    <div>
-                        <label htmlFor="auth-password">{passwordText}</label>
-                        <input id="authPassword" type="password" required onChange={this.handleChange} value={this.state.password} />
-                    </div>
-                    {confirmPassword &&
+            <div className="fullscreen-shade">
+                <div className='auth-modal'>
+                    <h2>{title}</h2>
+                    <form action="" onSubmit={(e) => {formAction(e)}}>
                         <div>
-                            <label htmlFor="auth-password">Confirm Password</label>
-                            <input id="authConfirmPassword" type="password" required onChange={this.handleChange} value={this.state.confirmPassword} />
+                            <label htmlFor="auth-email">E-mail</label>
+                            <input id="authEmail" type="email" required onChange={this.handleChange} value={this.state.email} />
                         </div>
-                    }
-                    <button type="submit">{buttonText}</button>
-                </form>
+                        <div>
+                            <label htmlFor="auth-password">{passwordText}</label>
+                            <input id="authPassword" type="password" required onChange={this.handleChange} value={this.state.password} />
+                        </div>
+                        {confirmPassword &&
+                            <div>
+                                <label htmlFor="auth-password">Confirm Password</label>
+                                <input id="authConfirmPassword" type="password" required onChange={this.handleChange} value={this.state.confirmPassword} />
+                            </div>
+                        }
+                        <button type="submit">{buttonText}</button>
+                    </form>
+                </div>
             </div>
         )
     }

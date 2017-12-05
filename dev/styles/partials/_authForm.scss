@@ -1,0 +1,25 @@
+/* AUTH FORM */
+
+.fullscreen-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vh + 16px);
+    background: rgba(0,0,0,0.7);
+    z-index: 60;
+}
+
+.auth-modal {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 70;
+    padding: 32px;
+    background: $body-bg;
+
+    h2 {
+        margin-top: 0;
+    }
+}
