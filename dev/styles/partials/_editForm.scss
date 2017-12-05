@@ -36,4 +36,26 @@
             padding-left: .5rem;
         }
     }
+    #titleInput{
+        width: 100%;
+        font-size: 3rem;  
+        font-weight: bold;
+        margin-bottom: 2rem;
+        padding-left: 1.5rem;
+    }
+    input{
+        font-size: 1.5rem;
+        padding: 1rem; 
+        background: darken($body_bg, 10%);
+        border: none; 
+        border-bottom: 0 solid $highlight_two;                    
+        border-radius: 3px;
+        transition: .3s;
+        &::placeholder{
+            color: darken($body_bg, 65%);
+        }
+        &:focus{
+            border-bottom: 5px solid $highlight_two;            
+        }
+    }
 }

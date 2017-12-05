@@ -182,13 +182,15 @@ export default class SingleApplication extends React.Component {
                         : null 
                         }
                         <form action="" onSubmit={this.handleSubmit}>
-                            <label htmlFor="company">Company</label>
-                            <input name="company" type="text" onChange={this.handleEdit} value={this.state.details.company} disabled={!this.state.edit} />
-                            <label htmlFor="title">Title</label>
-                            <input name="title" type="text" onChange={this.handleEdit} value={this.state.details.title} disabled={!this.state.edit} />
-                            <label htmlFor="link">Link to Posting</label>
+
+                            <input id='titleInput' name="title" type="text" onChange={this.handleEdit} value={this.state.details.title} disabled={!this.state.edit} />
+                            
+                            <div className='contactInfo'>
+                                <input name="company" type="text" onChange={this.handleEdit} value={this.state.details.company} disabled={!this.state.edit} />
+                            </div>
+
                             <input name="link" type="text" onChange={this.handleEdit} value={this.state.details.link} disabled={!this.state.edit} />
-                            <label htmlFor="datePosted" >Date Posted</label>
+                            <label htmlFor="datePosted">Date Posted</label>
                             <input name="datePosted" type="date" onChange={this.handleEdit} value={this.state.details.datePosted} disabled={!this.state.edit} />
                             <label htmlFor="dateApplied">Date Applied</label>
                             <input name="dateApplied" type="date" onChange={this.handleEdit} value={this.state.details.dateApplied} disabled={!this.state.edit} />
