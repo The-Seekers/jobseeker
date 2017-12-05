@@ -165,27 +165,32 @@ export default class SingleApplication extends React.Component {
                         <p>This user has not enabled sharing for their applications. Ask them to turn sharing on!</p>
                     </div>
                 ) : (
-                    <div>
+                        <div className='editForm wrapper'>
                         <nav>
-                            <Link to={dashPath}>Back to Dash</Link>
+                            <Link className='backToDash' to={dashPath}>
+                                <i className="fa fa-long-arrow-left fw" aria-hidden="true"></i> back
+                            </Link>
+
                             {!this.props.isSharedView &&
                                 // Hide edit button in shared application view
-                                <button onClick={this.enableEdit}>Edit</button>
+                                    <button className='editButton' onClick={this.enableEdit}>edit <i className="fa fa-pencil" aria-hidden="true"></i></button>
                             }
                         </nav>
-                        <Progress />
+                        {/* <Progress /> */}
                         {this.state.details.archive === true 
                         ? <h3>This Application Has Been Archived</h3>
                         : null 
                         }
                         <form action="" onSubmit={this.handleSubmit}>
-                            <label htmlFor="company">Company</label>
-                            <input name="company" type="text" onChange={this.handleEdit} value={this.state.details.company} disabled={!this.state.edit} />
-                            <label htmlFor="title">Title</label>
-                            <input name="title" type="text" onChange={this.handleEdit} value={this.state.details.title} disabled={!this.state.edit} />
-                            <label htmlFor="link">Link to Posting</label>
+
+                            <input id='titleInput' name="title" type="text" onChange={this.handleEdit} value={this.state.details.title} disabled={!this.state.edit} />
+                            
+                            <div className='contactInfo'>
+                                <input name="company" type="text" onChange={this.handleEdit} value={this.state.details.company} disabled={!this.state.edit} />
+                            </div>
+
                             <input name="link" type="text" onChange={this.handleEdit} value={this.state.details.link} disabled={!this.state.edit} />
-                            <label htmlFor="datePosted" >Date Posted</label>
+                            <label htmlFor="datePosted">Date Posted</label>
                             <input name="datePosted" type="date" onChange={this.handleEdit} value={this.state.details.datePosted} disabled={!this.state.edit} />
                             <label htmlFor="dateApplied">Date Applied</label>
                             <input name="dateApplied" type="date" onChange={this.handleEdit} value={this.state.details.dateApplied} disabled={!this.state.edit} />
