@@ -13,8 +13,19 @@ export default class ApplicationList extends React.Component {
             filtered: false,
             filteredDays: ''
         }
-        this.filterApplications = this.filterApplications.bind(this);
+        this.buildApplicationPath = this.buildApplicationPath.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.filterApplications = this.filterApplications.bind(this);
+    }
+
+    buildApplicationPath(applicationObject) {
+        let path = '';
+        if (this.props.isSharedView) {
+            path = `/shared/${this.props.userId}/${this.props.shareKey}/${applicationObject.key}`;
+        } else {
+            path = `/application/${applicationObject.key}`;
+        }
+        return path;
     }
 
     handleChange(e) {
@@ -82,8 +93,7 @@ export default class ApplicationList extends React.Component {
         } else {
             applicationsArray = Array.from(this.props.applications);
         }
-
-        
+   
         return (
             <div>
                 <DashStats applications={this.props} sorted={this.state} />
@@ -105,9 +115,12 @@ export default class ApplicationList extends React.Component {
                 <div className='wrapper'>
                     <ul className='application-list clearfix'>
                     {applicationsArray.map((item) => {
+                        // Build paths differently for logged in users vs. guests viewing shared applications
+                        const applicationPath = this.buildApplicationPath(item);
+
                         return (
                             <li key={item.key}>
-                                <Link to={`/application/${item.key}`}>
+                                <Link to={applicationPath}>
                                     <h2>{item.title}</h2>
                                     <p className='list-company-name'>{item.company}</p>
                                     <p className='list-last-changed'>Last changed: <span className='last-changed-date'>{moment(item.lastEdited).fromNow()}</span></p>
