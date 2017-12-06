@@ -3,6 +3,7 @@ import {
     BrowserRouter as Router, Route, Link, NavLink, Switch
 } from 'react-router-dom';
 import firebase from 'firebase';
+import moment from 'moment';
 
 // new job application
 export default class NewApplication extends React.Component{
@@ -15,6 +16,7 @@ export default class NewApplication extends React.Component{
             datePosted: '',
             dateApplied: '',
             name: '',
+            email: '',
             followUp1: '',
             followUp2: '',
             followUp3: '',
@@ -41,24 +43,11 @@ export default class NewApplication extends React.Component{
     }
     // add each keystroke to component state & record last edited date
     handleChange(e, id){
-        let today = new Date();
-        let dd = today.getDate();
-        let mm = today.getMonth() + 1;
-        const yyyy = today.getFullYear();
-
-        if (dd < 10) {
-            dd = '0' + dd
-        }
-
-        if (mm < 10) {
-            mm = '0' + mm
-        }
-
-        today = `${yyyy}-${mm}-${dd}`
+        const now = moment().format('x');
 
         this.setState({
             [id]: e.target.value,
-            lastEdited: today
+            lastEdited: now
         })
     }
     render() {
@@ -78,35 +67,40 @@ export default class NewApplication extends React.Component{
 
                 <form onSubmit={this.handleSubmit.bind(this)}>
 
-                    <input onChange={(e) => { this.handleChange(e, 'title') }} value={this.state.title} id='titleInput' type='text' placeholder='add job title' required />                   
+                    <input onChange={(e) => { this.handleChange(e, 'title') }} value={this.state.title} id='titleInput' type='text' placeholder='add job title' required disabled={this.state.submitted} />                   
 
                     <div className='contactInfo'>
 
                         <label htmlFor='companyInput'>
                             <i className="fa fa-briefcase fw" aria-hidden="true"></i>
                         </label>                      
-                        <input onChange={(e) => { this.handleChange(e, 'company') }} id='companyInput' type='text' placeholder='organization' required />
+                        <input onChange={(e) => { this.handleChange(e, 'company') }} id='companyInput' type='text' placeholder='organization' required disabled={this.state.submitted} />
                         
                         <label htmlFor='nameInput'>
                             <i className="fa fa-id-card fw" aria-hidden="true"></i>
                         </label> 
-                        <input onChange={(e) => { this.handleChange(e, 'name') }} id='nameInput' type='text' placeholder='name of contact' required />
+                        <input onChange={(e) => { this.handleChange(e, 'name') }} id='nameInput' type='text' placeholder='name of contact' required disabled={this.state.submitted} />
+
+                        <label htmlFor='emailInput'>
+                            <i className="fa fa-envelope fw" aria-hidden="true"></i>
+                        </label> 
+                        <input onChange={(e) => { this.handleChange(e, 'email') }} id='emailInput' type='email' placeholder='email of contact' required disabled={this.state.submitted} />
 
                         <label htmlFor='linkInput'>
                             <i className="fa fa-link fw" aria-hidden="true"></i>
                         </label>
-                        <input onChange={(e) => { this.handleChange(e, 'link') }} id='linkInput' type='url' placeholder='post url' required />
+                        <input onChange={(e) => { this.handleChange(e, 'link') }} id='linkInput' type='url' placeholder='post url' required disabled={this.state.submitted} />
                     </div>
 
                     <div className='dates'>
                         <div className='date'>
                             <label htmlFor='datePostedInput'>posted date</label>
-                            <input onChange={(e) => { this.handleChange(e, 'datePosted') }} id='datePostedInput' type='date' required />
+                            <input onChange={(e) => { this.handleChange(e, 'datePosted') }} id='datePostedInput' type='date' required disabled={this.state.submitted} />
                         </div>
 
                         <div className='date'>
                             <label htmlFor='dateAppliedInput'>date applied</label>
-                                <input onChange={(e) => { this.handleChange(e, 'dateApplied') }} id='dateAppliedInput' type='date' required />
+                                <input onChange={(e) => { this.handleChange(e, 'dateApplied') }} id='dateAppliedInput' type='date' required disabled={this.state.submitted} />
                         </div>
                     </div>
 

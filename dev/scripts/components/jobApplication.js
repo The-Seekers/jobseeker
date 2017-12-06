@@ -3,6 +3,7 @@ import {
     BrowserRouter as Router,Route, Link, NavLink, Switch
 } from 'react-router-dom';
 import firebase from 'firebase';
+import moment from 'moment';
 
 export default class SingleApplication extends React.Component {
     constructor(){
@@ -16,6 +17,7 @@ export default class SingleApplication extends React.Component {
                 datePosted: '',
                 dateApplied: '',
                 name: '',
+                email: '',
                 followUp1: '',
                 followUp2: '',
                 followUp3: '',
@@ -45,23 +47,10 @@ export default class SingleApplication extends React.Component {
 
     // controlled input to store new values in another part of state
     handleEdit(e){
-        let today = new Date();
-        let dd = today.getDate();
-        let mm = today.getMonth() + 1;
-        const yyyy = today.getFullYear();
-
-        if (dd < 10) {
-            dd = '0' + dd
-        }
-
-        if (mm < 10) {
-            mm = '0' + mm
-        }
-
-        today = `${yyyy}-${mm}-${dd}`
+        const now = moment().format('x');
 
         let currentDetails = Object.assign({},this.state.details);
-        currentDetails.lastEdited = today;
+        currentDetails.lastEdited = now;
         currentDetails[e.target.name] = e.target.value;
 
         this.setState({
@@ -197,6 +186,9 @@ export default class SingleApplication extends React.Component {
 
                             <label htmlFor="name"><i className="fa fa-id-card fw" aria-hidden="true"></i></label>
                             <input name="name" type="text" onChange={this.handleEdit} value={this.state.details.name} disabled={!this.state.edit} />
+
+                            <label htmlFor="email"><i className="fa fa-envelope fw" aria-hidden="true"></i></label>
+                            <input name="email" type="email" onChange={this.handleEdit} value={this.state.details.email} disabled={!this.state.edit} />
 
                             <label htmlFor="followUp1">Follow Up #1</label>
                             <input name="followUp1" type="date" onChange={this.handleEdit} value={this.state.details.followUp1} disabled={!this.state.edit} />
