@@ -119,7 +119,6 @@ export default class SingleApplication extends React.Component {
             const singleRef = firebase.database().ref(`users/${this.props.userId}/applications/${this.props.match.params.application_id}`);
             this.getApplication(singleRef);
         }
-
     }
     
     render() {
@@ -149,11 +148,10 @@ export default class SingleApplication extends React.Component {
                             }
                         </nav>
                         {this.state.details.archive === true 
-                        ? <h3>This Application Has Been Archived</h3>
-                        : null 
+                            ? <h3>This Application Has Been Archived</h3>
+                            : null 
                         }
                         <form action="" onSubmit={this.handleSubmit}>
-
 
                             <input id='titleInput' name="title" type="text" onChange={this.handleEdit} value={this.state.details.title} disabled={!this.state.edit} />
                             

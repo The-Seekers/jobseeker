@@ -10,10 +10,10 @@ export default class DashStats extends React.Component {
         let isFiltered = this.props.sorted.filteredDays;
         if (isFiltered === '') {
             totalJobs = this.props.applications.applications.length;
-            totalText = {totalJobs};
+            totalText = `total applications`;
         } else {
             totalJobs = this.props.sorted.filteredApplications.length;
-            totalText = {totalJobs};
+            totalText = `applications in the last ${this.props.sorted.filteredDays} days`;
         }
         
         // Count upcoming interviews
@@ -39,7 +39,7 @@ export default class DashStats extends React.Component {
                     <ul className='clearfix'>
                         <li>
                             <h2 className='statsTotal'>{totalJobs}</h2>
-                            <h3>total filtered applications</h3>
+                            <h3>{totalText}</h3>
                         </li>
                         <li>
                             <h2 className='statsAction'>{flaggedTotal}</h2>
