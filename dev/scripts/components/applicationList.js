@@ -123,10 +123,17 @@ export default class ApplicationList extends React.Component {
 
                         return (
                             <li key={item.key}>
-                                <Link to={applicationPath}>
-                                    <h2>{item.title}</h2>
-                                    <p className='list-company-name'>{item.company}</p>
-                                    <p className='list-last-changed'>Last changed: <span className='last-changed-date'>{moment(item.lastEdited).fromNow()}</span></p>
+                                <Link to={applicationPath} className="clearfix">
+                                    <div className="applicationText">
+                                        <h2>{item.title}</h2>
+                                        <p className='list-company-name'>{item.company}</p>
+                                        <p className='list-last-changed'>Last changed: <span className='last-changed-date'>{moment(item.lastEdited, 'x').fromNow()}</span></p>
+                                        {item.needsAction &&
+                                            <p className='action-badge'>Needs Action</p>
+                                        }
+                                    </div>
+                                    <div className="next clearfix"><i className="fa fa-chevron-right"></i></div>
+
                                 </Link>
                             </li>
                         )

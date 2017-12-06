@@ -1,0 +1,21 @@
+{
+    "hosting": {
+        "public": ".",
+        "ignore": [
+            "firebase.json",
+            ".*",
+            "node_modules/**",
+            "local/**",
+            "dev/**",
+            "gulpfile.js",
+            "package*.json",
+            "README.md"
+        ],
+        "rewrites": [
+            {
+                "source": "/**",
+                "destination": "/index.html"
+            }
+        ]
+    }
+}

@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SharingToggle from './sharingToggle';
 import firebase from 'firebase';
+import {
+    BrowserRouter as Router, Route, Link, NavLink, Switch
+} from 'react-router-dom';
 
 // global app header
 export default class MainHeader extends React.Component {
@@ -51,10 +54,12 @@ export default class MainHeader extends React.Component {
         return (
             <header>
                 <div className="wrapper clearfix">
-                    <div className="logo clearfix">
-                        <img src="/public/assets/logo.svg" alt="job seekers logo" />
-                        <h1>job<span>seeker</span></h1> 
-                    </div>
+                    <Link to='/'>
+                        <div className="logo clearfix">
+                            <img src="/public/assets/logo.svg" alt="job seekers logo" />
+                            <h1>job<span>seeker</span></h1> 
+                        </div>
+                    </Link>
                     <div className="navWide">
                         <nav className="wideControls clearfix">
                             {this.props.isLoggedIn &&

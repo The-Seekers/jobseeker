@@ -28,30 +28,51 @@
     li {
         list-style: none;
         background: #ffffff;
-        border-color: $primary;
-        border-style: solid;
-        border-width: 0 0 1px 0;
+        width: calc(100% - 10px);
+        margin: 5px 5px 0 5px;
+        border-radius: 3px;
+        box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+        .applicationText {
+            float: left;
+            width: 85%;
+        }
+        .next {
+            float: right;
+            margin-top: 15px;
+            width: 15%;
+            i {
+                font-size: 4rem;
+                float: right;
+                
+            }
+        }
 
         @include media(481px) {
             float: left;
-            width: 50%;
-            height: 150px;
+            width: calc(50% - (15px / 2));
+            height: 200px;
             overflow: hidden;
-            border-width: 0 1px 1px 0;
+            .next {
+                margin-top: 64px;
+            }
 
             &:nth-child(2n) {
-                border-right-width: 0;
+                margin-left: 0;
             }
         }
 
         @include media(769px) {
-            width: 33.33%;
+            width: calc(33.33% - (20px / 3));
 
-            &:nth-child(2n) {
-                border-right-width: 1px;
+            &:nth-child(3n+1) {
+                margin-left: 5px;
+            }
+
+            &:nth-child(3n+2) {
+                margin-left: 0;
             }
             &:nth-child(3n) {
-                border-right-width: 0;
+                margin-left: 0;
             }
         }
 
@@ -84,6 +105,20 @@
     p {
         color: $body-color;
         margin: 0.4rem 0 0 0;
+    }
+
+    .action-badge {
+        display: inline-block;
+        background: $highlight-one;
+        color: #ffffff;
+        border-radius: 5px;
+        text-transform: lowercase;
+        padding: 0.4rem 0.8rem;
+        margin-top: 0.7rem;
+        font: {
+            size: 1.2rem;
+            weight: 700;
+        }
     }
 }
 

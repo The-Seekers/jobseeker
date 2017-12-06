@@ -3,7 +3,7 @@ import {
     BrowserRouter as Router,Route, Link, NavLink, Switch
 } from 'react-router-dom';
 import firebase from 'firebase';
-import Progress from './progressBar'
+import moment from 'moment';
 
 export default class SingleApplication extends React.Component {
     constructor(){
@@ -17,6 +17,7 @@ export default class SingleApplication extends React.Component {
                 datePosted: '',
                 dateApplied: '',
                 name: '',
+                email: '',
                 followUp1: '',
                 followUp2: '',
                 followUp3: '',
@@ -46,23 +47,10 @@ export default class SingleApplication extends React.Component {
 
     // controlled input to store new values in another part of state
     handleEdit(e){
-        let today = new Date();
-        let dd = today.getDate();
-        let mm = today.getMonth() + 1;
-        const yyyy = today.getFullYear();
-
-        if (dd < 10) {
-            dd = '0' + dd
-        }
-
-        if (mm < 10) {
-            mm = '0' + mm
-        }
-
-        today = `${yyyy}-${mm}-${dd}`
+        const now = moment().format('x');
 
         let currentDetails = Object.assign({},this.state.details);
-        currentDetails.lastEdited = today;
+        currentDetails.lastEdited = now;
         currentDetails[e.target.name] = e.target.value;
 
         this.setState({
@@ -72,23 +60,10 @@ export default class SingleApplication extends React.Component {
 
     // controlled input to store new values in another part of state
     handleChecked(e) {
-        let today = new Date();
-        let dd = today.getDate();
-        let mm = today.getMonth() + 1;
-        const yyyy = today.getFullYear();
-
-        if (dd < 10) {
-            dd = '0' + dd
-        }
-
-        if (mm < 10) {
-            mm = '0' + mm
-        }
-
-        today = `${yyyy}-${mm}-${dd}`
+        const now = moment().format('x');
 
         let currentDetails = Object.assign({}, this.state.details);
-        currentDetails.lastEdited = today;
+        currentDetails.lastEdited = now;
         currentDetails[e.target.name] = e.target.checked;
 
         this.setState({
@@ -157,7 +132,7 @@ export default class SingleApplication extends React.Component {
         }
 
         return (
-            <main>
+            <main className="wrapper">
                 {/* If this is a shared application page, and sharing is not enabled, show an error */}
                 {this.props.isSharedView && !this.state.sharingEnabled ? (
                     <div>
@@ -167,11 +142,8 @@ export default class SingleApplication extends React.Component {
                 ) : (
                         <div className='editForm wrapper'>
                         <nav>
-                            <Link className='backToDash' to={dashPath}>
-                                <i className="fa fa-long-arrow-left fw" aria-hidden="true"></i> back
-                            </Link>
-
-                            {!this.props.isSharedView &&
+                            <Link className='backToDash' to={dashPath}><i className="fa fa-long-arrow-left fw" aria-hidden="true"></i> back</Link>
+                            {!this.props.isSharedView && !this.state.edit &&
                                 // Hide edit button in shared application view
                                     <button className='editButton' onClick={this.enableEdit}>edit <i className="fa fa-pencil" aria-hidden="true"></i></button>
                             }
