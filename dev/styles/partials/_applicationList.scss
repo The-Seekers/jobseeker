@@ -85,6 +85,20 @@
         color: $body-color;
         margin: 0.4rem 0 0 0;
     }
+
+    .action-badge {
+        display: inline-block;
+        background: $highlight-one;
+        color: #ffffff;
+        border-radius: 5px;
+        text-transform: lowercase;
+        padding: 0.4rem 0.8rem;
+        margin-top: 0.7rem;
+        font: {
+            size: 1.2rem;
+            weight: 700;
+        }
+    }
 }
 
 .list-company-name {

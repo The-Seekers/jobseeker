@@ -127,6 +127,9 @@ export default class ApplicationList extends React.Component {
                                     <h2>{item.title}</h2>
                                     <p className='list-company-name'>{item.company}</p>
                                     <p className='list-last-changed'>Last changed: <span className='last-changed-date'>{moment(item.lastEdited).fromNow()}</span></p>
+                                    {item.needsAction &&
+                                        <p className='action-badge'>Needs Action</p>
+                                    }
                                 </Link>
                             </li>
                         )
