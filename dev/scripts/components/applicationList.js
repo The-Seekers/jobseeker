@@ -122,8 +122,8 @@ export default class ApplicationList extends React.Component {
                         const applicationPath = this.buildApplicationPath(item);
 
                         return (
-                            <li key={item.key} className="clearfix">
-                                <Link to={applicationPath}>
+                            <li key={item.key}>
+                                <Link to={applicationPath} className="clearfix">
                                     <div className="applicationText">
                                         <h2>{item.title}</h2>
                                         <p className='list-company-name'>{item.company}</p>
