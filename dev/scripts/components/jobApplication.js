@@ -119,7 +119,6 @@ export default class SingleApplication extends React.Component {
             const singleRef = firebase.database().ref(`users/${this.props.userId}/applications/${this.props.match.params.application_id}`);
             this.getApplication(singleRef);
         }
-
     }
     
     render() {
