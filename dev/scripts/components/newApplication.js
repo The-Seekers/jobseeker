@@ -79,40 +79,40 @@ export default class NewApplication extends React.Component{
 
                 <form onSubmit={this.handleSubmit.bind(this)}>
 
-                    <input onChange={(e) => { this.handleChange(e, 'title') }} value={this.state.title} id='titleInput' type='text' placeholder='add job title' required />                   
+                    <input onChange={(e) => { this.handleChange(e, 'title') }} value={this.state.title} id='titleInput' type='text' placeholder='add job title' required disabled={this.state.submitted} />                   
 
                     <div className='contactInfo'>
 
                         <label htmlFor='companyInput'>
                             <i className="fa fa-briefcase fw" aria-hidden="true"></i>
                         </label>                      
-                        <input onChange={(e) => { this.handleChange(e, 'company') }} id='companyInput' type='text' placeholder='organization' required />
+                        <input onChange={(e) => { this.handleChange(e, 'company') }} id='companyInput' type='text' placeholder='organization' required disabled={this.state.submitted} />
                         
                         <label htmlFor='nameInput'>
                             <i className="fa fa-id-card fw" aria-hidden="true"></i>
                         </label> 
-                        <input onChange={(e) => { this.handleChange(e, 'name') }} id='nameInput' type='text' placeholder='name of contact' required />
+                        <input onChange={(e) => { this.handleChange(e, 'name') }} id='nameInput' type='text' placeholder='name of contact' required disabled={this.state.submitted} />
 
                         <label htmlFor='emailInput'>
                             <i className="fa fa-envelope fw" aria-hidden="true"></i>
                         </label> 
-                        <input onChange={(e) => { this.handleChange(e, 'email') }} id='emailInput' type='email' placeholder='email of contact' required />
+                        <input onChange={(e) => { this.handleChange(e, 'email') }} id='emailInput' type='email' placeholder='email of contact' required disabled={this.state.submitted} />
 
                         <label htmlFor='linkInput'>
                             <i className="fa fa-link fw" aria-hidden="true"></i>
                         </label>
-                        <input onChange={(e) => { this.handleChange(e, 'link') }} id='linkInput' type='url' placeholder='post url' required />
+                        <input onChange={(e) => { this.handleChange(e, 'link') }} id='linkInput' type='url' placeholder='post url' required disabled={this.state.submitted} />
                     </div>
 
                     <div className='dates'>
                         <div className='date'>
                             <label htmlFor='datePostedInput'>posted date</label>
-                            <input onChange={(e) => { this.handleChange(e, 'datePosted') }} id='datePostedInput' type='date' required />
+                            <input onChange={(e) => { this.handleChange(e, 'datePosted') }} id='datePostedInput' type='date' required disabled={this.state.submitted} />
                         </div>
 
                         <div className='date'>
                             <label htmlFor='dateAppliedInput'>date applied</label>
-                                <input onChange={(e) => { this.handleChange(e, 'dateApplied') }} id='dateAppliedInput' type='date' required />
+                                <input onChange={(e) => { this.handleChange(e, 'dateApplied') }} id='dateAppliedInput' type='date' required disabled={this.state.submitted} />
                         </div>
                     </div>
 
