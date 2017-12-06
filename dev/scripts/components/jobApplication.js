@@ -175,47 +175,84 @@ export default class SingleApplication extends React.Component {
                                 // Hide edit button in shared application view
                                     <button className='editButton' onClick={this.enableEdit}>edit <i className="fa fa-pencil" aria-hidden="true"></i></button>
                             }
+                            <div className='archiveThis'>
+                                {this.state.details.archive === true
+                                    ? <label htmlFor="archive">application archived!</label>
+                                    : <label htmlFor="archive">archive?</label>
+                                }
+                                <input id="archive" name="archive" type="checkbox" onChange={this.handleChecked} checked={this.state.details.archive} disabled={!this.state.edit} />
+                            </div>
                         </nav>
                         {/* <Progress /> */}
-                        {this.state.details.archive === true 
-                        ? <h3>This Application Has Been Archived</h3>
-                        : null 
-                        }
+
                         <form action="" onSubmit={this.handleSubmit}>
 
-                            <input id='titleInput' name="title" type="text" onChange={this.handleEdit} value={this.state.details.title} disabled={!this.state.edit} />
-                            
+                            <input id='companyInput' name="company" type="text" onChange={this.handleEdit} value={this.state.details.company} disabled={!this.state.edit} required />
+
                             <div className='contactInfo'>
-                                <input name="company" type="text" onChange={this.handleEdit} value={this.state.details.company} disabled={!this.state.edit} />
+                                <label htmlFor='titleInput'>
+                                    <i className="fa fa-briefcase fw" aria-hidden="true"></i>
+                                </label> 
+                                <input name="title" type="text" onChange={this.handleEdit} value={this.state.details.title} disabled={!this.state.edit} />
+                                <label htmlFor='nameInput'>
+                                    <i className="fa fa-id-card fw" aria-hidden="true"></i>
+                                </label> 
+                                <input name="name" type="text" onChange={this.handleEdit} value={this.state.details.name} disabled={!this.state.edit} required />
+                                <label htmlFor='linkInput'>
+                                    <i className="fa fa-link fw" aria-hidden="true"></i>
+                                </label>
+                                <input name="link" type="text" onChange={this.handleEdit} value={this.state.details.link} disabled={!this.state.edit} required />
                             </div>
 
-                            <input name="link" type="text" onChange={this.handleEdit} value={this.state.details.link} disabled={!this.state.edit} />
-                            <label htmlFor="datePosted">Date Posted</label>
-                            <input name="datePosted" type="date" onChange={this.handleEdit} value={this.state.details.datePosted} disabled={!this.state.edit} />
-                            <label htmlFor="dateApplied">Date Applied</label>
-                            <input name="dateApplied" type="date" onChange={this.handleEdit} value={this.state.details.dateApplied} disabled={!this.state.edit} />
-                            <label htmlFor="name">Contact Name</label>
-                            <input name="name" type="text" onChange={this.handleEdit} value={this.state.details.name} disabled={!this.state.edit} />
-                            <label htmlFor="followUp1">Follow Up #1</label>
-                            <input name="followUp1" type="date" onChange={this.handleEdit} value={this.state.details.followUp1} disabled={!this.state.edit} />
-                            <label htmlFor="followUp2">Follow Up #2</label>
-                            <input name="followUp2" type="date" onChange={this.handleEdit} value={this.state.details.followUp2} disabled={!this.state.edit} />
-                            <label htmlFor="followUp3">Follow Up #3</label>
-                            <input name="followUp3" type="date" onChange={this.handleEdit} value={this.state.details.followUp3} disabled={!this.state.edit} />
-                            <label htmlFor="response">Response</label>
-                            <input name="response" type="text" onChange={this.handleEdit} value={this.state.details.response} disabled={!this.state.edit} />
-                            <label htmlFor="interview">Interview Date</label>
-                            <input name="interview" type="date" onChange={this.handleEdit} value={this.state.details.interview} disabled={!this.state.edit} />
-                            <label htmlFor="thanks">Thank You Note</label>
-                            <input name="thanks" type="date" onChange={this.handleEdit} value={this.state.details.thanks} disabled={!this.state.edit} />
-                            <label htmlFor="interviewFollowUp1">Interview Follow Up #1</label>
-                            <input name="interviewFollowUp1" type="date" onChange={this.handleEdit} value={this.state.details.interviewFollowUp1} disabled={!this.state.edit} />
-                            <label htmlFor="interviewFollowUp2">Interview Follow Up #2</label>
-                            <input name="interviewFollowUp2" type="date" onChange={this.handleEdit} value={this.state.details.interviewFollowUp2} disabled={!this.state.edit} />
-                            <label htmlFor="archive">Archive This Application</label>
-                            <input id="archive" name="archive" type="checkbox" onChange={this.handleChecked} checked={this.state.details.archive} disabled={!this.state.edit} />
+                            <div className='dates'>
+                                <div className='date'>
+                                    <label htmlFor="datePosted">Date Posted</label>
+                                    <input name="datePosted" type="date" onChange={this.handleEdit} value={this.state.details.datePosted} disabled={!this.state.edit} required />
+                                </div>
+                                <div className='date'>
+                                    <label htmlFor="dateApplied">Date Applied</label>
+                                    <input name="dateApplied" type="date" onChange={this.handleEdit} value={this.state.details.dateApplied} disabled={!this.state.edit} required />
+                                </div>
+                            </div>
+
+                            <div className='followUps'>
+                                <h2>Follow-up Log</h2>
+                                <label htmlFor="followUp1">#1</label>
+                                <input name="followUp1" type="date" onChange={this.handleEdit} value={this.state.details.followUp1} disabled={!this.state.edit} />
+                                    <label htmlFor="followUp2">#2</label>
+                                <input name="followUp2" type="date" onChange={this.handleEdit} value={this.state.details.followUp2} disabled={!this.state.edit} />
+                                    <label htmlFor="followUp3">#3</label>
+                                <input name="followUp3" type="date" onChange={this.handleEdit} value={this.state.details.followUp3} disabled={!this.state.edit} />
+                            </div>
+
+                            <input id='response' name="response" type="text" placeholder="employer's response" onChange={this.handleEdit} value={this.state.details.response} disabled={!this.state.edit} />
+
+                            <div className='dates'>
+                                
+                                <div className='date'> 
+                                    <label htmlFor="interview">Interview Date</label>
+                                    <input name="interview" type="date" onChange={this.handleEdit} value={this.state.details.interview} disabled={!this.state.edit} />
+                                </div>
+
+                                <div className='date'>
+                                    <label htmlFor="thanks">Thanks Sent</label>
+                                    <input name="thanks" type="date" onChange={this.handleEdit} value={this.state.details.thanks} disabled={!this.state.edit} />
+                                </div>
+                            </div>
+
+                            <div className='followUps'>
+                                <h2>Post-Interview Follow-up Log</h2>
+
+                                <label htmlFor="interviewFollowUp1">#1</label>
+                                <input name="interviewFollowUp1" type="date" onChange={this.handleEdit} value={this.state.details.interviewFollowUp1} disabled={!this.state.edit} />
+                                <label htmlFor="interviewFollowUp2">#2</label>
+                                <input name="interviewFollowUp2" type="date" onChange={this.handleEdit} value={this.state.details.interviewFollowUp2} disabled={!this.state.edit} />
+                            </div>
+
                             {this.state.edit &&
-                                <button>Save Changes</button>
+                            <button className='submitButton'>
+                                save changes
+                            </button>
                             }
                         </form>
                     </div>

@@ -78,13 +78,13 @@ export default class NewApplication extends React.Component{
 
                 <form onSubmit={this.handleSubmit.bind(this)}>
 
-                    <input onChange={(e) => { this.handleChange(e, 'title') }} value={this.state.title} id='titleInput' type='text' placeholder='add job title' required />                   
+                    <input onChange={(e) => { this.handleChange(e, 'company') }} id='companyInput' type='text' placeholder='company name' required />         
 
                     <div className='contactInfo'>
-                        <label htmlFor='nameInput'>
+                        <label htmlFor='titleInput'>
                             <i className="fa fa-briefcase fw" aria-hidden="true"></i>
-                        </label>                      
-                        <input onChange={(e) => { this.handleChange(e, 'company') }} id='companyInput' type='text' placeholder='organization' required />
+                        </label>
+                        <input onChange={(e) => { this.handleChange(e, 'title') }} value={this.state.title} id='titleInput' type='text' placeholder='job title' required />               
                         
                         <label htmlFor='nameInput'>
                             <i className="fa fa-id-card fw" aria-hidden="true"></i>

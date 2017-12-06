@@ -12,11 +12,11 @@
     right: 5%;
     z-index: 10;
     .fa {
-        font-size: 2em;
+        font-size: 3rem;
         position: relative;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -45%);
-        text-shadow: 0 3px 0 darken($highlight_one, 5%);
+        text-shadow: 0 3px 0 darken($highlight_one, 10%);
     }
 }
