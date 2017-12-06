@@ -132,7 +132,7 @@ export default class ApplicationList extends React.Component {
                                             <p className='action-badge'>Needs Action</p>
                                         }
                                     </div>
-                                    <div class="next clearfix"><i class="fa fa-chevron-right"></i></div>
+                                    <div className="next clearfix"><i className="fa fa-chevron-right"></i></div>
 
                                 </Link>
                             </li>
