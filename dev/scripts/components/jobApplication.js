@@ -90,6 +90,17 @@ export default class SingleApplication extends React.Component {
         });
     }
 
+    componentWillUnmount() {
+        // Stop listening for database changes when the component unmounts
+        let offRef = '';
+        if (this.props.isSharedView) {
+            offRef = firebase.database().ref(`users/${this.props.match.params.userId}/sharing/${this.props.match.params.shareKey}`);
+        } else {
+            offRef = firebase.database().ref(`users/${this.props.userId}/applications/${this.props.match.params.application_id}`);
+        }
+        offRef.off('value');
+    }    
+
     // pull entire entry from firebase based on application id
     // store application details in state
     // make the default values of form based on state from firebase
@@ -119,7 +130,6 @@ export default class SingleApplication extends React.Component {
             const singleRef = firebase.database().ref(`users/${this.props.userId}/applications/${this.props.match.params.application_id}`);
             this.getApplication(singleRef);
         }
-
     }
     
     render() {
@@ -135,7 +145,7 @@ export default class SingleApplication extends React.Component {
             <main className="wrapper">
                 {/* If this is a shared application page, and sharing is not enabled, show an error */}
                 {this.props.isSharedView && !this.state.sharingEnabled ? (
-                    <div>
+                    <div className='wrapper'>
                         <h2>Oops...</h2>
                         <p>This user has not enabled sharing for their applications. Ask them to turn sharing on!</p>
                     </div>
@@ -155,7 +165,6 @@ export default class SingleApplication extends React.Component {
                                 <input id="archive" name="archive" type="checkbox" onChange={this.handleChecked} checked={this.state.details.archive} disabled={!this.state.edit} />
                             </div>
                         </nav>
-                        {/* <Progress /> */}
 
                         <form action="" onSubmit={this.handleSubmit}>
 

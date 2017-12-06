@@ -45,12 +45,13 @@
     }
     h3{
         font-size: 1.25rem;
-        width: 9rem;
+        font-weight: normal;
+        width: 9.5rem;
         margin: 0 auto;
         padding-top: .5rem; 
         @include media(575px){
             font-size: 2rem;  
-            width: 14rem;  
+            width: 15rem;  
             padding-top: 1.5rem;                     
         } 
         @include media(875px){
