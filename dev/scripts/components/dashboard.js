@@ -81,18 +81,8 @@ export default class Dashboard extends React.Component {
                 applicationsArray.push(applicationItems[applicationKey]);
             }
 
-            // Sort the applications array
-            applicationsArray = applicationsArray.sort((a, b) => {
-                let dateA = a.lastEdited;
-                let dateB = b.lastEdited;
-                if (dateA < dateB) {
-                    return -1;
-                } else if (dateA > dateB) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            });
+            // Sort the applications array (most recent to least recent)
+            applicationsArray.sort((a, b) => (b.lastEdited - a.lastEdited));
 
             // Store the applications in state
             this.setState({

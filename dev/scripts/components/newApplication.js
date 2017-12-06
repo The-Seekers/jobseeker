@@ -3,6 +3,7 @@ import {
     BrowserRouter as Router, Route, Link, NavLink, Switch
 } from 'react-router-dom';
 import firebase from 'firebase';
+import moment from 'moment';
 
 // new job application
 export default class NewApplication extends React.Component{
@@ -42,24 +43,11 @@ export default class NewApplication extends React.Component{
     }
     // add each keystroke to component state & record last edited date
     handleChange(e, id){
-        let today = new Date();
-        let dd = today.getDate();
-        let mm = today.getMonth() + 1;
-        const yyyy = today.getFullYear();
-
-        if (dd < 10) {
-            dd = '0' + dd
-        }
-
-        if (mm < 10) {
-            mm = '0' + mm
-        }
-
-        today = `${yyyy}-${mm}-${dd}`
+        const now = moment().format('x');
 
         this.setState({
             [id]: e.target.value,
-            lastEdited: today
+            lastEdited: now
         })
     }
     render() {
