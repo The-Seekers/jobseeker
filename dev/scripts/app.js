@@ -127,7 +127,6 @@ class App extends React.Component {
                 }} />
                 {/* If no paths match, display an error message */}
                 <Route render={() => (
-                  <div>
                     <div className='wrapper'>                    
                     <p>Oops, that page doesn&apos;t exist!</p>
                   </div>
