@@ -90,6 +90,17 @@ export default class SingleApplication extends React.Component {
         });
     }
 
+    componentWillUnmount() {
+        // Stop listening for database changes when the component unmounts
+        let offRef = '';
+        if (this.props.isSharedView) {
+            offRef = firebase.database().ref(`users/${this.props.match.params.userId}/sharing/${this.props.match.params.shareKey}`);
+        } else {
+            offRef = firebase.database().ref(`users/${this.props.userId}/applications/${this.props.match.params.application_id}`);
+        }
+        offRef.off('value');
+    }    
+
     // pull entire entry from firebase based on application id
     // store application details in state
     // make the default values of form based on state from firebase
