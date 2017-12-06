@@ -136,7 +136,7 @@ export default class Dashboard extends React.Component {
         if (this.props.isSharedView && !this.state.sharingEnabled) {
             // If a guest is accessing a sharing link that is not active, display an error
             display = (
-                <div>
+                <div className='wrapper'>
                     <h2>Oops...</h2>
                     <p>This user has not enabled sharing for their applications. Ask them to turn sharing on!</p>
                 </div>

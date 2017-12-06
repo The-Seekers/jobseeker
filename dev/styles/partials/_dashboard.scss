@@ -2,23 +2,22 @@
 
 .create-application {
     display: block;
-    color: #ffffff;
-    background: linear-gradient(-45deg, $highlight-one, lighten($highlight-one, 10%));;
-    width: 4.5em;
-    height: 4.5em;
+    color: white;
+    background: $highlight_one;
+    width: 8rem;
+    height: 8rem;
     border-radius: 50%;
-    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
     position: fixed;
-    bottom: 24px;
-    right: 24px;
+    bottom: 5.5rem;
+    right: 5%;
     z-index: 10;
     .fa {
-        font-size: 2em;
+        font-size: 3rem;
         position: relative;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -45%);
-        text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
+        text-shadow: 0 3px 0 darken($highlight_one, 10%);
     }
 }
 

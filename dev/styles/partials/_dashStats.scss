@@ -8,7 +8,7 @@
     }
     ul{
         list-style: none;
-        padding: 1rem 0;
+        padding: 1.5rem 0;
         margin: 0;
     }
     li{
@@ -24,7 +24,8 @@
             font-size: 5rem;
             color: white;
             margin: 0 auto;
-            background: linear-gradient(-45deg, $highlight-two, darken($highlight-two, 10%));
+            background: $highlight_two;
+            background: linear-gradient(-45deg, $highlight-two, darken($highlight-two, 5%));
             text-shadow: 2px 2px darken($highlight-two, 30%); 
             @include media(575px){
                 width: 15rem;

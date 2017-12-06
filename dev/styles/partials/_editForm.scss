@@ -25,23 +25,55 @@
     }
     .editButton{
         position: absolute;
-        right: 0;
-        padding: 0;
+        right: 1.5rem;
+        top: 4rem;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
         border: 0;
-        background: $highlight_two;
+        background: $highlight_one;
         color: white;
         border-radius: 3px;
-        padding: .5rem 1rem;
+        padding: 1rem 1.5rem;
+        transition: .3s;
+        box-shadow: 0 .25rem .75rem rgba(0, 0, 0, 0.233);
         .fa{
             padding-left: .5rem;
         }
+        &:hover{
+            top: 4.5rem;
+            box-shadow: 0 0rem .25rem rgba(0, 0, 0, 0.247);            
+        }
     }
-    #titleInput{
+    .archiveThis{
+        position: absolute;
+        top: -.1rem;
+        right: 0;
+        label{
+            padding-right: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: darken($body_bg, 65%);
+        }
+
+    }
+    #companyInput{
+        margin-top: 2.75rem;
         width: 100%;
         font-size: 3rem;  
         font-weight: bold;
         margin-bottom: 2rem;
         padding-left: 1.5rem;
+    }
+    #response{
+        margin-top: 1.75rem;
+        width: 100%;
+        font-size: 3rem;  
+        font-weight: bold;
+        margin-bottom: 2rem;
+        padding-left: 1.5rem;
+        &::placeholder{
+            color: darken($body_bg, 40%);
+        }
     }
     input{
         font-size: 1.5rem;
@@ -56,6 +88,97 @@
         }
         &:focus{
             border-bottom: 5px solid $highlight_two;            
+        }
+    }
+    .contactInfo{
+        label{
+            display: inline-block;
+            width: 3.25rem;            
+        }
+        input{
+            width: calc(100% - 3.25rem);
+            margin-bottom: 1.5rem;
+        }
+    }
+    .dates{  
+        .date{
+            width: calc(50% - .8rem);
+            display: inline-block;
+            &:first-of-type{
+                margin-right: 1.6rem;
+            }
+        }
+        label{
+            margin-bottom: .75rem;
+            display: block;
+            width: 100%;
+            line-height: 1.6rem;
+            font-weight: bold;
+            color: darken($body_bg, 65%);            
+        }
+        input{
+            width: 100%;
+            display: block;
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
+            box-shadow: 0 0 $highlight_two;            
+            transition: .3s;
+            &::placeholder{
+                color: darken($body_bg, 65%);
+            }
+        }
+    }
+    .followUps{
+        padding-top: .5rem;
+        h2{
+            margin-bottom: 1rem;
+            width: 100%;
+            line-height: 1.6rem;
+            font-weight: bold;
+            color: darken($body_bg, 65%); 
+            font-size: 1.6rem;  
+        }
+        label{
+            display: inline-block;
+            width: 3.25rem; 
+            font-family: $headerFont;
+            font-weight: bold;           
+        }
+        input{
+            width: calc(100% - 3.25rem);
+            margin-bottom: 1.5rem;
+            padding: 1.25rem 1rem;
+        }
+    }
+    .interactions{
+        h2{
+            margin-bottom: 1rem;
+            margin-top: .5rem;
+            width: 100%;
+            line-height: 1.6rem;
+            font-weight: bold;
+            color: darken($body_bg, 65%); 
+            font-size: 1.6rem;  
+        }
+    }
+
+    .submitButton{
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+        width: 100%;  
+        display: inline-block;
+        background: $highlight_one;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 1.75rem;
+        box-shadow: 0 .75rem darken($highlight_one, 10%); 
+        transition: .3s;
+        &:hover{
+            transform: translateY(.5rem);
+            box-shadow: 0 .25rem darken($highlight_one, 10%);             
         }
     }
 }

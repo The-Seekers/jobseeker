@@ -127,8 +127,7 @@ class App extends React.Component {
                 }} />
                 {/* If no paths match, display an error message */}
                 <Route render={() => (
-                  <div>
-                    <h2>404 Not Found</h2>
+                    <div className='wrapper'>                    
                     <p>Oops, that page doesn&apos;t exist!</p>
                   </div>
                 )} />
@@ -145,7 +144,7 @@ class App extends React.Component {
                 }} />
                 {/* If no paths match, display an error message */}
                 <Route render={() => (
-                  <div>
+                  <div className='wrapper'>
                     <h2>404 Not Found</h2>
                     <p>Oops, that page doesn&apos;t exist!</p>
                   </div>
