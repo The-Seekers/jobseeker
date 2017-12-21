@@ -179,6 +179,10 @@ export default class SingleApplication extends React.Component {
                                     <i className="fa fa-id-card fw" aria-hidden="true"></i>
                                 </label> 
                                 <input name="name" type="text" onChange={this.handleEdit} value={this.state.details.name} disabled={!this.state.edit} required />
+                                <label htmlFor='emailInput'>
+                                    <i className="fa fa-envelope fw" aria-hidden="true"></i>
+                                </label> 
+                                <input name="email" type="email" onChange={this.handleEdit} value={this.state.details.email} disabled={!this.state.edit} required />
                                 <label htmlFor='linkInput'>
                                     <i className="fa fa-link fw" aria-hidden="true"></i>
                                 </label>
