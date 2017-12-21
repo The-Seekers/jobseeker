@@ -66,7 +66,7 @@ export default class NewApplication extends React.Component{
                 </Link>
 
                 <form onSubmit={this.handleSubmit.bind(this)}>
-
+                    <label htmlFor='companyInput' className='visuallyhidden'>Company Name</label>
                     <input onChange={(e) => { this.handleChange(e, 'company') }} id='companyInput' type='text' placeholder='company name' required />         
 
                     <div className='contactInfo'>
@@ -99,16 +99,16 @@ export default class NewApplication extends React.Component{
 
                         <div className='date'>
                             <label htmlFor='dateAppliedInput'>date applied</label>
-                                <input onChange={(e) => { this.handleChange(e, 'dateApplied') }} id='dateAppliedInput' type='date' required disabled={this.state.submitted} />
+                            <input onChange={(e) => { this.handleChange(e, 'dateApplied') }} id='dateAppliedInput' type='date' required disabled={this.state.submitted} />
                         </div>
                     </div>
 
-                        {this.state.submitted
-                            ? null
-                            : <button className='submitButton' type='submit'>
-                                save application
-                            </button>
-                        }
+                    {this.state.submitted
+                        ? null
+                        : <button className='submitButton' type='submit'>
+                            save application
+                          </button>
+                    }
 
                 </form>
             </main>
@@ -121,7 +121,6 @@ class ApplicationFeedback extends React.Component{
     render(feedback){
         return(
             <section className='newFeedback'>
-            
                 <h2>Application saved!</h2>
                 <p>{this.props.feedback.company} would be lucky to have you!</p>
             </section>
