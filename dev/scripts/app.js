@@ -13,6 +13,7 @@ import Dashboard from './components/dashboard.js'
 import SingleApplication from './components/jobApplication';
 import Home from './components/home';
 import NewApplication from './components/newApplication.js'
+import ScrollToTop from './components/scrollToTop';
 
 // firebase config
 var config = {
@@ -101,7 +102,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
+        <ScrollToTop>
           <div className="content">
 
             <MainHeader shareApplications={this.state.shareApplications} toggleSharing={this.toggleSharing} isLoggedIn={this.state.isLoggedIn} userId={this.state.userId} shareKey={this.state.shareKey} />
@@ -154,7 +155,7 @@ class App extends React.Component {
           </div>
           
           <MainFooter />
-        </div>
+        </ScrollToTop>
       </Router>
     )
   }
